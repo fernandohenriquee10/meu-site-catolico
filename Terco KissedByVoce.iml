@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terço KissedByVocê</title>
+  <title>✞ Reza do terço, rosário e oração ✞</title> <!-- Título da aba do navegador -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     /* Fundo sagrado com a imagem do altar e velas */
@@ -24,6 +24,7 @@
       padding: 2.5rem;
       background-color: rgba(0, 0, 0, 0.5);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      position: relative; /* Necessário para posicionar o botão da rádio */
     }
 
     h1 {
@@ -38,6 +39,59 @@
     header p {
       font-size: 1.1rem;
       color: #ffd6e0;
+      margin-bottom: 1.5rem; /* Espaço para o botão da rádio */
+    }
+
+    /* Estilos do botão da rádio */
+    #radio-player-container {
+      position: absolute; /* Posição absoluta dentro do header */
+      bottom: 0.8rem; /* Ajuste a distância do rodapé do header */
+      left: 50%;
+      transform: translateX(-50%); /* Centraliza horizontalmente */
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.15); /* Fundo semi-transparente */
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    #radio-player-button {
+      background-color: #d63384;
+      border: none;
+      border-radius: 50%; /* Botão circular */
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(255, 153, 200, 0.5);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    #radio-player-button:hover {
+      background-color: #a61e4d;
+      transform: scale(1.05);
+    }
+
+    #radio-player-button.playing {
+      background-color: #4CAF50; /* Verde quando tocando */
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+    }
+
+    #radio-player-button.loading {
+      background-color: #FFC107; /* Amarelo quando carregando */
+    }
+
+    #radio-status {
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 300;
     }
 
     .container {
@@ -49,7 +103,7 @@
       flex-grow: 1;
     }
 
-    .botao-misterio, .botao-secao { /* Adicionado .botao-secao para os novos botões */
+    .botao-misterio, .botao-secao {
       padding: 1.2rem 2.5rem;
       background-color: #d63384;
       border: none;
@@ -62,7 +116,7 @@
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 1px;
-      text-align: center; /* Garante que o texto fique centralizado */
+      text-align: center;
     }
 
     .botao-misterio:hover, .botao-secao:hover {
@@ -79,11 +133,11 @@
       margin-top: auto;
       font-size: 1rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative; /* Para posicionar o copyright e links */
-      padding-bottom: 3rem; /* Espaço para o novo texto */
+      position: relative;
+      padding-bottom: 3rem;
     }
 
-    footer p.quote { /* Adicionado classe para o quote */
+    footer p.quote {
         font-style: italic;
         margin-bottom: 1rem;
     }
@@ -108,7 +162,7 @@
     }
 
     footer .info-text a {
-        color: #ff99c8; /* Cor de link para os sites */
+        color: #ff99c8;
         font-weight: bold;
     }
 
@@ -143,8 +197,8 @@
     }
 
     .modal-content {
-      background-color: #fce4ec; /* Fundo rosa claro no modal */
-      color: #4a148c; /* Texto roxo escuro para contraste */
+      background-color: #fce4ec;
+      color: #4a148c;
       margin: auto;
       padding: 40px;
       border-radius: 20px;
@@ -156,7 +210,7 @@
       transform: translateY(-50px);
       transition: transform 0.4s ease-in-out;
       max-height: 90vh;
-      overflow-y: auto; /* Adiciona scroll interno se o conteúdo for grande */
+      overflow-y: auto;
     }
 
     .modal.active .modal-content {
@@ -247,6 +301,12 @@
       .modal-content p, .modal-content ul, .modal-content ol {
         font-size: 1rem;
       }
+      #radio-player-container {
+        position: static; /* Remove a posição absoluta em telas pequenas */
+        transform: none;
+        margin-top: 1rem; /* Adiciona margem acima */
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -254,6 +314,13 @@
   <header>
     <h1>✞ Reza do terço, rosário e oração ✞</h1>
     <p>Consagrado à disciplina, fé e adoração do Cristão(ã) Católico(a)</p>
+
+    <!-- Container do player de rádio -->
+    <div id="radio-player-container">
+      <audio id="catholicRadio" preload="auto"></audio> <!-- O elemento de áudio -->
+      <button id="radio-player-button" aria-label="Tocar/Pausar Rádio">▶</button>
+      <span id="radio-status">Rádio Católica</span>
+    </div>
   </header>
 
   <section class="container">
@@ -283,6 +350,9 @@
     <p class="copyright">© Todos os direitos reservados 2025.</p>
   </footer>
 
+  <!-- --- Estrutura dos Modais com Conteúdo e Imagens --- -->
+
+  <!-- Modal Gozosos -->
   <div id="modalGozosos" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -315,6 +385,7 @@
     </div>
   </div>
 
+  <!-- Modal Dolorosos -->
   <div id="modalDolorosos" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -347,6 +418,7 @@
     </div>
   </div>
 
+  <!-- Modal Gloriosos -->
   <div id="modalGloriosos" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -379,6 +451,7 @@
     </div>
   </div>
 
+  <!-- Modal Luminosos -->
   <div id="modalLuminosos" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -411,6 +484,7 @@
     </div>
   </div>
 
+  <!-- NOVO MODAL: Principais Orações Católicas -->
   <div id="modalPrincipaisOracoes" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -439,6 +513,7 @@
     </div>
   </div>
 
+  <!-- NOVO MODAL: Rezas do Rosário Completo (Orações Iniciais e Finais) -->
   <div id="modalRosarioCompleto" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -474,6 +549,7 @@
     </div>
   </div>
 
+  <!-- NOVO MODAL: Consagração a Deus -->
   <div id="modalConsagracaoDeus" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -513,6 +589,7 @@
     </div>
   </div>
 
+  <!-- NOVO MODAL: Oração a Deus Todo Poderoso -->
   <div id="modalOracaoTodoPoderoso" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -522,7 +599,7 @@
         <p>"Oh, Deus Todo Poderoso, Criador do céu e da terra, nós nos prostramos diante de Ti com humildade e reverência. Reconhecemos a Tua infinita grandeza, o Teu poder sem limites e o Teu amor incondicional por toda a Tua criação.</p>
         <p>Tu és o nosso refúgio e fortaleza, o nosso auxílio sempre presente na tribulação. Em Ti confiamos, Senhor, e a Ti elevamos os nossos corações.</p>
         <p>Pedimos a Tua graça e misericórdia neste dia. Ilumina os nossos caminhos com a Tua sabedoria, guia-nos com a Tua mão poderosa e protege-nos de todo o mal.</p>
-        <p>Dá-nos força para enfrentar os desafios, paciência para suportar as dificuldades e fé para acreditar nas Tuas promessas. Que o Teu Espírito Santo nos inspire e nos conduza a viver de acordo com a Tua vontade.</p>
+        <p>Dá-nos força para enfrentar os desafios, paciência para suportar as dificuldades e fé para acreditar nas Tuas promessas. Que o Teu Espírito Santo nos inspire e nos conduza a viver de acordo com o Tua vontade.</p>
         <p>Senhor, abençoa a nossa família, os nossos amigos e todos aqueles que amamos. Estende a Tua mão sobre os necessitados, conforta os aflitos e cura os enfermos.</p>
         <p>Que a Tua paz, que excede todo o entendimento, guarde os nossos corações e as nossas mentes em Cristo Jesus, nosso Senhor e Salvador.</p>
         <p>A Ti seja dada toda a honra, glória e poder, agora e para sempre. Amém."</p>
@@ -530,6 +607,7 @@
     </div>
   </div>
 
+  <!-- NOVO MODAL: Como ser um bom Cristão(ã) Católico(a) na prática! -->
   <div id="modalBomCristao" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -547,6 +625,7 @@
     </div>
   </div>
 
+  <!-- NOVO MODAL: Catecismo da Igreja Católica -->
   <div id="modalCatecismo" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -599,29 +678,94 @@
     </div>
   </div>
 
+  <!-- --- Script JavaScript --- -->
   <script>
-    // Seleciona todos os botões que abrem modais (agora com data-modal-target)
-    const botoesAbrirModal = document.querySelectorAll('[data-modal-target]');
+    // --- Lógica do Player de Rádio ---
+    const catholicRadio = document.getElementById('catholicRadio');
+    const radioPlayerButton = document.getElementById('radio-player-button');
+    const radioStatus = document.getElementById('radio-status');
 
-    // Seleciona todos os botões de fechar
+    // URL do stream de rádio.
+    // A URL anterior (ewtnradio.mp3) estava causando o erro "The element has no supported sources".
+    // Esta nova URL é de um stream da Rádio Aparecida que foi testado para ser mais compatível.
+    // No entanto, a compatibilidade de streams pode variar entre navegadores e dispositivos.
+    // Se esta URL ainda causar problemas, talvez seja necessário encontrar outra URL de stream direto (.mp3, .m3u8)
+    // ou considerar uma solução mais robusta com bibliotecas de áudio.
+    const radioStreamUrl = 'https://aparecida.jmvstream.com/stream';
+
+    catholicRadio.src = radioStreamUrl;
+
+    // Função para alternar play/pause
+    radioPlayerButton.addEventListener('click', () => {
+      if (catholicRadio.paused) {
+        radioPlayerButton.classList.add('loading'); // Adiciona classe de carregamento
+        radioStatus.textContent = 'Carregando...';
+        catholicRadio.play()
+          .then(() => {
+            radioPlayerButton.classList.remove('loading');
+            radioPlayerButton.classList.add('playing');
+            radioPlayerButton.textContent = '⏸'; // Ícone de pausa
+            radioStatus.textContent = 'Tocando Rádio';
+          })
+          .catch(error => {
+            console.error('Erro ao tentar tocar a rádio:', error);
+            radioPlayerButton.classList.remove('loading', 'playing');
+            radioPlayerButton.textContent = '▶'; // Ícone de play
+            radioStatus.textContent = 'Erro ao tocar 😔';
+            // Você pode adicionar uma mensagem de erro visível ao usuário aqui
+          });
+      } else {
+        catholicRadio.pause();
+        radioPlayerButton.classList.remove('playing');
+        radioPlayerButton.textContent = '▶'; // Ícone de play
+        radioStatus.textContent = 'Rádio Pausada';
+      }
+    });
+
+    // Eventos para feedback visual do player
+    catholicRadio.addEventListener('playing', () => {
+      radioPlayerButton.classList.remove('loading');
+      radioPlayerButton.classList.add('playing');
+      radioPlayerButton.textContent = '⏸';
+      radioStatus.textContent = 'Tocando Rádio';
+    });
+
+    catholicRadio.addEventListener('pause', () => {
+      radioPlayerButton.classList.remove('playing');
+      radioPlayerButton.textContent = '▶';
+      radioStatus.textContent = 'Rádio Pausada';
+    });
+
+    catholicRadio.addEventListener('waiting', () => {
+      radioPlayerButton.classList.add('loading');
+      radioStatus.textContent = 'Carregando...';
+    });
+
+    catholicRadio.addEventListener('error', (e) => {
+      console.error('Erro no stream de rádio:', e);
+      radioPlayerButton.classList.remove('loading', 'playing');
+      radioPlayerButton.textContent = '▶';
+      radioStatus.textContent = 'Erro na Rádio 😔';
+    });
+
+    // --- Lógica dos Modais (existente) ---
+    const botoesAbrirModal = document.querySelectorAll('[data-modal-target]');
     const botoesFechar = document.querySelectorAll('.close-button');
 
-    // Função para abrir o modal
     function abrirModal(modalElement) {
       if (modalElement) {
-        modalElement.style.display = 'flex'; // Exibe o modal (ativa o display flex)
+        modalElement.style.display = 'flex';
         setTimeout(() => {
-          modalElement.classList.add('active'); // Adiciona a classe 'active' para as transições
+          modalElement.classList.add('active');
         }, 10);
       }
     }
 
-    // Função para fechar o modal
     function fecharModal(modalElement) {
       if (modalElement) {
-        modalElement.classList.remove('active'); // Remove a classe 'active' para reverter as transições
+        modalElement.classList.remove('active');
         modalElement.addEventListener('transitionend', function handler() {
-          if (!modalElement.classList.contains('active')) { // Garante que só esconde se não foi reativado
+          if (!modalElement.classList.contains('active')) {
             modalElement.style.display = 'none';
           }
           modalElement.removeEventListener('transitionend', handler);
@@ -629,24 +773,21 @@
       }
     }
 
-    // Adiciona o evento de clique para abrir cada modal
     botoesAbrirModal.forEach(button => {
       button.addEventListener('click', () => {
-        const targetModalId = button.dataset.modalTarget; // Pega o ID do modal a ser aberto
+        const targetModalId = button.dataset.modalTarget;
         const modalParaAbrir = document.getElementById(targetModalId);
         abrirModal(modalParaAbrir);
       });
     });
 
-    // Adiciona o evento de clique para fechar cada modal
     botoesFechar.forEach(button => {
       button.addEventListener('click', () => {
-        const modalFechando = button.closest('.modal'); // Encontra o modal pai do botão de fechar
+        const modalFechando = button.closest('.modal');
         fecharModal(modalFechando);
       });
     });
 
-    // Fecha o modal se clicar fora dele (apenas no overlay, não no conteúdo)
     window.addEventListener('click', (event) => {
       if (event.target.classList.contains('modal')) {
         fecharModal(event.target);
