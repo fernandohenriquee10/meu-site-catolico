@@ -317,7 +317,8 @@
 
     <!-- Container do player de rádio -->
     <div id="radio-player-container">
-        <audio id="catholicRadio" preload="auto"></audio> <!-- O elemento de áudio -->
+        <!-- Adicionado 'autoplay' e 'muted' para tentar iniciar (pode ser bloqueado pelo navegador) -->
+        <audio id="catholicRadio" preload="auto" autoplay muted></audio>
         <button id="radio-player-button" aria-label="Tocar/Pausar Rádio">▶</button>
         <span id="radio-status">Rádio Católica</span>
     </div>
@@ -697,7 +698,10 @@
 
     // Função para alternar play/pause
     radioPlayerButton.addEventListener('click', () => {
-      if (catholicRadio.paused) {
+      // Se o áudio estiver pausado ou não tiver começado a tocar
+      if (catholicRadio.paused || catholicRadio.ended) {
+        // Tenta remover o muted se o usuário interagiu
+        catholicRadio.muted = false;
         radioPlayerButton.classList.add('loading'); // Adiciona classe de carregamento
         radioStatus.textContent = 'Carregando...';
         catholicRadio.play()
@@ -715,6 +719,7 @@
             // Você pode adicionar uma mensagem de erro visível ao usuário aqui
           });
       } else {
+        // Se já estiver tocando, pausa
         catholicRadio.pause();
         radioPlayerButton.classList.remove('playing');
         radioPlayerButton.textContent = '▶'; // Ícone de play
