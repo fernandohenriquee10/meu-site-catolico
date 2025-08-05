@@ -24,7 +24,7 @@
           padding: 2.5rem;
           background-color: rgba(0, 0, 0, 0.5);
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-          position: relative; /* Necessário para posicionar o botão da rádio */
+          position: relative;
         }
 
         h1 {
@@ -39,19 +39,19 @@
         header p {
           font-size: 1.1rem;
           color: #ffd6e0;
-          margin-bottom: 1.5rem; /* Espaço para o botão da rádio */
+          margin-bottom: 1.5rem;
         }
 
         /* Estilos do botão da rádio */
         #radio-player-container {
-          position: absolute; /* Posição absoluta dentro do header */
-          bottom: 0.8rem; /* Ajuste a distância do rodapé do header */
+          position: absolute;
+          bottom: 0.8rem;
           left: 50%;
-          transform: translateX(-50%); /* Centraliza horizontalmente */
+          transform: translateX(-50%);
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          background-color: rgba(255, 255, 255, 0.15); /* Fundo semi-transparente */
+          background-color: rgba(255, 255, 255, 0.15);
           padding: 0.4rem 0.8rem;
           border-radius: 20px;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -61,7 +61,7 @@
         #radio-player-button {
           background-color: #d63384;
           border: none;
-          border-radius: 50%; /* Botão circular */
+          border-radius: 50%;
           width: 40px;
           height: 40px;
           display: flex;
@@ -80,12 +80,12 @@
         }
 
         #radio-player-button.playing {
-          background-color: #4CAF50; /* Verde quando tocando */
+          background-color: #4CAF50;
           box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
         }
 
         #radio-player-button.loading {
-          background-color: #FFC107; /* Amarelo quando carregando */
+          background-color: #FFC107;
         }
 
         #radio-status {
@@ -170,6 +170,21 @@
             margin-top: 1rem;
             font-size: 0.8rem;
             color: #bbb;
+        }
+
+        .download-app {
+          display: inline-block;
+          margin-top: 1rem;
+          background-color: #8e0038;
+          padding: 0.6rem 1rem;
+          border-radius: 12px;
+          color: #fff;
+          font-weight: bold;
+          text-decoration: none;
+          transition: background 0.3s ease;
+        }
+        .download-app:hover {
+          background-color: #6a0026;
         }
 
         /* --- Estilos do Modal --- */
@@ -302,9 +317,9 @@
             font-size: 1rem;
           }
           #radio-player-container {
-            position: static; /* Remove a posição absoluta em telas pequenas */
+            position: static;
             transform: none;
-            margin-top: 1rem; /* Adiciona margem acima */
+            margin-top: 1rem;
             justify-content: center;
           }
         }
@@ -317,7 +332,6 @@
 
     <!-- Container do player de rádio -->
     <div id="radio-player-container">
-        <!-- Adicionado 'autoplay' e 'muted' para tentar iniciar (pode ser bloqueado pelo navegador) -->
         <audio id="catholicRadio" preload="auto" autoplay muted></audio>
         <button id="radio-player-button" aria-label="Tocar/Pausar Rádio">▶</button>
         <span id="radio-status">Rádio Católica</span>
@@ -336,6 +350,7 @@
     <button class="botao-secao" data-modal-target="modalOracaoTodoPoderoso">Oração a Deus Todo Poderoso</button>
     <button class="botao-secao" data-modal-target="modalBomCristao">Como ser um bom Cristão(ã) Católico(a) na prática!</button>
     <button class="botao-secao" data-modal-target="modalCatecismo">Catecismo da Igreja Católica</button>
+    <button class="botao-secao" data-modal-target="modalFeCatolica">A fé católica</button>
 </section>
 
 <footer>
@@ -345,13 +360,12 @@
         <a href="#">Adoração</a> |
         <a href="#">Rezas com Fé</a>
     </div>
+    <a href="https://drive.google.com/file/d/1gyy1XTEtcWxvt8Ceo5ovHWnV_fF6Bc3K/view?usp=drive_link" class="download-app" target="_blank" rel="noopener noreferrer">Baixe o app do site aqui</a>
     <p class="info-text">
-        Essas orações são fundamentais na vida de um católico e são frequentemente recitadas em momentos de devoção pessoal, celebrações litúrgicas e em comunidade. Para mais informações sobre orações católicas, você pode visitar sites como <a href="https://www.vatican.va/content/vatican/pt.html" target="_blank">Igreja Católica</a> e <a href="https://www.catequistasemformacao.com/2025/" target="_blank">Catequeses</a>.
+        Essas orações são fundamentais na vida de um católico e são frequentemente recitadas em momentos de devoção pessoal, celebrações litúrgicas e em comunidade. Para mais informações sobre orações católicas, você pode visitar sites como <a href="https://www.vatican.va/content/vatican/pt.html" target="_blank" rel="noopener noreferrer">Igreja Católica</a> e <a href="https://www.catequistasemformacao.com/2025/" target="_blank" rel="noopener noreferrer">Catequeses</a>.
     </p>
     <p class="copyright">© Todos os direitos reservados 2025.</p>
 </footer>
-
-<!-- --- Estrutura dos Modais com Conteúdo e Imagens --- -->
 
 <!-- Modal Gozosos -->
 <div id="modalGozosos" class="modal">
@@ -679,55 +693,72 @@
     </div>
 </div>
 
+<!-- Modal A fé católica -->
+<div id="modalFeCatolica" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>A fé católica</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>A fé católica, para os fiéis, é a livre entrega a Deus, aceitando a sua revelação transmitida pela Igreja através da Tradição Apostólica e da Sagrada Escritura. Essa fé não é apenas um conjunto de crenças, mas um conhecimento sobrenatural e um dom divino, que envolve tanto a inteligência quanto a vontade do indivíduo.</p>
+        <div class="rezas-container">
+            <h3>Elementos essenciais da fé católica:</h3>
+            <ul>
+                <li><strong>Creio em Deus:</strong> A fé católica se fundamenta na crença em um Deus único, uno e trino (Pai, Filho e Espírito Santo), criador do céu e da terra.</li>
+                <li><strong>Crença em Jesus Cristo:</strong> A fé católica professa Jesus Cristo como o Filho de Deus, o Messias, que veio ao mundo para salvar a humanidade, morrendo e ressuscitando por nós.</li>
+                <li><strong>Aceitação da Igreja:</strong> A Igreja Católica, fundada por Jesus Cristo, é vista como a guardiã da fé e a transmissora da verdade revelada por Deus.</li>
+                <li><strong>Confiança na Tradição e Sagrada Escritura:</strong> A fé católica se baseia tanto na Tradição Apostólica quanto na Sagrada Escritura.</li>
+                <li><strong>Prática da Moral Cristã:</strong> A fé católica se manifesta também na prática da moral cristã.</li>
+            </ul>
+        </div>
+        <div class="rezas-container">
+            <h3>Características da fé católica:</h3>
+            <ul>
+                <li><strong>Conhecimento:</strong> Um conhecimento sobrenatural baseado na revelação divina.</li>
+                <li><strong>Liberdade:</strong> Escolha livre e pessoal de aderir à verdade revelada.</li>
+                <li><strong>Graça:</strong> Dom de Deus infundido na alma.</li>
+                <li><strong>Testemunho:</strong> Manifestação na vida cotidiana e moral cristã.</li>
+            </ul>
+        </div>
+        <p>Em resumo, a fé católica é uma entrega livre a Deus, baseada na aceitação da sua revelação e na prática dos ensinamentos da Igreja, que se manifesta em um conhecimento sobrenatural, um dom divino e um testemunho de vida.</p>
+    </div>
+</div>
+
 <!-- --- Script JavaScript --- -->
 <script>
-    // --- Lógica do Player de Rádio ---
+    // Rádio
     const catholicRadio = document.getElementById('catholicRadio');
     const radioPlayerButton = document.getElementById('radio-player-button');
     const radioStatus = document.getElementById('radio-status');
 
-    // URL do stream de rádio.
-    // A URL anterior (ewtnradio.mp3) estava causando o erro "The element has no supported sources".
-    // Esta nova URL é de um stream da Rádio Aparecida que foi testado para ser mais compatível.
-    // No entanto, a compatibilidade de streams pode variar entre navegadores e dispositivos.
-    // Se esta URL ainda causar problemas, talvez seja necessário encontrar outra URL de stream direto (.mp3, .m3u8)
-    // ou considerar uma solução mais robusta com bibliotecas de áudio.
     const radioStreamUrl = 'https://aparecida.jmvstream.com/stream';
-
     catholicRadio.src = radioStreamUrl;
 
-    // Função para alternar play/pause
     radioPlayerButton.addEventListener('click', () => {
-      // Se o áudio estiver pausado ou não tiver começado a tocar
       if (catholicRadio.paused || catholicRadio.ended) {
-        // Tenta remover o muted se o usuário interagiu
         catholicRadio.muted = false;
-        radioPlayerButton.classList.add('loading'); // Adiciona classe de carregamento
+        radioPlayerButton.classList.add('loading');
         radioStatus.textContent = 'Carregando...';
         catholicRadio.play()
           .then(() => {
             radioPlayerButton.classList.remove('loading');
             radioPlayerButton.classList.add('playing');
-            radioPlayerButton.textContent = '⏸'; // Ícone de pausa
+            radioPlayerButton.textContent = '⏸';
             radioStatus.textContent = 'Tocando Rádio';
           })
           .catch(error => {
             console.error('Erro ao tentar tocar a rádio:', error);
             radioPlayerButton.classList.remove('loading', 'playing');
-            radioPlayerButton.textContent = '▶'; // Ícone de play
+            radioPlayerButton.textContent = '▶';
             radioStatus.textContent = 'Erro ao tocar 😔';
-            // Você pode adicionar uma mensagem de erro visível ao usuário aqui
           });
       } else {
-        // Se já estiver tocando, pausa
         catholicRadio.pause();
         radioPlayerButton.classList.remove('playing');
-        radioPlayerButton.textContent = '▶'; // Ícone de play
+        radioPlayerButton.textContent = '▶';
         radioStatus.textContent = 'Rádio Pausada';
       }
     });
 
-    // Eventos para feedback visual do player
     catholicRadio.addEventListener('playing', () => {
       radioPlayerButton.classList.remove('loading');
       radioPlayerButton.classList.add('playing');
@@ -753,49 +784,45 @@
       radioStatus.textContent = 'Erro na Rádio 😔';
     });
 
-    // --- Lógica dos Modais (existente) ---
-    const botoesAbrirModal = document.querySelectorAll('[data-modal-target]');
-    const botoesFechar = document.querySelectorAll('.close-button');
+    // Modais
+    const abrirBtns = document.querySelectorAll('[data-modal-target]');
+    const fecharBtns = document.querySelectorAll('.close-button');
 
-    function abrirModal(modalElement) {
-      if (modalElement) {
-        modalElement.style.display = 'flex';
-        setTimeout(() => {
-          modalElement.classList.add('active');
-        }, 10);
-      }
+    function abrirModal(modal) {
+      if (!modal) return;
+      modal.style.display = 'flex';
+      setTimeout(() => modal.classList.add('active'), 10);
     }
 
-    function fecharModal(modalElement) {
-      if (modalElement) {
-        modalElement.classList.remove('active');
-        modalElement.addEventListener('transitionend', function handler() {
-          if (!modalElement.classList.contains('active')) {
-            modalElement.style.display = 'none';
-          }
-          modalElement.removeEventListener('transitionend', handler);
-        });
-      }
+    function fecharModal(modal) {
+      if (!modal) return;
+      modal.classList.remove('active');
+      modal.addEventListener('transitionend', function handler() {
+        if (!modal.classList.contains('active')) {
+          modal.style.display = 'none';
+        }
+        modal.removeEventListener('transitionend', handler);
+      });
     }
 
-    botoesAbrirModal.forEach(button => {
-      button.addEventListener('click', () => {
-        const targetModalId = button.dataset.modalTarget;
-        const modalParaAbrir = document.getElementById(targetModalId);
-        abrirModal(modalParaAbrir);
+    abrirBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.modalTarget;
+        const modal = document.getElementById(target);
+        abrirModal(modal);
       });
     });
 
-    botoesFechar.forEach(button => {
-      button.addEventListener('click', () => {
-        const modalFechando = button.closest('.modal');
-        fecharModal(modalFechando);
+    fecharBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const modal = btn.closest('.modal');
+        fecharModal(modal);
       });
     });
 
-    window.addEventListener('click', (event) => {
-      if (event.target.classList.contains('modal')) {
-        fecharModal(event.target);
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal')) {
+        fecharModal(e.target);
       }
     });
 </script>
