@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>✞ Reza do terço, rosário e oração ✞</title> <!-- Título da aba do navegador -->
+    <title>✞ Reza do terço, rosário e oração ✞</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Fundo sagrado com a imagem do altar e velas */
@@ -332,7 +332,7 @@
 
     <!-- Container do player de rádio -->
     <div id="radio-player-container">
-        <audio id="catholicRadio" preload="auto" autoplay muted></audio>
+        <audio id="catholicRadio" preload="auto" muted></audio>
         <button id="radio-player-button" aria-label="Tocar/Pausar Rádio">▶</button>
         <span id="radio-status">Rádio Católica</span>
     </div>
@@ -351,6 +351,7 @@
     <button class="botao-secao" data-modal-target="modalBomCristao">Como ser um bom Cristão(ã) Católico(a) na prática!</button>
     <button class="botao-secao" data-modal-target="modalCatecismo">Catecismo da Igreja Católica</button>
     <button class="botao-secao" data-modal-target="modalFeCatolica">A fé católica</button>
+    <button class="botao-secao" data-modal-target="modalInclusao">O Acolhimento na Fé</button>
 </section>
 
 <footer>
@@ -636,11 +637,12 @@
             <p><strong>Ir a Missa dominical sem falta;</strong> exceções são: Por doença, cuidador de enfermos, por problemas de locomoção sendo perdoados a falta presencial a Missa dominical.</p>
             <p><strong>Rezar o terço, rosário e orações com suas palavras diariamente.</strong></p>
             <p><strong>Praticar a caridade constante.</strong></p>
+            <p><strong>Se confessar uma vez por ano com um Padre no mínimo.</strong></p>
         </div>
     </div>
 </div>
 
-<!-- NOVO MODAL: Catecismo da Igreja Católica -->
+<!-- NOVO MODAL: Catecismo da Igreja Católica (Completo) -->
 <div id="modalCatecismo" class="modal">
     <div class="modal-content">
         <span class="close-button">&times;</span>
@@ -667,163 +669,181 @@
                 <li>Eucaristia: O centro da vida cristã, a presença real de Cristo sob as espécies do pão e do vinho.</li>
                 <li>Penitência e Reconciliação (Confissão): O perdão dos pecados cometidos após o Batismo.</li>
                 <li>Unção dos Enfermos: Conforto espiritual e físico para os doentes e idosos.</li>
-                <li>Ordem: O sacramento do ministério apostólico, que confere o sacerdócio.</li>
-                <li>Matrimônio: A união indissolúvel entre homem e mulher para a procriação e o bem dos cônjuges.</li>
+                <li>Ordem: O sacramento do ministério apostólico, que confere aos homens a missão de representar Cristo como cabeça da Igreja.</li>
+                <li>Matrimônio: A união indissolúvel entre um homem e uma mulher, simbolizando a união de Cristo com a Igreja.</li>
             </ul>
 
             <h3>3. A Vida em Cristo (Os Mandamentos)</h3>
-            <p>Esta seção explora a moral cristã e como viver de acordo com a vontade de Deus. Ela se baseia nos Dez Mandamentos e nas Bem-aventuranças:</p>
+            <p>Esta seção se concentra na moralidade cristã e nos Dez Mandamentos, explicando como os católicos devem viver suas vidas de acordo com os ensinamentos de Jesus e da Igreja. Ela trata de temas como:</p>
             <ul>
-                <li>Dignidade da Pessoa Humana: Liberdade, consciência moral, pecado e virtudes.</li>
-                <li>A Comunidade Humana: A importância da sociedade, da autoridade e da justiça social.</li>
-                <li>Os Mandamentos: Explicados em profundidade, mostrando como eles guiam a conduta cristã em relação a Deus e ao próximo. Inclui temas como o respeito à vida, à verdade, à propriedade e à sexualidade (com a visão católica sobre o matrimônio, família e sexualidade humana).</li>
-                <li>A Lei e a Graça: A importância da lei moral divina e a necessidade da graça de Deus para vivê-la.</li>
+                <li>As virtudes: Teologais (Fé, Esperança e Caridade) e cardeais (Prudência, Justiça, Fortaleza e Temperança).</li>
+                <li>Os Dez Mandamentos: Uma análise detalhada de cada mandamento, ensinando sobre o amor a Deus e ao próximo.</li>
+                <li>A Doutrina Social da Igreja: Princípios para a vida em sociedade, como a dignidade da pessoa humana, o bem comum e a solidariedade.</li>
             </ul>
 
-            <h3>4. A Oração Cristã (O Pai Nosso)</h3>
-            <p>A última parte do Catecismo dedica-se à oração, que é a comunicação com Deus. Ela explora:</p>
+            <h3>4. A Oração Cristã (O Pai-Nosso)</h3>
+            <p>A parte final do Catecismo é dedicada à importância e às formas da oração. Ela explora a oração como uma relação pessoal com Deus, com uma análise aprofundada da oração do Pai-Nosso, que é o modelo de toda oração cristã. Os tópicos abordados incluem:</p>
             <ul>
-                <li>A importância e a necessidade da oração: Oração como um dom de Deus e uma resposta do homem.</li>
-                <li>As formas de oração: Oração vocal, meditação e contemplação.</li>
-                <li>Os locais e as expressões da oração: Desde a oração pessoal até a oração litúrgica da Igreja.</li>
-                <li>O "Pai Nosso": Uma explicação detalhada da oração que Jesus ensinou, servindo como modelo e resumo de toda a oração cristã.</li>
+                <li>A importância da oração: A necessidade de orar sem cessar.</li>
+                <li>As formas de oração: Bênção, Adoração, Súplica, Intercessão e Ação de Graças.</li>
+                <li>A oração do Senhor: A explicação detalhada de cada uma das sete petições do Pai-Nosso.</li>
             </ul>
             <p>Essas quatro partes são interligadas e se complementam, formando um panorama completo da fé católica. O Catecismo não é apenas um livro de regras, mas um guia para uma vida de fé, esperança e caridade.</p>
         </div>
     </div>
 </div>
 
-<!-- Modal A fé católica -->
+<!-- NOVO MODAL: A fé católica -->
 <div id="modalFeCatolica" class="modal">
-  <div class="modal-content">
-    <span class="close-button">&times;</span>
-    <h2>A fé católica</h2>
-    <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-    <p>A fé católica, para os fiéis, é a livre entrega a Deus, aceitando a sua revelação transmitida pela Igreja através da Tradição Apostólica e da Sagrada Escritura. Essa fé não é apenas um conjunto de crenças, mas um conhecimento sobrenatural e um dom divino, que envolve tanto a inteligência quanto a vontade do indivíduo.</p>
-    <div class="rezas-container">
-      <h3>Elementos essenciais da fé católica:</h3>
-      <ul>
-        <li><strong>Creio em Deus:</strong> A fé católica se fundamenta na crença em um Deus único, uno e trino (Pai, Filho e Espírito Santo), criador do céu e da terra.</li>
-        <li><strong>Crença em Jesus Cristo:</strong> A fé católica professa Jesus Cristo como o Filho de Deus, o Messias, que veio ao mundo para salvar a humanidade, morrendo e ressuscitando por nós.</li>
-        <li><strong>Aceitação da Igreja:</strong> A Igreja Católica, fundada por Jesus Cristo, é vista como a guardiã da fé e a transmissora da verdade revelada por Deus.</li>
-        <li><strong>Confiança na Tradição e Sagrada Escritura:</strong> A fé católica se baseia tanto na Tradição Apostólica quanto na Sagrada Escritura.</li>
-        <li><strong>Prática da Moral Cristã:</strong> A fé católica se manifesta também na prática da moral cristã.</li>
-      </ul>
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>A Fé Católica</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>A Fé Católica é um dom sobrenatural de Deus. É o ato pelo qual cremos em Deus e em tudo o que Ele revelou e que a Santa Igreja nos propõe a crer, porque Ele é a Verdade. A fé é um tesouro que cresce com a oração, a leitura da Bíblia e a prática dos sacramentos. É a base da nossa vida com Deus e a certeza daquilo que não vemos.</p>
+
+        <div class="rezas-container">
+            <h3>Pilares da Fé Católica</h3>
+            <p>A fé católica se apoia em quatro pilares principais:</p>
+            <ul>
+                <li><strong>A Sagrada Escritura:</strong> A Palavra de Deus escrita, que nos foi transmitida sob a inspiração do Espírito Santo.</li>
+                <li><strong>A Tradição Apostólica:</strong> A transmissão oral da Palavra de Deus, que se mantém viva na Igreja através da sucessão apostólica.</li>
+                <li><strong>O Magistério da Igreja:</strong> A autoridade de ensino dos bispos em união com o Papa, que tem a missão de interpretar autenticamente a Palavra de Deus.</li>
+                <li><strong>Os Sacramentos:</strong> Sinais visíveis da graça invisível de Deus, que nos permitem participar da vida divina.</li>
+            </ul>
+        </div>
     </div>
-    <div class="rezas-container">
-      <h3>Características da fé católica:</h3>
-      <ul>
-        <li><strong>Conhecimento:</strong> Um conhecimento sobrenatural baseado na revelação divina.</li>
-        <li><strong>Liberdade:</strong> Escolha livre e pessoal de aderir à verdade revelada.</li>
-        <li><strong>Graça:</strong> Dom de Deus infundido na alma.</li>
-        <li><strong>Testemunho:</strong> Manifestação na vida cotidiana e moral cristã.</li>
-      </ul>
+</div>
+
+<!-- NOVO MODAL: O Acolhimento na Fé -->
+<div id="modalInclusao" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>O Acolhimento na Fé</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>A Igreja, como o Corpo de Cristo, é chamada a ser um lugar de acolhimento para todas as pessoas, sem distinção. A fé católica nos ensina que cada ser humano é criado à imagem e semelhança de Deus, com dignidade e valor incalculáveis. O amor de Deus é universal e se estende a todos os seus filhos e filhas, como Jesus nos mostrou em sua vida e ministério.</p>
+
+        <div class="rezas-container">
+            <h3>Palavras de Jesus e da Bíblia</h3>
+            <ul>
+                <li><strong>"Ide, pois, e ensinai a todas as nações." (Mateus 28,19):</strong> Esta passagem nos lembra que a mensagem do Evangelho é para todos, sem exceção. O amor de Cristo é universal.</li>
+                <li><strong>"Amai-vos uns aos outros, assim como eu vos amei." (João 13,34):</strong> O mandamento do amor é o alicerce de toda a vida cristã. Jesus nos chama a amar incondicionalmente, como Ele amou.</li>
+                <li><strong>"Não há judeu nem grego, não há escravo nem livre, não há homem nem mulher, pois todos vós sois um só em Cristo Jesus." (Gálatas 3,28):</strong> São Paulo nos ensina que em Cristo, as divisões terrenas não existem. A nossa identidade mais profunda está em sermos filhos de Deus.</li>
+            </ul>
+        </div>
+
+        <div class="rezas-container">
+            <h3>A Visão do Papa Francisco</h3>
+            <p>O Papa Francisco tem reforçado a necessidade de uma Igreja "em saída", que acolhe e acompanha todos, como um hospital de campanha. Ele nos lembra de que todos são chamados a fazer parte da Igreja.</p>
+            <ul>
+                <li><strong>"A Igreja não é uma alfândega, é a casa paterna onde há lugar para cada um, com a sua vida pesada."</strong> (Evangelii Gaudium, 47)</li>
+                <li><strong>"Se uma pessoa é gay e busca o Senhor e tem boa vontade, quem sou eu para julgá-la?"</strong> Esta frase mostra a atitude de acolhimento e não-julgamento que a Igreja deve ter.</li>
+                <li><strong>"Todos, todos, todos!"</strong> O Papa Francisco tem repetido essa frase em diversas ocasiões para destacar que a Igreja deve ser uma casa aberta para todos, sem exclusões.</li>
+            </ul>
+        </div>
     </div>
-    <p>Em resumo, a fé católica é uma entrega livre a Deus, baseada na aceitação da sua revelação e na prática dos ensinamentos da Igreja, que se manifesta em um conhecimento sobrenatural, um dom divino e um testemunho de vida.</p>
-  </div>
 </div>
 
 <!-- --- Script JavaScript --- -->
 <script>
-    // Rádio
-    const catholicRadio = document.getElementById('catholicRadio');
-    const radioPlayerButton = document.getElementById('radio-player-button');
-    const radioStatus = document.getElementById('radio-status');
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Lógica para o player de rádio ---
+        const catholicRadio = document.getElementById('catholicRadio');
+        const radioPlayerButton = document.getElementById('radio-player-button');
+        const radioStatus = document.getElementById('radio-status');
 
-    const radioStreamUrl = 'https://aparecida.jmvstream.com/stream';
-    catholicRadio.src = radioStreamUrl;
+        // Define o link da rádio
+        catholicRadio.src = 'https://aparecida.jmvstream.com/stream';
 
-    radioPlayerButton.addEventListener('click', () => {
-      if (catholicRadio.paused || catholicRadio.ended) {
-        catholicRadio.muted = false;
-        radioPlayerButton.classList.add('loading');
-        radioStatus.textContent = 'Carregando...';
-        catholicRadio.play()
-          .then(() => {
+        radioPlayerButton.addEventListener('click', () => {
+            if (catholicRadio.paused || catholicRadio.ended) {
+                catholicRadio.muted = false;
+                radioPlayerButton.classList.add('loading');
+                radioStatus.textContent = 'Carregando...';
+                catholicRadio.play()
+                    .then(() => {
+                        radioPlayerButton.classList.remove('loading');
+                        radioPlayerButton.classList.add('playing');
+                        radioPlayerButton.textContent = '❚❚';
+                        radioStatus.textContent = 'Tocando Rádio';
+                    })
+                    .catch(error => {
+                        console.error('Erro ao tentar tocar a rádio:', error);
+                        radioPlayerButton.classList.remove('loading', 'playing');
+                        radioPlayerButton.textContent = '▶';
+                        radioStatus.textContent = 'Erro ao tocar 😔';
+                    });
+            } else {
+                catholicRadio.pause();
+                radioPlayerButton.classList.remove('playing');
+                radioPlayerButton.textContent = '▶';
+                radioStatus.textContent = 'Rádio Pausada';
+            }
+        });
+
+        catholicRadio.addEventListener('playing', () => {
             radioPlayerButton.classList.remove('loading');
             radioPlayerButton.classList.add('playing');
-            radioPlayerButton.textContent = '⏸';
+            radioPlayerButton.textContent = '❚❚';
             radioStatus.textContent = 'Tocando Rádio';
-          })
-          .catch(error => {
-            console.error('Erro ao tentar tocar a rádio:', error);
+        });
+
+        catholicRadio.addEventListener('pause', () => {
+            radioPlayerButton.classList.remove('playing');
+            radioPlayerButton.textContent = '▶';
+            radioStatus.textContent = 'Rádio Pausada';
+        });
+
+        catholicRadio.addEventListener('waiting', () => {
+            radioPlayerButton.classList.add('loading');
+            radioStatus.textContent = 'Carregando...';
+        });
+
+        catholicRadio.addEventListener('error', (e) => {
+            console.error('Erro no stream de rádio:', e);
             radioPlayerButton.classList.remove('loading', 'playing');
             radioPlayerButton.textContent = '▶';
-            radioStatus.textContent = 'Erro ao tocar 😔';
-          });
-      } else {
-        catholicRadio.pause();
-        radioPlayerButton.classList.remove('playing');
-        radioPlayerButton.textContent = '▶';
-        radioStatus.textContent = 'Rádio Pausada';
-      }
-    });
+            radioStatus.textContent = 'Erro na Rádio 😔';
+        });
 
-    catholicRadio.addEventListener('playing', () => {
-      radioPlayerButton.classList.remove('loading');
-      radioPlayerButton.classList.add('playing');
-      radioPlayerButton.textContent = '⏸';
-      radioStatus.textContent = 'Tocando Rádio';
-    });
-
-    catholicRadio.addEventListener('pause', () => {
-      radioPlayerButton.classList.remove('playing');
-      radioPlayerButton.textContent = '▶';
-      radioStatus.textContent = 'Rádio Pausada';
-    });
-
-    catholicRadio.addEventListener('waiting', () => {
-      radioPlayerButton.classList.add('loading');
-      radioStatus.textContent = 'Carregando...';
-    });
-
-    catholicRadio.addEventListener('error', (e) => {
-      console.error('Erro no stream de rádio:', e);
-      radioPlayerButton.classList.remove('loading', 'playing');
-      radioPlayerButton.textContent = '▶';
-      radioStatus.textContent = 'Erro na Rádio 😔';
-    });
-
-    // Modais
-    const abrirBtns = document.querySelectorAll('[data-modal-target]');
-    const fecharBtns = document.querySelectorAll('.close-button');
-
-    function abrirModal(modal) {
-      if (!modal) return;
-      modal.style.display = 'flex';
-      setTimeout(() => modal.classList.add('active'), 10);
-    }
-
-    function fecharModal(modal) {
-      if (!modal) return;
-      modal.classList.remove('active');
-      modal.addEventListener('transitionend', function handler() {
-        if (!modal.classList.contains('active')) {
-          modal.style.display = 'none';
+        // Garantir que a rádio comece mutada e só toque se o usuário interagir
+        if (catholicRadio.autoplay && catholicRadio.muted) {
+            catholicRadio.pause();
+            catholicRadio.muted = true;
+            radioPlayerButton.textContent = '▶';
+            radioStatus.textContent = 'Rádio Católica (pausada)';
         }
-        modal.removeEventListener('transitionend', handler);
-      });
-    }
 
-    abrirBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.dataset.modalTarget;
-        const modal = document.getElementById(target);
-        abrirModal(modal);
-      });
-    });
+        // --- Lógica para os modais (janelas pop-up) ---
+        const modalButtons = document.querySelectorAll('.botao-misterio, .botao-secao');
+        const closeButtons = document.querySelectorAll('.close-button');
+        const modals = document.querySelectorAll('.modal');
 
-    fecharBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const modal = btn.closest('.modal');
-        fecharModal(modal);
-      });
-    });
+        modalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modalId = button.getAttribute('data-modal-target');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.add('active');
+                }
+            });
+        });
 
-    window.addEventListener('click', (e) => {
-      if (e.target.classList.contains('modal')) {
-        fecharModal(e.target);
-      }
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal');
+                if (modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
     });
 </script>
 </body>
