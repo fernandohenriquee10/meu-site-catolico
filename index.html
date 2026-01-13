@@ -18,7 +18,6 @@
           display: flex;
           flex-direction: column;
         }
-
         header {
           text-align: center;
           padding: 2.5rem;
@@ -26,7 +25,6 @@
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
           position: relative;
         }
-
         h1 {
           font-size: 3.2rem;
           font-family: 'Playfair Display', serif;
@@ -35,13 +33,11 @@
           letter-spacing: 2px;
           margin-bottom: 0.5rem;
         }
-
         header p {
           font-size: 1.1rem;
           color: #ffd6e0;
           margin-bottom: 1.5rem;
         }
-
         /* Estilos do botão da rádio */
         #radio-player-container {
           position: absolute;
@@ -57,7 +53,6 @@
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
           backdrop-filter: blur(5px);
         }
-
         #radio-player-button {
           background-color: #d63384;
           border: none;
@@ -73,27 +68,22 @@
           font-size: 1.5rem;
           color: white;
         }
-
         #radio-player-button:hover {
           background-color: #a61e4d;
           transform: scale(1.05);
         }
-
         #radio-player-button.playing {
           background-color: #4CAF50;
           box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
         }
-
         #radio-player-button.loading {
           background-color: #FFC107;
         }
-
         #radio-status {
           color: #fff;
           font-size: 0.9rem;
           font-weight: 300;
         }
-
         .container {
           display: flex;
           flex-wrap: wrap;
@@ -102,7 +92,6 @@
           padding: 3rem 2rem;
           flex-grow: 1;
         }
-
         .botao-misterio, .botao-secao {
           padding: 1.2rem 2.5rem;
           background-color: #d63384;
@@ -118,13 +107,11 @@
           letter-spacing: 1px;
           text-align: center;
         }
-
         .botao-misterio:hover, .botao-secao:hover {
           background-color: #a61e4d;
           transform: scale(1.1);
           box-shadow: 0 0 25px #ff6bb3;
         }
-
         footer {
           text-align: center;
           background-color: rgba(0, 0, 0, 0.6);
@@ -136,59 +123,14 @@
           position: relative;
           padding-bottom: 3rem;
         }
-
-        footer p.quote {
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        footer .footer-links a {
-          color: #ffd6e0;
-          text-decoration: none;
-          margin: 0 0.8rem;
-          transition: color 0.3s ease;
-        }
-
-        footer .footer-links a:hover {
-          text-decoration: underline;
-          color: #ff99c8;
-        }
-
-        footer .info-text {
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            color: #ddd;
-            line-height: 1.4;
-        }
-
-        footer .info-text a {
-            color: #ff99c8;
-            font-weight: bold;
-        }
-
-        footer .copyright {
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            color: #bbb;
-        }
-
-        .download-app {
-          display: inline-block;
-          margin-top: 1rem;
-          background-color: #8e0038;
-          padding: 0.6rem 1rem;
-          border-radius: 12px;
-          color: #fff;
-          font-weight: bold;
-          text-decoration: none;
-          transition: background 0.3s ease;
-        }
-        .download-app:hover {
-          background-color: #6a0026;
-        }
-
-        /* --- Estilos do Modal --- */
-        .modal {
+        footer p.quote {            font-style: italic;            margin-bottom: 1rem;        }
+        footer .footer-links a {          color: #ffd6e0;          text-decoration: none;          margin: 0 0.8rem;          transition: color 0.3s ease;        }
+        footer .footer-links a:hover {          text-decoration: underline;          color: #ff99c8;        }
+        footer .info-text {            margin-top: 1.5rem;            font-size: 0.9rem;            color: #ddd;            line-height: 1.4;        }
+        footer .info-text a {            color: #ff99c8;            font-weight: bold;        }
+        footer .copyright {            margin-top: 1rem;            font-size: 0.8rem;            color: #bbb;        }
+        .download-app {          display: inline-block;          margin-top: 1rem;          background-color: #8e0038;          padding: 0.6rem 1rem;          border-radius: 12px;          color: #fff;          font-weight: bold;          text-decoration: none;          transition: background 0.3s ease;        }        .download-app:hover {          background-color: #6a0026;        }
+        /* --- Estilos do Modal --- */        .modal {
           display: none;
           position: fixed;
           z-index: 100;
@@ -205,12 +147,10 @@
           transition: opacity 0.4s ease-in-out;
           pointer-events: none;
         }
-
         .modal.active {
           opacity: 1;
           pointer-events: auto;
         }
-
         .modal-content {
           background-color: #fce4ec;
           color: #4a148c;
@@ -227,11 +167,9 @@
           max-height: 90vh;
           overflow-y: auto;
         }
-
         .modal.active .modal-content {
           transform: translateY(0);
         }
-
         .close-button {
           color: #880e4f;
           position: absolute;
@@ -242,13 +180,11 @@
           cursor: pointer;
           transition: color 0.3s ease;
         }
-
         .close-button:hover,
         .close-button:focus {
           color: #d63384;
           text-decoration: none;
         }
-
         .modal-content h2 {
           font-family: 'Playfair Display', serif;
           font-size: 2.5rem;
@@ -257,7 +193,6 @@
           margin-bottom: 1.5rem;
           text-align: center;
         }
-
         .modal-content img.terco-img {
           display: block;
           max-width: 150px;
@@ -266,36 +201,40 @@
           border-radius: 10px;
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-
         .modal-content .rezas-container {
           margin-top: 25px;
           padding-top: 20px;
           border-top: 1px dashed #d8a2a2;
         }
-
         .modal-content h3 {
           font-family: 'Playfair Display', serif;
           font-size: 1.8rem;
           color: #ad1457;
           margin-bottom: 1rem;
         }
-
         .modal-content p, .modal-content ul, .modal-content ol {
           font-size: 1.1rem;
           line-height: 1.7;
           margin-bottom: 1rem;
         }
-
         .modal-content ul, .modal-content ol {
           list-style-position: inside;
           padding-left: 0;
-        }
-        .modal-content li {
+        }        .modal-content li {
           margin-bottom: 0.5rem;
         }
 
-        /* Responsividade básica */
-        @media (max-width: 768px) {
+        /* Links dos Versículos */
+        .versiculo-link {
+          color: #8e0038;
+          text-decoration: underline;
+          font-weight: 600;
+        }
+        .versiculo-link:hover {
+          color: #d63384;
+        }
+
+        /* Responsividade básica */        @media (max-width: 768px) {
           h1 {
             font-size: 2.2rem;
           }
@@ -322,28 +261,16 @@
             margin-top: 1rem;
             justify-content: center;
           }
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>✞ Reza do terço, rosário e oração ✞</h1>
-    <p>Consagrado à disciplina, fé e adoração do Cristão(ã) Católico(a)</p>
-
-    <div id="radio-player-container">
-        <audio id="catholicRadio" preload="auto" muted></audio>
-        <button id="radio-player-button" aria-label="Tocar/Pausar Rádio">▶</button>
-        <span id="radio-status">Rádio Católica</span>
-    </div>
-</header>
-
+        }    </style></head><body>
+<header>    <h1>✞ Reza do terço, rosário e oração ✞</h1>    <p>Consagrado à disciplina, fé e adoração do Cristão(ã) Católico(a)</p>
+    <div id="radio-player-container">        <audio id="catholicRadio" preload="auto" muted></audio>        <button id="radio-player-button" aria-label="Tocar/Pausar Rádio">▶</button>        <span id="radio-status">Rádio Católica</span>    </div></header>
 <section class="container">
     <button class="botao-misterio" data-modal-target="modalGozosos">Mistérios Gozosos</button>
     <button class="botao-misterio" data-modal-target="modalDolorosos">Mistérios Dolorosos</button>
     <button class="botao-misterio" data-modal-target="modalGloriosos">Mistérios Gloriosos</button>
     <button class="botao-misterio" data-modal-target="modalLuminosos">Mistérios Luminosos</button>
 
+    <button class="botao-secao" data-modal-target="modalBonfim">Consagração ao Senhor do Bonfim</button>
     <button class="botao-secao" data-modal-target="modalPrincipaisOracoes">Principais Orações Católicas</button>
     <button class="botao-secao" data-modal-target="modalRosarioCompleto">Rezas do Rosário Completo</button>
     <button class="botao-secao" data-modal-target="modalConsagracaoDeus">Consagração a Deus</button>
@@ -355,602 +282,120 @@
     <button class="botao-secao" data-modal-target="modalDeusPoderoso">Perspectiva Bíblica de Deus Todo-Poderoso</button>
     <button class="botao-secao" data-modal-target="modalInclusao">O Acolhimento na Fé</button>
 </section>
+<footer>    <p class="quote">“Quem reza com adoração e joelhos no chão, transforma o céu em altar.”</p>    <div class="footer-links">        <a href="#">Disciplina</a> |        <a href="#">Adoração</a> |        <a href="#">Rezas com Fé</a>    </div>    <a href="https://drive.google.com/file/d/1gyy1XTEtcWxvt8Ceo5ovHWnV_fF6Bc3K/view?usp=drive_link" class="download-app" target="_blank" rel="noopener noreferrer">Baixe o app do site aqui</a>    <p class="info-text">        Essas orações são fundamentais na vida de um católico e são frequentemente recitadas em momentos de devoção pessoal, celebrações litúrgicas e em comunidade. Para mais informações sobre orações católicas, você pode visitar sites como <a href="https://www.vatican.va/content/vatican/pt.html" target="_blank" rel="noopener noreferrer">Igreja Católica</a> e <a href="https://www.catequistasemformacao.com/2025/" target="_blank" rel="noopener noreferrer">Catequeses</a>.    </p>    <p class="copyright">© Todos os direitos reservados 2025.</p></footer>
 
-<footer>
-    <p class="quote">“Quem reza com adoração e joelhos no chão, transforma o céu em altar.”</p>
-    <div class="footer-links">
-        <a href="#">Disciplina</a> |
-        <a href="#">Adoração</a> |
-        <a href="#">Rezas com Fé</a>
-    </div>
-    <a href="https://drive.google.com/file/d/1gyy1XTEtcWxvt8Ceo5ovHWnV_fF6Bc3K/view?usp=drive_link" class="download-app" target="_blank" rel="noopener noreferrer">Baixe o app do site aqui</a>
-    <p class="info-text">
-        Essas orações são fundamentais na vida de um católico e são frequentemente recitadas em momentos de devoção pessoal, celebrações litúrgicas e em comunidade. Para mais informações sobre orações católicas, você pode visitar sites como <a href="https://www.vatican.va/content/vatican/pt.html" target="_blank" rel="noopener noreferrer">Igreja Católica</a> e <a href="https://www.catequistasemformacao.com/2025/" target="_blank" rel="noopener noreferrer">Catequeses</a>.
-    </p>
-    <p class="copyright">© Todos os direitos reservados 2025.</p>
-</footer>
-
-<div id="modalGozosos" class="modal">
+<!-- NOVO MODAL: Consagração ao Senhor do Bonfim -->
+<div id="modalBonfim" class="modal">
     <div class="modal-content">
         <span class="close-button">&times;</span>
-        <h2>Mistérios Gozosos</h2>
+        <h2>Consagração ao Senhor do Bonfim</h2>
         <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>Os Mistérios Gozosos (ou da Alegria) são meditados às segundas-feiras e sábados, e nos lembram os momentos de alegria da vida de Jesus e Maria. Eles nos convidam à humildade e à caridade.</p>
-
+        <p>Senhor do Bonfim, que sois o Pai de infinita bondade e misericórdia, a vossos pés me prostro para consagrar minha vida, minha família e meu trabalho.</p>
         <div class="rezas-container">
-            <h3>Rezas dos Mistérios Gozosos:</h3>
-            <p><strong>1º Mistério: A Anunciação do Anjo Gabriel à Nossa Senhora</strong></p>
-            <p>Fruto: Humildade.</p>
-            <p>Oração: "Ó Maria, Virgem Imaculada, que pela Anunciação do Anjo Gabriel aceitastes ser Mãe de Deus, ensinai-nos a humildade e a obediência à vontade divina."</p>
-
-            <p><strong>2º Mistério: A Visitação de Nossa Senhora à sua prima Santa Isabel</strong></p>
-            <p>Fruto: Caridade Fraterna.</p>
-            <p>Oração: "Virgem Santíssima, que apressadamente vos pusestes a caminho para servir vossa prima Isabel, concedei-nos a graça de amar e servir o próximo com alegria e prontidão."</p>
-
-            <p><strong>3º Mistério: O Nascimento de Jesus em Belém</strong></p>
-            <p>Fruto: Pobreza de Espírito.</p>
-            <p>Oração: "Jesus, Menino Deus, que nascestes pobre num presépio, ensinai-nos a desapegar-nos das riquezas e a encontrar a verdadeira alegria na simplicidade e no serviço."</p>
-
-            <p><strong>4º Mistério: A Apresentação do Menino Jesus no Templo</strong></p>
-            <p>Fruto: Pureza e Obediência.</p>
-            <p>Oração: "Senhor, que fostes apresentado no Templo em sacrifício por nós, purificai nossos corações e ensinai-nos a obediência à vossa Lei e à da Igreja."</p>
-
-            <p><strong>5º Mistério: A Perda e Encontro de Jesus no Templo</strong></p>
-            <p>Fruto: Conversão e Procura de Deus.</p>
-            <p>Oração: "Jesus, que angustiastes vossos pais ao vos perderdes, mas vos revelastes no Templo, ajudai-nos a nunca nos afastarmos de vós e a vos procurar sempre com fervor e fé."</p>
+            <p>"Meu Senhor do Bonfim, nesta oração, eu me entrego inteiramente a Vós. Protegei-me contra todos os males, guiai meus passos no caminho da luz e dai-me a força necessária para enfrentar as provações da vida com fé e esperança. Que as fitas do Bonfim que me cercam sejam lembretes constantes de Vossas promessas. Amém."</p>
         </div>
     </div>
 </div>
 
-<div id="modalDolorosos" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Mistérios Dolorosos</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>Os Mistérios Dolorosos (ou da Dor) são meditados às terças e sextas-feiras, e nos convidam a refletir sobre a Paixão e Morte de Jesus Cristo, buscando a paciência e a contrição pelos nossos pecados.</p>
-
-        <div class="rezas-container">
-            <h3>Rezas dos Mistérios Dolorosos:</h3>
-            <p><strong>1º Mistério: A Agonia de Jesus no Horto das Oliveiras</strong></p>
-            <p>Fruto: Arrependimento dos pecados.</p>
-            <p>Oração: "Jesus, que em vossa agonia suastes sangue por nossos pecados, concedei-nos a graça de um sincero arrependimento e de uma verdadeira contrição."</p>
-
-            <p><strong>2º Mistério: A Flagelação de Jesus</strong></p>
-            <p>Fruto: Mortificação dos sentidos.</p>
-            <p>Oração: "Senhor, que fostes cruelmente flagelado por nossos crimes, ensinai-nos a dominar nossos sentidos e a suportar com paciência as adversidades da vida."</p>
-
-            <p><strong>3º Mistério: A Coroação de Espinhos</strong></p>
-            <p>Fruto: Desprezo das vaidades.</p>
-            <p>Oração: "Jesus, coroado de espinhos em escárnio, ajudai-nos a renunciar à vaidade e ao orgulho, e a abraçar a humildade em todas as nossas ações."</p>
-
-            <p><strong>4º Mistério: Jesus com a Cruz às Costas a Caminho do Calvário</strong></p>
-            <p>Fruto: Paciência nas tribulações.</p>
-            <p>Oração: "Cristo, que com a Cruz às costas seguistes para o Calvário, dai-nos força para carregar nossas cruzes diárias com resignação e fé em vossa providência."</p>
-
-            <p><strong>5º Mistério: A Crucificação e Morte de Jesus</strong></p>
-            <p>Fruto: Amor a Jesus e aos inimigos.</p>
-            <p>Oração: "Ó Bom Jesus, que na Cruz destes a vida por nós, acendei em nossos corações o fogo do vosso amor e a caridade para com todos, até mesmo com aqueles que nos ofendem."</p>
-        </div>
-    </div>
-</div>
-
-<div id="modalGloriosos" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Mistérios Gloriosos</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>Os Mistérios Gloriosos (ou da Glória) são meditados às quartas-feiras e domingos, celebrando a vitória de Jesus sobre a morte e a glorificação de Maria, nos inspirando à fé, esperança e perseverança.</p>
-
-        <div class="rezas-container">
-            <h3>Rezas dos Mistérios Gloriosos:</h3>
-            <p><strong>1º Mistério: A Ressurreição de Jesus</strong></p>
-            <p>Fruto: Fé.</p>
-            <p>Oração: "Jesus Ressuscitado, que vencestes a morte e nos abristes as portas do Céu, aumentai nossa fé e a certeza da vida eterna."</p>
-
-            <p><strong>2º Mistério: A Ascensão de Jesus ao Céu</strong></p>
-            <p>Fruto: Esperança.</p>
-            <p>Oração: "Senhor, que subistes aos Céus para preparar-nos um lugar, elevai nossos corações das coisas terrenas e dai-nos a esperança das realidades celestes."</p>
-
-            <p><strong>3º Mistério: A Descida do Espírito Santo sobre os Apóstolos</strong></p>
-            <p>Fruto: Dons do Espírito Santo.</p>
-            <p>Oração: "Espírito Santo Divino, que em Pentecostes descestes sobre os Apóstolos, iluminai-nos com vossos dons e guiai-nos no caminho da santidade."</p>
-
-            <p><strong>4º Mistério: A Assunção de Nossa Senhora ao Céu</strong></p>
-            <p>Fruto: Devoção a Maria e boa morte.</p>
-            <p>Oração: "Virgem Maria, que fostes assunta ao Céu em corpo e alma, sede nosso refúgio e intercedei por nós, para que tenhamos uma boa morte e alcancemos a glória do Céu."</p>
-
-            <p><strong>5º Mistério: A Coroação de Nossa Senhora no Céu</strong></p>
-            <p>Fruto: Confiança na intercessão de Maria.</p>
-            <p>Oração: "Rainha do Céu e da Terra, coroada de glória, rogai por nós e por todos os pecadores, para que um dia possamos compartilhar convosco a bem-aventurança eterna."</p>
-        </div>
-    </div>
-</div>
-
-<div id="modalLuminosos" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Mistérios Luminosos</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>Os Mistérios Luminosos (ou da Luz) são meditados às quintas-feiras, e nos convidam a contemplar a vida pública de Jesus, desde o Batismo no Jordão até a instituição da Eucaristia, iluminando nosso caminho de fé.</p>
-
-        <div class="rezas-container">
-            <h3>Rezas dos Mistérios Luminosos:</h3>
-            <p><strong>1º Mistério: O Batismo de Jesus no Rio Jordão</strong></p>
-            <p>Fruto: Fidelidade às promessas do batismo.</p>
-            <p>Oração: "Jesus, que no Jordão fostes batizado e revelastes vossa divindade, dai-nos a graça de viver fielmente as promessas do nosso batismo e de ser vossas testemunhas no mundo."</p>
-
-            <p><strong>2º Mistério: A Revelação de Jesus nas Bodas de Caná</strong></p>
-            <p>Fruto: Confiança em Maria.</p>
-            <p>Oração: "Senhor, que em Caná transformastes a água em vinho, por intercessão de Maria, fortalecei nossa fé em vós e nossa confiança na intercessão de vossa Mãe."</p>
-
-            <p><strong>3º Mistério: O Anúncio do Reino de Deus e o Convite à Conversão</strong></p>
-            <p>Fruto: Conversão.</p>
-            <p>Oração: "Jesus, que proclamastes o Reino de Deus e chamastes à conversão, tomai posse de nossos corações e transformai-nos para que vivamos segundo vossa vontade."</p>
-
-            <p><strong>4º Mistério: A Transfiguração de Jesus</strong></p>
-            <p>Fruto: Desejo de Santidade.</p>
-            <p>Oração: "Cristo Transfigurado, que revelastes vossa glória aos discípulos, acendei em nós o desejo da santidade e a esperança de um dia contemplar vossa face no Céu."</p>
-
-            <p><strong>5º Mistério: A Instituição da Eucaristia</strong></p>
-            <p>Fruto: Adoração ao Santíssimo Sacramento.</p>
-            <p>Oração: "Jesus Eucarístico, que na Última Ceia vos destes como alimento e nos deixastes o sacramento do vosso amor, aumentai nossa fé e devoção à Eucaristia, fonte de vida eterna."</p>
-        </div>
-    </div>
-</div>
-
-<div id="modalPrincipaisOracoes" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Principais Orações Católicas</h2>
-        <p>Essas orações são pilares da fé católica, recitadas diariamente por milhões de fiéis.</p>
-
-        <div class="rezas-container">
-            <h3>Pai Nosso:</h3>
-            <p>"Pai nosso que estais no céu, santificado seja o Vosso nome; venha a nós o Vosso Reino; seja feita a Vossa vontade assim na Terra como no Céu; o pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas assim como nós perdoamos a quem nos tem ofendido; e não nos deixei cair em tentação, mas livrai-nos do mal. Amém."</p>
-
-            <h3>Ave Maria:</h3>
-            <p>"Ave Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres e bendito é o fruto do vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém."</p>
-
-            <h3>Glória ao Pai:</h3>
-            <p>"Glória ao Pai, ao Filho e ao Espírito Santo, como era no princípio, agora e sempre. Amém."</p>
-
-            <h3>Ato de Fé:</h3>
-            <p>"Meu Deus, creio firmemente em todas as verdades que nos revelaste e que nos ensinas por tua Igreja, porque não te podes enganar nem nos enganar."</p>
-
-            <h3>Ato de Esperança:</h3>
-            <p>"Meu Deus, espero com firme confiança que me concederás, pelo mérito de Jesus Cristo, tua graça neste mundo e a felicidade eterna no outro, porque assim o prometeste e sempre és fiel a tuas promessas."</p>
-
-            <h3>Ato de Caridade:</h3>
-            <p>"Meu Deus, amo-te com todo o meu coração e sobre todas as coisas, porque és infinitamente bom e amável."</p>
-        </div>
-    </div>
-</div>
-
-<div id="modalRosarioCompleto" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Rezas do Rosário Completo</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>Aqui você encontrará as orações comuns recitadas no início e no fim do Terço ou Rosário, complementando a meditação dos mistérios.</p>
-
-        <div class="rezas-container">
-            <h3>Sinal da Cruz:</h3>
-            <p>"Em nome do Pai, e do Filho, e do Espírito Santo. Amém."</p>
-
-            <h3>Creio (Credo):</h3>
-            <p>"Creio em Deus Pai Todo-Poderoso, Criador do céu e da terra. E em Jesus Cristo, seu único Filho, Nosso Senhor, que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos, foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus; está sentado à direita de Deus Pai Todo-Poderoso, de onde há de vir a julgar os vivos e os mortos. Creio no Espírito Santo; na Santa Igreja Católica; na comunhão dos Santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém."</p>
-
-            <h3>Pai Nosso:</h3>
-            <p>Conforme no modal de "Principais Orações Católicas".</p>
-
-            <h3>Ave Maria:</h3>
-            <p>Conforme no modal de "Principais Orações Católicas".</p>
-
-            <h3>Glória ao Pai:</h3>
-            <p>Conforme no modal de "Principais Orações Católicas".</p>
-
-            <h3>Oração de Fátima (Ó meu Jesus):</h3>
-            <p>"Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai as almas todas para o Céu, principalmente as que mais precisarem."</p>
-
-            <h3>Salve Rainha:</h3>
-            <p>"Salve Rainha, Mãe de misericórdia, vida, doçura e esperança nossa, salve! A vós bradamos, os degredados filhos de Eva; a vós suspiramos, gemendo e chorando neste vale de lágrimas. Eia, pois, advogada nossa, esses vossos olhos misericordiosos a nós volvei; e depois deste desterro, mostrai-nos Jesus, bendito fruto do vosso ventre, ó clemente, ó piedosa, ó doce sempre Virgem Maria. Rogai por nós, Santa Mãe de Deus, para que sejamos dignos das promessas de Cristo. Amém."</p>
-
-            <h3>Oração a São Miguel Arcanjo:</h3>
-            <p>"São Miguel Arcanjo, defendei-nos no combate, sede o nosso refúgio contra as maldades e ciladas do demônio. Ordene-lhe Deus, humildemente vos pedimos; e vós, Príncipe da Milícia Celeste, pela virtude divina, precipitai no inferno a Satanás e a todos os espíritos malignos que andam pelo mundo para perder as almas. Amém."</p>
-        </div>
-    </div>
-</div>
-
-<div id="modalConsagracaoDeus" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Consagração a Deus</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>Esboço de sermão para reflexão sobre a consagração a Deus.</p>
-
-        <div class="rezas-container">
-            <h3>Tema: Consagração</h3>
-            <p><strong>I – Quem se oferece voluntariamente? I Crônicas 29:5.</strong></p>
-            <ul>
-                <li>1. Quando Paulo se entregou a Jesus, qual foi sua primeira pergunta? – Atos 9:3-6.</li>
-                <li>2. Mais tarde, como exprimiu sua completa consagração? Filipenses 3:8.</li>
-                <li>3. Por que Deus quer tal consagração? - II Coríntios 5:21.</li>
-            </ul>
-
-            <p><strong>II – Tal Consagração não será uma cruz.</strong></p>
-            <ul>
-                <li>1. Seremos novas criaturas. - II Coríntios 5:17.</li>
-                <li>2. Ele pede completa consagração. – Marcos 5:17. (Mãe, pai, filho, filha, vida, tudo.)</li>
-            </ul>
-
-            <p><strong>III – Exemplos de consagração completa.</strong></p>
-            <ul>
-                <li>1. Zaqueu. – Lucas 19:8,9.</li>
-                <li>2. Os batizados "perseveravam", "havia temor" estavam unidos", "louvando a Deus", "simpatia de todo o povo", "todos os dias." – Atos 2:41-47.</li>
-            </ul>
-
-            <p><strong>IV – Numa verdadeira consagração só Cristo aparecerá – Gálatas 2:20.</strong></p>
-            <ul>
-                <li>1. "Uma coisa faço." – Filipenses 3:13.</li>
-                <li>2. Não quer saber de nada. - I Coríntios 2;2.</li>
-                <li>3. Nada de glória própria. – Gálatas 6:14.</li>
-                <li>4. A verdade resplandece. – Efésios 4:25.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="modalOracaoTodoPoderoso" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Oração a Deus Todo Poderoso</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <div class="rezas-container">
-            <p>"Oh, Deus Todo Poderoso, Criador do céu e da terra, nós nos prostramos diante de Ti com humildade e reverência. Reconhecemos a Tua infinita grandeza, o Teu poder sem limites e o Teu amor incondicional por toda a Tua criação.</p>
-            <p>Tu és o nosso refúgio e fortaleza, o nosso auxílio sempre presente na tribulação. Em Ti confiamos, Senhor, e a Ti elevamos os nossos corações.</p>
-            <p>Pedimos a Tua graça e misericórdia neste dia. Ilumina os nossos caminhos com a Tua sabedoria, guia-nos com a Tua mão poderosa e protege-nos de todo o mal.</p>
-            <p>Dá-nos força para enfrentar os desafios, paciência para suportar as dificuldades e fé para acreditar nas Tuas promessas. Que o Teu Espírito Santo nos inspire e nos conduza a viver de acordo com o Tua vontade.</p>
-            <p>Senhor, abençoa a nossa família, os nossos amigos e todos aqueles que amamos. Estende a Tua mão sobre os necessitados, conforta os aflitos e cura os enfermos.</p>
-            <p>Que a Tua paz, que excede todo o entendimento, guarde os nossos corações e as nossas mentes em Cristo Jesus, nosso Senhor e Salvador.</p>
-            <p>A Ti seja dada toda a honra, glória e poder, agora e para sempre. Amém."</p>
-        </div>
-    </div>
-</div>
-
-<div id="modalBomCristao" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Como ser um bom Cristão(ã) Católico(a) na prática!</h2>
-        <h3 style="text-align: center; color: #ad1457; margin-top: -1rem;">O mínimo que um bom Católico deve saber</h3>
-
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-
-        <p>“Ninguém ama aquilo que não conhece.” – Santo Agostinho</p>
-
-        <div class="rezas-container">
-            <h3>OS 10 MANDAMENTOS</h3>
-            <ol>
-                <li>Amar a Deus sobre todas as coisas.</li>
-                <li>Não tomar o nome de Deus em vão.</li>
-                <li>Guardar os domingos e festas de guarda.</li>
-                <li>Honrar pai e mãe.</li>
-                <li>Não matar.</li>
-                <li>Não pecar contra a castidade.</li>
-                <li>Não roubar.</li>
-                <li>Não levantar falso testemunho.</li>
-                <li>Não desejar a mulher do próximo.</li>
-                <li>Não cobiçar as coisas alheias.</li>
-            </ol>
-
-            <hr style="border-top: 1px dashed #d8a2a2; margin: 20px 0;">
-
-            <h3>OS 5 MANDAMENTOS DA IGREJA</h3>
-            <ol>
-                <li>Participar da Missa inteira aos domingos e dias de preceito.</li>
-                <li>Confessar-se ao menos uma vez por ano.</li>
-                <li>Comungar ao menos pela Páscoa da Ressurreição.</li>
-                <li>Guardar jejum e abstinência nos dias determinados pela Igreja.</li>
-                <li>Ajudar a Igreja em suas necessidades.</li>
-            </ol>
-
-            <hr style="border-top: 1px dashed #d8a2a2; margin: 20px 0;">
-
-            <h3>OS 7 SACRAMENTOS</h3>
-            <ol>
-                <li>Batismo</li>
-                <li>Confirmação (Crisma)</li>
-                <li>Eucaristia</li>
-                <li>Penitência (Confissão)</li>
-                <li>Unção dos Enfermos</li>
-                <li>Ordem</li>
-                <li>Matrimônio</li>
-            </ol>
-
-            <hr style="border-top: 1px dashed #d8a2a2; margin: 20px 0;">
-
-            <h3>OS 7 PECADOS CAPITAIS</h3>
-            <ol>
-                <li>Soberba</li>
-                <li>Avareza</li>
-                <li>Luxúria</li>
-                <li>Ira</li>
-                <li>Gula</li>
-                <li>Inveja</li>
-                <li>Preguiça</li>
-            </ol>
-
-            <hr style="border-top: 1px dashed #d8a2a2; margin: 20px 0;">
-
-            <h3>OS 7 DONS DO ESPÍRITO SANTO</h3>
-            <ol>
-                <li>Sabedoria</li>
-                <li>Entendimento</li>
-                <li>Conselho</li>
-                <li>Fortaleza</li>
-                <li>Ciência</li>
-                <li>Piedade</li>
-                <li>Temor de Deus</li>
-            </ol>
-
-            <hr style="border-top: 1px dashed #d8a2a2; margin: 20px 0;">
-
-            <h3>OS 12 FRUTOS DO ESPÍRITO SANTO</h3>
-            <ol>
-                <li>Caridade</li>
-                <li>Alegria</li>
-                <li>Paz</li>
-                <li>Paciência</li>
-                <li>Longanimidade</li>
-                <li>Bondade</li>
-                <li>Benignidade</li>
-                <li>Mansidão</li>
-                <li>Fidelidade</li>
-                <li>Modéstia</li>
-                <li>Continência</li>
-                <li>Castidade</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<div id="modalCatecismo" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>O Catecismo da Igreja Católica</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>O Catecismo da Igreja Católica (CIC) é um livro extenso que apresenta a doutrina católica de forma sistemática. Ele está dividido em quatro partes principais, que resumem os pilares da fé:</p>
-
-        <div class="rezas-container">
-            <h3>1. A Profissão da Fé (O Credo)</h3>
-            <p>Esta parte explora o Credo, tanto o Símbolo dos Apóstolos quanto o Símbolo Niceno-Constantinopolitano. Ele detalha o que os católicos acreditam sobre:</p>
-            <ul>
-                <li>Deus Pai: A criação do mundo e do ser humano, a providência divina e a queda original.</li>
-                <li>Jesus Cristo: Sua encarnação, vida, paixão, morte, ressurreição e ascensão, e a redenção da humanidade.</li>
-                <li>O Espírito Santo: Sua ação na Igreja e nos fiéis, a santificação e a vida eterna.</li>
-                <li>A Igreja: Sua natureza, missão, os sacramentos e a comunhão dos santos.</li>
-                <li>A vida eterna: A ressurreição da carne, o juízo final e a esperança do céu e do inferno.</li>
-            </ul>
-
-            <h3>2. A Celebração do Mistério Cristão (Os Sacramentos)</h3>
-            <p>Aqui, o Catecismo aborda a vida sacramental da Igreja, que são os sete sacramentos pelos quais os fiéis recebem a graça de Deus:</p>
-            <ul>
-                <li>Batismo: Iniciação na vida cristã e purificação do pecado original.</li>
-                <li>Confirmação (Crisma): Fortalecimento pelo Espírito Santo e amadurecimento na fé.</li>
-                <li>Eucaristia: O centro da vida cristã, a presença real de Cristo sob as espécies do pão e do vinho.</li>
-                <li>Penitência e Reconciliação (Confissão): O perdão dos pecados cometidos após o Batismo.</li>
-                <li>Unção dos Enfermos: Conforto espiritual e físico para os doentes e idosos.</li>
-                <li>Ordem: O sacramento do ministério apostólico, que confere aos homens a missão de representar Cristo como cabeça da Igreja.</li>
-                <li>Matrimônio: A união indissolúvel entre um homem e uma mulher, simbolizando a união de Cristo com a Igreja.</li>
-            </ul>
-
-            <h3>3. A Vida em Cristo (Os Mandamentos)</h3>
-            <p>Esta seção se concentra na moralidade cristã e nos Dez Mandamentos, explicando como os católicos devem viver suas vidas de acordo com os ensinamentos de Jesus e da Igreja. Ela trata de temas como:</p>
-            <ul>
-                <li>As virtudes: Teologais (Fé, Esperança e Caridade) e cardeais (Prudência, Justiça, Fortaleza e Temperança).</li>
-                <li>Os Dez Mandamentos: Uma análise detalhada de cada mandamento, ensinando sobre o amor a Deus e ao próximo.</li>
-                <li>A Doutrina Social da Igreja: Princípios para a vida em sociedade, como a dignidade da pessoa humana, o bem comum e a solidariedade.</li>
-            </ul>
-
-            <h3>4. A Oração Cristã (O Pai-Nosso)</h3>
-            <p>A parte final do Catecismo é dedicada à importância e às formas da oração. Ela explora a oração como uma relação pessoal com Deus, com uma análise aprofundada da oração do Pai-Nosso, que é o modelo de toda oração cristã. Os tópicos abordados incluem:</p>
-            <ul>
-                <li>A importância da oração: A necessidade de orar sem cessar.</li>
-                <li>As formas de oração: Bênção, Adoração, Súplica, Intercessão e Ação de Graças.</li>
-                <li>A oração do Senhor: A explicação detalhada de cada uma das sete petições do Pai-Nosso.</li>
-            </ul>
-            <p>Essas quatro partes são interligadas e se complementam, formando um panorama completo da fé católica. O Catecismo não é apenas um livro de regras, mas um guia para uma vida de fé, esperança e caridade.</p>
-        </div>
-    </div>
-</div>
-
-<div id="modalFeCatolica" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>A Fé Católica</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>A Fé Católica é um dom sobrenatural de Deus. É o ato pelo qual cremos em Deus e em tudo o que Ele revelou e que a Santa Igreja nos propõe a crer, porque Ele é a Verdade. A fé é um tesouro que cresce com a oração, a leitura da Bíblia e a prática dos sacramentos. É a base da nossa vida com Deus e a certeza daquilo que não vemos.</p>
-
-        <div class="rezas-container">
-            <h3>Pilares da Fé Católica</h3>
-            <p>A fé católica se apoia em quatro pilares principais:</p>
-            <ul>
-                <li><strong>A Sagrada Escritura:</strong> A Palavra de Deus escrita, que nos foi transmitida sob a inspiração do Espírito Santo.</li>
-                <li><strong>A Tradição Apostólica:</strong> A transmissão oral da Palavra de Deus, que se mantém viva na Igreja através da sucessão apostólica.</li>
-                <li><strong>O Magistério da Igreja:</strong> A autoridade de ensino dos bispos em união com o Papa, que tem a missão de interpretar autenticamente a Palavra de Deus.</li>
-                <li><strong>Os Sacramentos:</strong> Sinais visíveis da graça invisível de Deus, que nos permitem participar da vida divina.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="modalInclusao" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>O Acolhimento na Fé</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>A Igreja, como o Corpo de Cristo, é chamada a ser um lugar de acolhimento para todas as pessoas, sem distinção. A fé católica nos ensina que cada ser humano é criado à imagem e semelhança de Deus, com dignidade e valor incalculáveis. O amor de Deus é universal e se estende a todos os seus filhos e filhas, como Jesus nos mostrou em sua vida e ministério.</p>
-
-        <div class="rezas-container">
-            <h3>Palavras de Jesus e da Bíblia</h3>
-            <ul>
-                <li><strong>"Ide, pois, e ensinai a todas as nações." (Mateus 28,19):</strong> Esta passagem nos lembra que a mensagem do Evangelho é para todos, sem exceção. O amor de Cristo é universal.</li>
-                <li><strong>"Amai-vos uns aos outros, assim como eu vos amei." (João 13,34):</strong> O mandamento do amor é o alicerce de toda a vida cristã. Jesus nos chama a amar incondicionalmente, como Ele amou.</li>
-                <li><strong>"Não há judeu nem grego, não há escravo nem livre, não há homem nem mulher, pois todos vós sois um só em Cristo Jesus." (Gálatas 3,28):</strong> São Paulo nos ensina que em Cristo, as divisões terrenas não existem. A nossa identidade mais profunda está em sermos filhos de Deus.</li>
-            </ul>
-        </div>
-
-        <div class="rezas-container">
-            <h3>A Visão do Papa Francisco</h3>
-            <p>O Papa Francisco tem reforçado a necessidade de uma Igreja "em saída", que acolhe e acompanha todos, como um hospital de campanha. Ele nos lembra de que todos são chamados a fazer parte da Igreja.</p>
-            <ul>
-                <li><strong>"A Igreja não é uma alfândega, é a casa paterna onde há lugar para cada um, com a sua vida pesada."</strong> (Evangelii Gaudium, 47)</li>
-                <li><strong>"Se uma pessoa é gay e busca o Senhor e tem boa vontade, quem sou eu para julgá-la?"</strong> Esta frase mostra a atitude de acolhimento e não-julgamento que a Igreja deve ter.</li>
-                <li><strong>"Todos, todos, todos!"</strong> O Papa Francisco tem repetido essa frase em diversas ocasiões para destacar que a Igreja deve ser uma casa aberta para todos, sem exclusões.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div id="modalAcutis" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Como ser Santo segundo Carlo Acutis</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>Carlo Acutis, um jovem católico que usou a internet para evangelizar, nos deixou um ensinamento simples e poderoso: a santidade não é algo distante, mas sim um caminho acessível a todos.</p>
-
-        <div class="rezas-container">
-            <h3>A Receita da Santidade</h3>
-            <ul>
-                <li><strong>Eucaristia: "A estrada para o céu é a Eucaristia."</strong> Para Carlo, a Eucaristia era o centro de sua vida. Ele participava da Missa diariamente e passava tempo em adoração. A Eucaristia é o alimento espiritual que nos fortalece para a santidade.</li>
-                <li><strong>Terço: "A oração do terço é a escada para o céu."</strong> Ele acreditava que o terço era uma forma poderosa de meditar sobre a vida de Jesus e de se aproximar de Maria.</li>
-                <li><strong>Caridade:</strong> Carlo Acutis foi um exemplo de caridade. Ele usava seu dinheiro para ajudar os mais pobres, doava seu tempo para os sem-teto e sempre foi gentil com todos.</li>
-                <li><strong>Tecnologia a serviço da fé:</strong> Ele usou sua paixão pela tecnologia para criar exposições online sobre milagres eucarísticos, mostrando que a fé pode ser vivida e compartilhada de forma moderna.</li>
-            </ul>
-            <p>Em resumo, a santidade para Carlo Acutis era uma busca diária por Deus, focada na Eucaristia, na oração e na caridade, usando os talentos e a tecnologia para espalhar a fé.</p>
-        </div>
-    </div>
-</div>
-
-<div id="modalDeusPoderoso" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Perspectiva Bíblica de Deus Todo-Poderoso</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>A Bíblia é uma fonte de inspiração e ensinamentos para muitas pessoas, abordando diversos temas. Ela apresenta Deus de várias maneiras, com diferentes nomes e atributos que revelam sua natureza e seu relacionamento com a humanidade.</p>
-
-        <div class="rezas-container">
-            <h3>Pontos para entender Deus na Bíblia:</h3>
-            <ul>
-                <li><strong>Criador e Soberano:</strong> Deus é apresentado como o criador de todas as coisas, do universo e da vida. Ele é visto como o ser supremo, com total poder e autoridade sobre a criação. Versículo de exemplo: "No princípio, criou Deus os céus e a terra." (Gênesis 1:1)</li>
-                <li><strong>Pai e Amoroso:</strong> A Bíblia também descreve Deus como um Pai que ama a sua criação. Esse amor não se limita a um sentimento, mas se manifesta em ações, como a promessa de salvação. Versículo de exemplo: "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna." (João 3:16)</li>
-                <li><strong>Justo e Misericordioso:</strong> A justiça de Deus é um tema recorrente, mas é sempre equilibrada pela sua misericórdia. Ele é justo em seus julgamentos, mas também oferece perdão e compaixão a quem se arrepende. Versículo de exemplo: "O Senhor é compassivo e misericordioso, longânimo e mui benigno." (Salmo 103:8)</li>
-                <li><strong>Presença Constante:</strong> A Bíblia ensina que Deus está sempre presente e é acessível através da oração e da fé, e que ele se manifesta na vida das pessoas de diversas maneiras. Versículo de exemplo: "Não te deixarei, nem te desampararei." (Josué 1:5)</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- Lógica para o player de rádio ---
-        const catholicRadio = document.getElementById('catholicRadio');
+<!-- Modais existentes mantidos com links bíblicos atualizados -->
+<div id="modalGozosos" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>Mistérios Gozosos</h2>        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">        <p>Os Mistérios Gozosos (ou da Alegria) são meditados às segundas-feiras e sábados, e nos lembram os momentos de alegria da vida de Jesus e Maria. Eles nos convidam à humildade e à caridade.</p>        <div class="rezas-container">            <h3>Rezas dos Mistérios Gozosos:</h3>            <p><strong>1º Mistério: A Anunciação do Anjo Gabriel à Nossa Senhora</strong></p>            <p>Fruto: Humildade.</p>            <p>Oração: "Ó Maria, Virgem Imaculada, que pela Anunciação do Anjo Gabriel aceitastes ser Mãe de Deus, ensinai-nos a humildade e a obediência à vontade divina."</p>            <p><strong>2º Mistério: A Visitação de Nossa Senhora à sua prima Santa Isabel</strong></p>            <p>Fruto: Caridade Fraterna.</p>            <p>Oração: "Virgem Santíssima, que apressadamente vos pusestes a caminho para servir vossa prima Isabel, concedei-nos a graça de amar e servir o próximo com alegria e prontidão."</p>            <p><strong>3º Mistério: O Nascimento de Jesus em Belém</strong></p>            <p>Fruto: Pobreza de Espírito.</p>            <p>Oração: "Jesus, Menino Deus, que nascestes pobre num presépio, ensinai-nos a desapegar-nos das riquezas e a encontrar a verdadeira alegria na simplicidade e no serviço."</p>            <p><strong>4º Mistério: A Apresentação do Menino Jesus no Templo</strong></p>            <p>Fruto: Pureza e Obediência.</p>            <p>Oração: "Senhor, que fostes apresentado no Templo em sacrifício por nós, purificai nossos corações e ensinai-nos a obediência à vossa Lei e à da Igreja."</p>            <p><strong>5º Mistério: A Perda e Encontro de Jesus no Templo</strong></p>            <p>Fruto: Conversão e Procura de Deus.</p>            <p>Oração: "Jesus, que angustiastes vossos pais ao vos perderdes, mas vos revelastes no Templo, ajudai-nos a nunca nos afastarmos de vós e a vos procurar sempre com fervor e fé."</p>        </div>    </div></div>
+<div id="modalDolorosos" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>Mistérios Dolorosos</h2>        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">        <p>Os Mistérios Dolorosos (ou da Dor) são meditados às terças e sextas-feiras, e nos convidam a refletir sobre a Paixão e Morte de Jesus Cristo, buscando a paciência e a contrição pelos nossos pecados.</p>        <div class="rezas-container">            <h3>Rezas dos Mistérios Dolorosos:</h3>            <p><strong>1º Mistério: A Agonia de Jesus no Horto das Oliveiras</strong></p>            <p>Fruto: Arrependimento dos pecados.</p>            <p>Oração: "Jesus, que em vossa agonia suastes sangue por nossos pecados, concedei-nos a graça de um sincero arrependimento e de uma verdadeira contrição."</p>            <p><strong>2º Mistério: A Flagelação de Jesus</strong></p>            <p>Fruto: Mortificação dos sentidos.</p>            <p>Oração: "Senhor, que fostes cruelmente flagelado por nossos crimes, ensinai-nos a dominar nossos sentidos e a suportar com paciência as adversidades da vida."</p>            <p><strong>3º Mistério: A Coroação de Espinhos</strong></p>            <p>Fruto: Desprezo das vaidades.</p>            <p>Oração: "Jesus, coroado de espinhos em escárnio, ajudai-nos a renunciar à vaidade e ao orgulho, e a abraçar a humildade em todas as nossas ações."</p>            <p><strong>4º Mistério: Jesus com a Cruz às Costas a Caminho do Calvário</strong></p>            <p>Fruto: Paciência nas tribulações.</p>            <p>Oração: "Cristo, que com a Cruz às costas seguistes para o Calvário, dai-nos força para carregar nossas cruzes diárias com resignação e fé em vossa providência."</p>            <p><strong>5º Mistério: A Crucificação e Morte de Jesus</strong></p>            <p>Fruto: Amor a Jesus e aos inimigos.</p>            <p>Oração: "Ó Bom Jesus, que na Cruz destes a vida por nós, acendei em nossos corações o fogo do vosso amor e a caridade para com todos, até mesmo com aqueles que nos ofendem."</p>        </div>    </div></div>
+<div id="modalGloriosos" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>Mistérios Gloriosos</h2>        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">        <p>Os Mistérios Gloriosos (ou da Glória) são meditados às quartas-feiras e domingos, celebrando a vitória de Jesus sobre a morte e a glorificação de Maria, nos inspirando à fé, esperança e perseverança.</p>        <div class="rezas-container">            <h3>Rezas dos Mistérios Gloriosos:</h3>            <p><strong>1º Mistério: A Ressurreição de Jesus</strong></p>            <p>Fruto: Fé.</p>            <p>Oração: "Jesus Ressuscitado, que vencestes a morte e nos abristes as portas do Céu, aumentai nossa fé e a certeza da vida eterna."</p>            <p><strong>2º Mistério: A Ascensão de Jesus ao Céu</strong></p>            <p>Fruto: Esperança.</p>            <p>Oração: "Senhor, que subistes aos Céus para preparar-nos um lugar, elevai nossos corações das coisas terrenas e dai-nos a esperança das realidades celestes."</p>            <p><strong>3º Mistério: A Descida do Espírito Santo sobre os Apóstolos</strong></p>            <p>Fruto: Dons do Espírito Santo.</p>            <p>Oração: "Espírito Santo Divino, que em Pentecostes descestes sobre os Apóstolos, iluminai-nos com vossos dons e guiai-nos no caminho da santidade."</p>            <p><strong>4º Mistério: A Assunção de Nossa Senhora ao Céu</strong></p>            <p>Fruto: Devoção a Maria e boa morte.</p>            <p>Oração: "Virgem Maria, que fostes assunta ao Céu em corpo e alma, sede nosso refúgio e intercedei por nós, para que tenhamos uma boa morte e alcancemos a glória do Céu."</p>            <p><strong>5º Mistério: A Coroação de Nossa Senhora no Céu</strong></p>            <p>Fruto: Confiança na intercessão de Maria.</p>            <p>Oração: "Rainha do Céu e da Terra, coroada de glória, rogai por nós e por todos os pecadores, para que um dia possamos compartilhar convosco a bem-aventurança eterna."</p>        </div>    </div></div>
+<div id="modalLuminosos" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>Mistérios Luminosos</h2>        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">        <p>Os Mistérios Luminosos (ou da Luz) são meditados às quintas-feiras, e nos convidam a contemplar a vida pública de Jesus, desde o Batismo no Jordão até a instituição da Eucaristia, iluminando nosso caminho de fé.</p>        <div class="rezas-container">            <h3>Rezas dos Mistérios Luminosos:</h3>            <p><strong>1º Mistério: O Batismo de Jesus no Rio Jordão</strong></p>            <p>Fruto: Fidelidade às promessas do batismo.</p>            <p>Oração: "Jesus, que no Jordão fostes batizado e revelastes vossa divindade, dai-nos a graça de viver fielmente as promessas do nosso batismo e de ser vossas testemunhas no mundo."</p>            <p><strong>2º Mistério: A Revelação de Jesus nas Bodas de Caná</strong></p>            <p>Fruto: Confiança em Maria.</p>            <p>Oração: "Senhor, que em Caná transformastes a água em vinho, por intercessão de Maria, fortalecei nossa fé em vós e nossa confiança na intercessão de vossa Mãe."</p>            <p><strong>3º Mistério: O Anúncio do Reino de Deus e o Convite à Conversão</strong></p>            <p>Fruto: Conversão.</p>            <p>Oração: "Jesus, que proclamastes o Reino de Deus e chamastes à conversão, tomai posse de nossos corações e transformai-nos para que vivamos segundo vossa vontade."</p>            <p><strong>4º Mistério: A Transfiguração de Jesus</strong></p>            <p>Fruto: Desejo de Santidade.</p>            <p>Oração: "Cristo Transfigurado, que revelastes vossa glória aos discípulos, acendei em nós o desejo da santidade e a esperança de um dia contemplar vossa face no Céu."</p>            <p><strong>5º Mistério: A Instituição da Eucaristia</strong></p>            <p>Fruto: Adoração ao Santíssimo Sacramento.</p>            <p>Oração: "Jesus Eucarístico, que na Última Ceia vos destes como alimento e nos deixastes o sacramento do vosso amor, aumentai nossa fé e devoção à Eucaristia, fonte de vida eterna."</p>        </div>    </div></div>
+<div id="modalPrincipaisOracoes" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>Principais Orações Católicas</h2>        <p>Essas orações são pilares da fé católica, recitadas diariamente por milhões de fiéis.</p>        <div class="rezas-container">            <h3>Pai Nosso:</h3>            <p>"Pai nosso que estais no céu, santificado seja o Vosso nome; venha a nós o Vosso Reino; seja feita a Vossa vontade assim na Terra como no Céu; o pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas assim como nós perdoamos a quem nos tem ofendido; e não nos deixei cair em tentação, mas livrai-nos do mal. Amém."</p>            <h3>Ave Maria:</h3>            <p>"Ave Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres e bendito é o fruto do vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém."</p>            <h3>Glória ao Pai:</h3>            <p>"Glória ao Pai, ao Filho e ao Espírito Santo, como era no princípio, agora e sempre. Amém."</p>            <h3>Ato de Fé:</h3>            <p>"Meu Deus, creio firmemente em todas as verdades que nos revelaste e que nos ensinas por tua Igreja, porque não te podes enganar nem nos enganar."</p>            <h3>Ato de Esperança:</h3>            <p>"Meu Deus, espero com firme confiança que me concederás, pelo mérito de Jesus Cristo, tua graça neste mundo e a felicidade eterna no outro, porque assim o prometeste e sempre és fiel a tuas promessas."</p>            <h3>Ato de Caridade:</h3>            <p>"Meu Deus, amo-te com todo o meu coração e sobre todas as coisas, porque és infinitamente bom e amável."</p>        </div>    </div></div>
+<div id="modalRosarioCompleto" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>Rezas do Rosário Completo</h2>        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">        <p>Aqui você encontrará as orações comuns recitadas no início e no fim do Terço ou Rosário, complementando a meditação dos mistérios.</p>        <div class="rezas-container">            <h3>Sinal da Cruz:</h3>            <p>"Em nome do Pai, e do Filho, e do Espírito Santo. Amém."</p>            <h3>Creio (Credo):</h3>            <p>"Creio em Deus Pai Todo-Poderoso, Criador do céu e da terra. E em Jesus Cristo, seu único Filho, Nosso Senhor, que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos, foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus; está sentado à direita de Deus Pai Todo-Poderoso, de onde há de vir a julgar os vivos e os mortos. Creio no Espírito Santo; na Santa Igreja Católica; na comunhão dos Santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém."</p>            <h3>Pai Nosso:</h3>            <p>Conforme no modal de "Principais Orações Católicas".</p>            <h3>Ave Maria:</h3>            <p>Conforme no modal de "Principais Orações Católicas".</p>            <h3>Glória ao Pai:</h3>            <p>Conforme no modal de "Principais Orações Católicas".</p>            <h3>Oração de Fátima (Ó meu Jesus):</h3>            <p>"Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai as almas todas para o Céu, principalmente as que mais precisarem."</p>            <h3>Salve Rainha:</h3>            <p>"Salve Rainha, Mãe de misericórdia, vida, doçura e esperança nossa, salve! A vós bradamos, os degredados filhos de Eva; a vós suspiramos, gemendo e chorando neste vale de lágrimas. Eia, pois, advogada nossa, esses vossos olhos misericordiosos a nós volvei; e depois deste desterro, mostrai-nos Jesus, bendito fruto do vosso ventre, ó clemente, ó piedosa, ó doce sempre Virgem Maria. Rogai por nós, Santa Mãe de Deus, para que sejamos dignos das promessas de Cristo. Amém."</p>            <h3>Oração a São Miguel Arcanjo:</h3>            <p>"São Miguel Arcanjo, defendei-nos no combate, sede o nosso refúgio contra as maldades e ciladas do demônio. Ordene-lhe Deus, humildemente vos pedimos; e vós, Príncipe da Milícia Celeste, pela virtude divina, precipitai no inferno a Satanás e a todos os espíritos malignos que andam pelo mundo para perder as almas. Amém."</p>        </div>    </div></div>
+<div id="modalConsagracaoDeus" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>Consagração a Deus</h2>        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">        <p>Esboço de sermão para reflexão sobre a consagração a Deus.</p>        <div class="rezas-container">            <h3>Tema: Consagração</h3>            <p><strong>I – Quem se oferece voluntariamente? <a href="https://www.bibliaonline.com.br/acf/1cr/29/5" target="_blank" class="versiculo-link">I Crônicas 29:5</a>.</strong></p>            <ul>                <li>1. Quando Paulo se entregou a Jesus, qual foi sua primeira pergunta? – <a href="https://www.bibliaonline.com.br/acf/at/9/3-6" target="_blank" class="versiculo-link">Atos 9:3-6</a>.</li>                <li>2. Mais tarde, como exprimiu sua completa consagração? <a href="https://www.bibliaonline.com.br/acf/fp/3/8" target="_blank" class="versiculo-link">Filipenses 3:8</a>.</li>                <li>3. Por que Deus quer tal consagração? - <a href="https://www.bibliaonline.com.br/acf/2co/5/21" target="_blank" class="versiculo-link">II Coríntios 5:21</a>.</li>            </ul>            <p><strong>II – Tal Consagração não será uma cruz.</strong></p>            <ul>                <li>1. Seremos novas criaturas. - <a href="https://www.bibliaonline.com.br/acf/2co/5/17" target="_blank" class="versiculo-link">II Coríntios 5:17</a>.</li>                <li>2. Ele pede completa consagração. – <a href="https://www.bibliaonline.com.br/acf/mc/5/17" target="_blank" class="versiculo-link">Marcos 5:17</a>. (Mãe, pai, filho, filha, vida, tudo.)</li>            </ul>            <p><strong>III – Exemplos de consagração completa.</strong></p>            <ul>                <li>1. Zaqueu. – <a href="https://www.bibliaonline.com.br/acf/lc/19/8-9" target="_blank" class="versiculo-link">Lucas 19:8,9</a>.</li>                <li>2. Os batizados "perseveravam" – <a href="https://www.bibliaonline.com.br/acf/at/2/41-47" target="_blank" class="versiculo-link">Atos 2:41-47</a>.</li>            </ul>            <p><strong>IV – Numa verdadeira consagração só Cristo aparecerá – <a href="https://www.bibliaonline.com.br/acf/gl/2/20" target="_blank" class="versiculo-link">Gálatas 2:20</a>.</strong></p>            <ul>                <li>1. "Uma coisa faço." – <a href="https://www.bibliaonline.com.br/acf/fp/3/13" target="_blank" class="versiculo-link">Filipenses 3:13</a>.</li>                <li>2. Não quer saber de nada. - <a href="https://www.bibliaonline.com.br/acf/1co/2/2" target="_blank" class="versiculo-link">I Coríntios 2:2</a>.</li>                <li>3. Nada de glória própria. – <a href="https://www.bibliaonline.com.br/acf/gl/6/14" target="_blank" class="versiculo-link">Gálatas 6:14</a>.</li>                <li>4. A verdade resplandece. – <a href="https://www.bibliaonline.com.br/acf/ef/4/25" target="_blank" class="versiculo-link">Efésios 4:25</a>.</li>            </ul>        </div>    </div></div>
+<div id="modalOracaoTodoPoderoso" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>Oração a Deus Todo Poderoso</h2>        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">        <div class="rezas-container">            <p>"Oh, Deus Todo Poderoso, Criador do céu e da terra, nós nos prostramos diante de Ti com humildade e reverência. Reconhecemos a Tua infinita grandeza, o Teu poder sem limites e o Teu amor incondicional por toda a Tua criação.</p>            <p>Tu és o nosso refúgio e fortaleza, o nosso auxílio sempre presente na tribulação. Em Ti confiamos, Senhor, e a Ti elevamos os nossos corações.</p>            <p>Pedimos a Tua graça e misericórdia neste dia. Ilumina os nossos caminhos com a Tua sabedoria, guia-nos com a Tua mão poderosa e protege-nos de todo o mal.</p>            <p>Dá-nos força para enfrentar os desafios, paciência para suportar as dificuldades e fé para acreditar nas Tuas promessas. Que o Teu Espírito Santo nos inspire e nos conduza a viver de acordo com o Tua vontade.</p>            <p>Senhor, abençoa a nossa família, os nossos amigos e todos aqueles que amamos. Estende a Tua mão sobre os necessitados, conforta os aflitos e cura os enfermos.</p>            <p>Que a Tua paz, que excede todo o entendimento, guarde os nossos corações e as nossas mentes em Cristo Jesus, nosso Senhor e Salvador.</p>            <p>A Ti seja dada toda a honra, glória e poder, agora e para sempre. Amém."</p>        </div>    </div></div>
+<div id="modalBomCristao" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>Como ser um bom Cristão(ã) Católico(a) na prática!</h2>        <h3 style="text-align: center; color: #ad1457; margin-top: -1rem;">O mínimo que um bom Católico deve saber</h3>
+    <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+    <p>“Ninguém ama aquilo que não conhece.” – Santo Agostinho</p>
+    <div class="rezas-container">            <h3>OS 10 MANDAMENTOS</h3>            <ol>                <li>Amar a Deus sobre todas as coisas.</li>                <li>Não tomar o nome de Deus em vão.</li>                <li>Guardar os domingos e festas de guarda.</li>                <li>Honrar pai e mãe.</li>                <li>Não matar.</li>                <li>Não pecar contra a castidade.</li>                <li>Não roubar.</li>                <li>Não levantar falso testemunho.</li>                <li>Não desejar a mulher do próximo.</li>                <li>Não cobiçar as coisas alheias.</li>            </ol>
+        <hr style="border-top: 1px dashed #d8a2a2; margin: 20px 0;">
+        <h3>OS 5 MANDAMENTOS DA IGREJA</h3>            <ol>                <li>Participar da Missa inteira aos domingos e dias de preceito.</li>                <li>Confessar-se ao menos uma vez por ano.</li>                <li>Comungar ao menos pela Páscoa da Ressurreição.</li>                <li>Guardar jejum e abstinência nos dias determinados pela Igreja.</li>                <li>Ajudar a Igreja em suas necessidades.</li>            </ol>
+        <hr style="border-top: 1px dashed #d8a2a2; margin: 20px 0;">
+        <h3>OS 7 SACRAMENTOS</h3>            <ol>                <li>Batismo</li>                <li>Confirmação (Crisma)</li>                <li>Eucaristia</li>                <li>Penitência (Confissão)</li>                <li>Unção dos Enfermos</li>                <li>Ordem</li>                <li>Matrimônio</li>            </ol>
+        <hr style="border-top: 1px dashed #d8a2a2; margin: 20px 0;">
+        <h3>OS 7 PECADOS CAPITAIS</h3>            <ol>                <li>Soberba</li>                <li>Avareza</li>                <li>Luxúria</li>                <li>Ira</li>                <li>Gula</li>                <li>Inveja</li>                <li>Preguiça</li>            </ol>
+        <hr style="border-top: 1px dashed #d8a2a2; margin: 20px 0;">
+        <h3>OS 7 DONS DO ESPÍRITO SANTO</h3>            <ol>                <li>Sabedoria</li>                <li>Entendimento</li>                <li>Conselho</li>                <li>Fortaleza</li>                <li>Ciência</li>                <li>Piedade</li>                <li>Temor de Deus</li>            </ol>
+        <hr style="border-top: 1px dashed #d8a2a2; margin: 20px 0;">
+        <h3>OS 12 FRUTOS DO ESPÍRITO SANTO</h3>            <ol>                <li>Caridade</li>                <li>Alegria</li>                <li>Paz</li>                <li>Paciência</li>                <li>Longanimidade</li>                <li>Bondade</li>                <li>Benignidade</li>                <li>Mansidão</li>                <li>Fidelidade</li>                <li>Modéstia</li>                <li>Continência</li>                <li>Castidade</li>            </ol>        </div>    </div></div>
+<div id="modalCatecismo" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>O Catecismo da Igreja Católica</h2>
+    <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+    <p>O Catecismo da Igreja Católica (CIC) é um livro extenso que apresenta a doutrina católica de forma sistemática. Ele está dividido em quatro partes principais, que resumem os pilares da fé:</p>
+    <div class="rezas-container">            <h3>1. A Profissão da Fé (O Credo)</h3>            <p>Esta parte explora o Credo, tanto o Símbolo dos Apóstolos quanto o Símbolo Niceno-Constantinopolitano. Ele detalha o que os católicos acreditam sobre:</p>            <ul>                <li>Deus Pai: A criação do mundo e do ser humano, a providência divina e a queda original.</li>                <li>Jesus Cristo: Sua encarnação, vida, paixão, morte, ressurreição e ascensão, e a redenção da humanidade.</li>                <li>O Espírito Santo: Sua ação na Igreja e nos fiéis, a santificação e a vida eterna.</li>                <li>A Igreja: Sua natureza, missão, os sacramentos e a comunhão dos santos.</li>                <li>A vida eterna: A ressurreição da carne, o juízo final e a esperança do céu e do inferno.</li>            </ul>
+        <h3>2. A Celebração do Mistério Cristão (Os Sacramentos)</h3>            <p>Aqui, o Catecismo aborda a vida sacramental da Igreja, que são os sete sacramentos pelos quais os fiéis recebem a graça de Deus:</p>            <ul>                <li>Batismo: Iniciação na vida cristã e purificação do pecado original.</li>                <li>Confirmação (Crisma): Fortalecimento pelo Espírito Santo e amadurecimento na fé.</li>                <li>Eucaristia: O centro da vida cristã, a presença real de Cristo sob as espécies do pão e do vinho.</li>                <li>Penitência e Reconciliação (Confissão): O perdão dos pecados cometidos após o Batismo.</li>                <li>Unção dos Enfermos: Conforto espiritual e físico para os doentes e idosos.</li>                <li>Ordem: O sacramento do ministério apostólico, que confere aos homens a missão de representar Cristo como cabeça da Igreja.</li>                <li>Matrimônio: A união indissolúvel entre um homem e uma mulher, simbolizando a união de Cristo com a Igreja.</li>            </ul>
+        <h3>3. A Vida em Cristo (Os Mandamentos)</h3>            <p>Esta seção se concentra na moralidade cristã e nos Dez Mandamentos, explicando como os católicos devem viver suas vidas de acordo com os ensinamentos de Jesus e da Igreja. Ela trata de temas como:</p>            <ul>                <li>As virtudes: Teologais (Fé, Esperança e Caridade) e cardeais (Prudência, Justiça, Fortaleza e Temperança).</li>                <li>Os Dez Mandamentos: Uma análise detalhada de cada mandamento, ensinando sobre o amor a Deus e ao próximo.</li>                <li>A Doutrina Social da Igreja: Princípios para a vida em sociedade, como a dignidade da pessoa humana, o bem comum e a solidariedade.</li>            </ul>
+        <h3>4. A Oração Cristã (O Pai-Nosso)</h3>            <p>A parte final do Catecismo é dedicada à importância e às formas da oração. Ela explora a oração como uma relação pessoal com Deus, com uma análise aprofundada da oração do Pai-Nosso, que é o modelo de toda oração cristã. Os tópicos abordados incluem:</p>            <ul>                <li>A importância da oração: A necessidade de orar sem cessar.</li>                <li>As formas de oração: Bênção, Adoração, Súplica, Intercessão e Ação de Graças.</li>                <li>A oração do Senhor: A explicação detalhada de cada uma das sete petições do Pai-Nosso.</li>            </ul>            <p>Essas quatro partes são interligadas e se complementam, formando um panorama completo da fé católica. O Catecismo não é apenas um livro de regras, mas um guia para uma vida de fé, esperança e caridade.</p>        </div>    </div></div>
+<div id="modalFeCatolica" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>A Fé Católica</h2>
+    <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+    <p>A Fé Católica é um dom sobrenatural de Deus. É o ato pelo qual cremos em Deus e em tudo o que Ele revelou e que a Santa Igreja nos propõe a crer, porque Ele é a Verdade. A fé é um tesouro que cresce com a oração, a leitura da Bíblia e a prática dos sacramentos. É a base da nossa vida com Deus e a certeza daquilo que não vemos.</p>
+    <div class="rezas-container">            <h3>Pilares da Fé Católica</h3>            <p>A fé católica se apoia em quatro pilares principais:</p>            <ul>                <li><strong>A Sagrada Escritura:</strong> A Palavra de Deus escrita, que nos foi transmitida sob a inspiração do Espírito Santo.</li>                <li><strong>A Tradição Apostólica:</strong> A transmissão oral da Palavra de Deus, que se mantém viva na Igreja através da sucessão apostólica.</li>                <li><strong>O Magistério da Igreja:</strong> A autoridade de ensino dos bispos em união com o Papa, que tem a missão de interpretar autenticamente a Palavra de Deus.</li>                <li><strong>Os Sacramentos:</strong> Sinais visíveis da graça invisível de Deus, que nos permitem participar da vida divina.</li>            </ul>        </div>    </div></div>
+<div id="modalInclusao" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>O Acolhimento na Fé</h2>
+    <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+    <p>A Igreja, como o Corpo de Cristo, é chamada a ser um lugar de acolhimento para todas as pessoas, sem distinção. A fé católica nos ensina que cada ser humano é criado à imagem e semelhança de Deus, com dignidade e valor incalculáveis. O amor de Deus é universal e se estende a todos os seus filhos e filhas, como Jesus nos mostrou em sua vida e ministério.</p>
+    <div class="rezas-container">            <h3>Palavras de Jesus e da Bíblia</h3>            <ul>                <li><strong>"Ide, pois, e ensinai a todas as nações." (<a href="https://www.bibliaonline.com.br/acf/mt/28/19" target="_blank" class="versiculo-link">Mateus 28,19</a>):</strong> Esta passagem nos lembra que a mensagem do Evangelho é para todos, sem exceção. O amor de Cristo é universal.</li>                <li><strong>"Amai-vos uns aos outros, assim como eu vos amei." (<a href="https://www.bibliaonline.com.br/acf/jo/13/34" target="_blank" class="versiculo-link">João 13,34</a>):</strong> O mandamento do amor é o alicerce de toda a vida cristã. Jesus nos chama a amar incondicionalmente, como Ele amou.</li>                <li><strong>"Não há judeu nem grego, não há escravo nem livre, não há homem nem mulher, pois todos vós sois um só em Cristo Jesus." (<a href="https://www.bibliaonline.com.br/acf/gl/3/28" target="_blank" class="versiculo-link">Gálatas 3,28</a>):</strong> São Paulo nos ensina que em Cristo, as divisões terrenas não existem. A nossa identidade mais profunda está em sermos filhos de Deus.</li>            </ul>        </div>
+    <div class="rezas-container">            <h3>A Visão do Papa Francisco</h3>            <p>O Papa Francisco tem reforçado a necessidade de uma Igreja "em saída", que acolhe e acompanha todos, como um hospital de campanha. Ele nos lembra de que todos são chamados a fazer parte da Igreja.</p>            <ul>                <li><strong>"A Igreja não é uma alfândega, é a casa paterna onde há lugar para cada um, com a sua vida pesada."</strong> (Evangelii Gaudium, 47)</li>                <li><strong>"Se uma pessoa é gay e busca o Senhor e tem boa vontade, quem sou eu para julgá-la?"</strong> Esta frase mostra a atitude de acolhimento e não-julgamento que a Igreja deve ter.</li>                <li><strong>"Todos, todos, todos!"</strong> O Papa Francisco tem repetido essa frase em diversas ocasiões para destacar que a Igreja deve ser uma casa aberta para todos, sem exclusões.</li>            </ul>        </div>    </div></div>
+<div id="modalAcutis" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>Como ser Santo segundo Carlo Acutis</h2>
+    <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+    <p>Carlo Acutis, um jovem católico que usou a internet para evangelizar, nos deixou um ensinamento simples e poderoso: a santidade não é algo distante, mas sim um caminho acessível a todos.</p>
+    <div class="rezas-container">            <h3>A Receita da Santidade</h3>            <ul>                <li><strong>Eucaristia: "A estrada para o céu é a Eucaristia."</strong> Para Carlo, a Eucaristia era o centro de sua vida. Ele participava da Missa diariamente e passava tempo em adoração. A Eucaristia é o alimento espiritual que nos fortalece para a santidade.</li>                <li><strong>Terço: "A oração do terço é a escada para o céu."</strong> Ele acreditava que o terço era uma forma poderosa de meditar sobre a vida de Jesus e de se aproximar de Maria.</li>                <li><strong>Caridade:</strong> Carlo Acutis foi um exemplo de caridade. Ele usava seu dinheiro para ajudar os mais pobres, doava seu tempo para os sem-teto e sempre foi gentil com todos.</li>                <li><strong>Tecnologia a serviço da fé:</strong> Ele usou sua paixão pela tecnologia para criar exposições online sobre milagres eucarísticos, mostrando que a fé pode ser vivida e compartilhada de forma moderna.</li>            </ul>            <p>Em resumo, a santidade para Carlo Acutis era uma busca diária por Deus, focada na Eucaristia, na oração e na caridade, usando os talentos e a tecnologia para espalhar a fé.</p>        </div>    </div></div>
+<div id="modalDeusPoderoso" class="modal">    <div class="modal-content">        <span class="close-button">&times;</span>        <h2>Perspectiva Bíblica de Deus Todo-Poderoso</h2>
+    <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+    <p>A Bíblia é uma fonte de inspiração e ensinamentos para muitas pessoas, abordando diversos temas. Ela apresenta Deus de várias maneiras, com diferentes nomes e atributos que revelam sua natureza e seu relacionamento com a humanidade.</p>
+    <div class="rezas-container">            <h3>Pontos para entender Deus na Bíblia:</h3>            <ul>                <li><strong>Criador e Soberano:</strong> Deus é apresentado como o criador de todas as coisas, do universo e da vida. Ele é visto como o ser supremo, com total poder e autoridade sobre a criação. Versículo de exemplo: "<a href="https://www.bibliaonline.com.br/acf/gn/1/1" target="_blank" class="versiculo-link">No princípio, criou Deus os céus e a terra. (Gênesis 1:1)</a>"</li>                <li><strong>Pai e Amoroso:</strong> A Bíblia também descreve Deus como um Pai que ama a sua criação. Esse amor não se limita a um sentimento, mas se manifesta em ações, como a promessa de salvação. Versículo de exemplo: "<a href="https://www.bibliaonline.com.br/acf/jo/3/16" target="_blank" class="versiculo-link">Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito... (João 3:16)</a>"</li>                <li><strong>Justo e Misericordioso:</strong> A justiça de Deus é um tema recorrente, mas é sempre equilibrada pela sua misericórdia. Ele é justo em seus julgamentos, mas também oferece perdão e compaixão a quem se arrepende. Versículo de exemplo: "<a href="https://www.bibliaonline.com.br/acf/sl/103/8" target="_blank" class="versiculo-link">O Senhor é compassivo e misericordioso, longânimo e mui benigno. (Salmo 103:8)</a>"</li>                <li><strong>Presença Constante:</strong> A Bíblia ensina que Deus está sempre presente e é acessível através da oração e da fé, e que ele se manifesta na vida das pessoas de diversas maneiras. Versículo de exemplo: "<a href="https://www.bibliaonline.com.br/acf/js/1/5" target="_blank" class="versiculo-link">Não te deixarei, nem te desampararei. (Josué 1:5)</a>"</li>            </ul>        </div>    </div></div>
+<script>    document.addEventListener('DOMContentLoaded', () => {        const catholicRadio = document.getElementById('catholicRadio');
         const radioPlayerButton = document.getElementById('radio-player-button');
         const radioStatus = document.getElementById('radio-status');
-
-        // Define o link da rádio
         catholicRadio.src = 'https://aparecida.jmvstream.com/stream';
-
-        radioPlayerButton.addEventListener('click', () => {
-            if (catholicRadio.paused || catholicRadio.ended) {
-                catholicRadio.muted = false;
+        radioPlayerButton.addEventListener('click', () => {            if (catholicRadio.paused || catholicRadio.ended) {                catholicRadio.muted = false;
                 radioPlayerButton.classList.add('loading');
                 radioStatus.textContent = 'Carregando...';
-                catholicRadio.play()
-                    .then(() => {
-                        radioPlayerButton.classList.remove('loading');
+                catholicRadio.play()                    .then(() => {                        radioPlayerButton.classList.remove('loading');
                         radioPlayerButton.classList.add('playing');
                         radioPlayerButton.textContent = '❚❚';
                         radioStatus.textContent = 'Tocando Rádio';
-                    })
-                    .catch(error => {
-                        console.error('Erro ao tentar tocar a rádio:', error);
+                    })                    .catch(error => {                        console.error('Erro ao tentar tocar a rádio:', error);
                         radioPlayerButton.classList.remove('loading', 'playing');
                         radioPlayerButton.textContent = '▶';
                         radioStatus.textContent = 'Erro ao tocar 😔';
                     });
-            } else {
-                catholicRadio.pause();
+            } else {                catholicRadio.pause();
                 radioPlayerButton.classList.remove('playing');
                 radioPlayerButton.textContent = '▶';
                 radioStatus.textContent = 'Rádio Pausada';
-            }
-        });
-
-        catholicRadio.addEventListener('playing', () => {
-            radioPlayerButton.classList.remove('loading');
+            }        });
+        catholicRadio.addEventListener('playing', () => {            radioPlayerButton.classList.remove('loading');
             radioPlayerButton.classList.add('playing');
             radioPlayerButton.textContent = '❚❚';
             radioStatus.textContent = 'Tocando Rádio';
         });
-
-        catholicRadio.addEventListener('pause', () => {
-            radioPlayerButton.classList.remove('playing');
+        catholicRadio.addEventListener('pause', () => {            radioPlayerButton.classList.remove('playing');
             radioPlayerButton.textContent = '▶';
             radioStatus.textContent = 'Rádio Pausada';
         });
-
-        catholicRadio.addEventListener('waiting', () => {
-            radioPlayerButton.classList.add('loading');
+        catholicRadio.addEventListener('waiting', () => {            radioPlayerButton.classList.add('loading');
             radioStatus.textContent = 'Carregando...';
         });
-
-        catholicRadio.addEventListener('error', (e) => {
-            console.error('Erro no stream de rádio:', e);
+        catholicRadio.addEventListener('error', (e) => {            console.error('Erro no stream de rádio:', e);
             radioPlayerButton.classList.remove('loading', 'playing');
             radioPlayerButton.textContent = '▶';
             radioStatus.textContent = 'Erro na Rádio 😔';
         });
-
-        // Garantir que a rádio comece mutada e só toque se o usuário interagir
-        if (catholicRadio.autoplay && catholicRadio.muted) {
-            catholicRadio.pause();
+        if (catholicRadio.autoplay && catholicRadio.muted) {            catholicRadio.pause();
             catholicRadio.muted = true;
             radioPlayerButton.textContent = '▶';
             radioStatus.textContent = 'Rádio Católica (pausada)';
         }
-
-        // --- Lógica para os modais (janelas pop-up) ---
         const modalButtons = document.querySelectorAll('.botao-misterio, .botao-secao');
         const closeButtons = document.querySelectorAll('.close-button');
         const modals = document.querySelectorAll('.modal');
-
-        modalButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const modalId = button.getAttribute('data-modal-target');
+        modalButtons.forEach(button => {            button.addEventListener('click', () => {                const modalId = button.getAttribute('data-modal-target');
                 const modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.classList.add('active');
-                }
-            });
-        });
-
-        closeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const modal = button.closest('.modal');
-                if (modal) {
-                    modal.classList.remove('active');
-                }
-            });
-        });
-
-        modals.forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                }
-            });
-        });
-    });
-</script>
-</body>
-</html>
+                if (modal) {                    modal.classList.add('active');
+                }            });        });
+        closeButtons.forEach(button => {            button.addEventListener('click', () => {                const modal = button.closest('.modal');
+                if (modal) {                    modal.classList.remove('active');
+                }            });        });
+        modals.forEach(modal => {            modal.addEventListener('click', (e) => {                if (e.target === modal) {                    modal.classList.remove('active');
+                }            });        });    });</script></body></html>
