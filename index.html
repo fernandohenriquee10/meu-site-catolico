@@ -163,7 +163,7 @@
             font-family: 'Cinzel', serif;
             color: var(--accent-gold);
             font-size: 1.4rem;
-            margin: 2rem 0 1.2rem;
+            margin: 2.2rem 0 1.2rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             display: flex;
@@ -184,18 +184,18 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1.3rem;
+            gap: 1.2rem;
             margin-bottom: 2rem;
         }
 
         /* --- Botões Nobres --- */
         .botao-misterio, .botao-secao {
-            padding: 1.1rem 2rem;
+            padding: 1.1rem 1.8rem;
             background: linear-gradient(145deg, rgba(214, 51, 132, 0.9) 0%, rgba(142, 0, 56, 0.95) 100%);
             border: 1px solid rgba(255, 214, 224, 0.35);
             border-radius: var(--radius-btn);
             color: white;
-            font-size: 1.15rem;
+            font-size: 1.08rem;
             font-weight: 600;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), 0 0 12px rgba(255, 153, 200, 0.25);
             transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -279,7 +279,7 @@
             padding: 2.8rem 2.4rem;
             border-radius: var(--radius-card);
             width: 100%;
-            max-width: 780px;
+            max-width: 800px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(214, 51, 132, 0.15);
             text-align: left;
             position: relative;
@@ -357,7 +357,7 @@
 
         .modal-content h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             color: #a61e4d;
             margin: 1.4rem 0 0.8rem;
         }
@@ -408,6 +408,29 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(142,0,56,0.08);
+        }
+
+        .custom-table th, .custom-table td {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #f3cbdb;
+        }
+
+        .custom-table th {
+            background-color: #f7d6e4;
+            color: var(--primary-dark);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
         }
 
         /* --- Links de Versículos Bíblicos --- */
@@ -530,7 +553,7 @@
     <div id="radio-player-container">
         <audio id="catholicRadio" preload="none" crossorigin="anonymous"></audio>
         <button id="radio-player-button" aria-label="Tocar ou pausar Rádio Aparecida">▶</button>
-        <span id="radio-status">Rádio Católica</span>
+        <span id="radio-status">Rádio Desligada</span>
     </div>
 </header>
 
@@ -543,18 +566,33 @@
         <button class="botao-misterio" data-modal-target="modalLuminosos">Mistérios Luminosos</button>
     </div>
 
-    <div class="section-header-title">Devoções & Quaresma Sagrada</div>
+    <div class="section-header-title">Devoções Principais & Quaresma Sagrada</div>
     <div class="container-cards">
-        <button class="botao-secao btn-destaque-arcanjo" data-modal-target="modalQuaresmaSaoMiguel">⚔ Quaresma de São Miguel Arcanjo ⚔</button>
+        <button class="botao-secao btn-destaque-arcanjo" data-modal-target="modalQuaresmaSaoMiguel">⚔ Quaresma & Rosário de São Miguel ⚔</button>
         <button class="botao-secao" data-modal-target="modalBonfim">Consagração ao Senhor do Bonfim</button>
-        <button class="botao-secao" data-modal-target="modalRosarioCompleto">Rezas do Rosário Completo</button>
+        <button class="botao-secao" data-modal-target="modalRosarioCompleto">Rezas do Rosário & Ladainha</button>
         <button class="botao-secao" data-modal-target="modalPrincipaisOracoes">Principais Orações Católicas</button>
         <button class="botao-secao" data-modal-target="modalConsagracaoDeus">Consagração a Deus</button>
         <button class="botao-secao" data-modal-target="modalOracaoTodoPoderoso">Oração a Deus Todo Poderoso</button>
     </div>
 
-    <div class="section-header-title">Formação, Doutrina & Santos</div>
+    <div class="section-header-title">Variados Terços de Poder & Graça</div>
     <div class="container-cards">
+        <button class="botao-secao" data-modal-target="modalMisericordia">Terço da Divina Misericórdia</button>
+        <button class="botao-secao" data-modal-target="modalSantasChagas">Terço das Santas Chagas</button>
+        <button class="botao-secao" data-modal-target="modalLagrimas">Terço das Lágrimas de Maria</button>
+        <button class="botao-secao" data-modal-target="modalSagradoCoracao">Terço do Sagrado Coração</button>
+        <button class="botao-secao" data-modal-target="modalSaoBento">Terço de São Bento</button>
+        <button class="botao-secao" data-modal-target="modalDesatadora">Terço Desatadora dos Nós</button>
+        <button class="botao-secao" data-modal-target="modalSaoJose">Terço de São José</button>
+        <button class="botao-secao" data-modal-target="modalSantoExpedito">Terço de Santo Expedito</button>
+        <button class="botao-secao" data-modal-target="modalSantaTeresinha">Terço de Santa Teresinha</button>
+    </div>
+
+    <div class="section-header-title">Formação, Devoção & Santos</div>
+    <div class="container-cards">
+        <button class="botao-secao" data-modal-target="modalViaSacra">Via-Sacra Completa (14 Estações)</button>
+        <button class="botao-secao" data-modal-target="modalConsagracaoNossaSenhora">Consagração a Nossa Senhora</button>
         <button class="botao-secao" data-modal-target="modalBomCristao">Como ser um bom Cristão na prática!</button>
         <button class="botao-secao" data-modal-target="modalCatecismo">Catecismo da Igreja Católica</button>
         <button class="botao-secao" data-modal-target="modalFeCatolica">A fé católica</button>
@@ -579,37 +617,71 @@
     <p class="copyright">© Todos os direitos reservados 2026.</p>
 </footer>
 
-<!-- ==================== MODAIS ==================== -->
+<!-- ==================== MODAIS COMPLETOS ==================== -->
 
-<!-- NOVO MODAL: Quaresma de São Miguel Arcanjo Completa e Integrada -->
+<!-- MODAL: Quaresma e Rosário Completo de São Miguel Arcanjo -->
 <div id="modalQuaresmaSaoMiguel" class="modal" role="dialog" aria-modal="true" aria-labelledby="titleSaoMiguel">
     <div class="modal-content">
         <span class="close-button" aria-label="Fechar">&times;</span>
-        <h2 id="titleSaoMiguel">Quaresma de São Miguel Arcanjo</h2>
+        <h2 id="titleSaoMiguel">Quaresma & Rosário de São Miguel Arcanjo</h2>
         <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
 
         <div class="modal-lead">
-            <strong>Tradição Franciscana:</strong> A Quaresma de São Miguel é um tempo especial de oração, combate espiritual e penitência rezado tradicionalmente de 15 de agosto a 29 de setembro (Festa dos Santos Arcanjos), ou em qualquer período de provação e combate da nossa vida espiritual.
+            <strong>Roteiro Sagrado e Completo:</strong> Este modal reúne a Quaresma diária de combate espiritual e o venerável <em>Rosário / Coroa Angélica de São Miguel Arcanjo</em> revelado por ele mesmo a Antônia de Astónaco, prometendo uma corte de anjos e assistência contínua na vida e na morte.
         </div>
 
         <div class="quaresma-step">
-            <h4>1. Como se preparar para o dia de oração:</h4>
-            <ul>
-                <li>Acender uma vela abençoada diante de uma imagem ou estampa de São Miguel Arcanjo (se possível).</li>
-                <li>Oferecer uma pequena penitência ou sacrifício durante os 40 dias.</li>
-                <li>Fazer com devoção o <strong>Sinal da Cruz</strong>: <em>Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</em></li>
-            </ul>
+            <h4>1. Preparação & Sinal da Cruz</h4>
+            <p>Em nome do Pai, e do Filho, e do Espírito Santo. Amém.<br>
+                <strong>V.</strong> Deus, vinde em nosso auxílio.<br>
+                <strong>R.</strong> Senhor, socorrei-nos e salvai-nos.<br>
+                <em>Glória ao Pai, ao Filho e ao Espírito Santo. Como era no princípio, agora e sempre. Amém.</em></p>
         </div>
 
         <div class="quaresma-step">
-            <h4>2. Oração Inicial (Papa Leão XIII):</h4>
-            <p>“São Miguel Arcanjo, defendei-nos no combate, sede o nosso refúgio contra as maldades e ciladas do demônio. Ordene-lhe Deus, instantemente o pedimos; e vós, Príncipe da Milícia Celeste, pelo divino poder, precipitai no inferno a Satanás e a todos os espíritos malignos que andam pelo mundo para perder as almas. Amém.”</p>
-            <p><strong>Em seguida, reza-se:</strong><br>
+            <h4>2. O Rosário / Coroa Angélica de São Miguel Arcanjo (9 Saudações)</h4>
+            <p><strong>1ª Saudação (Serafins):</strong> Pela intercessão de São Miguel e do Coro Celeste dos Serafins, o Senhor nos faça dignos de arder na chama da perfeita caridade.<br>
+                <em>(1 Pai Nosso, 3 Ave Marias)</em></p>
+
+            <p><strong>2ª Saudação (Querubins):</strong> Pela intercessão de São Miguel e do Coro Celeste dos Querubins, o Senhor nos conceda a graça de abandonar o caminho do pecado e seguir a perfeição cristã.<br>
+                <em>(1 Pai Nosso, 3 Ave Marias)</em></p>
+
+            <p><strong>3ª Saudação (Tronos):</strong> Pela intercessão de São Miguel e do Coro Celeste dos Tronos, o Senhor derrame em nossos corações o espírito da verdadeira e sincera humildade.<br>
+                <em>(1 Pai Nosso, 3 Ave Marias)</em></p>
+
+            <p><strong>4ª Saudação (Dominações):</strong> Pela intercessão de São Miguel e do Coro Celeste das Dominações, o Senhor nos dê a graça de dominar os nossos sentidos e corrigir as más inclinações.<br>
+                <em>(1 Pai Nosso, 3 Ave Marias)</em></p>
+
+            <p><strong>5ª Saudação (Potestades):</strong> Pela intercessão de São Miguel e do Coro Celeste das Potestades, o Senhor proteja as nossas almas contra as ciladas e tentações do demônio.<br>
+                <em>(1 Pai Nosso, 3 Ave Marias)</em></p>
+
+            <p><strong>6ª Saudação (Virtudes):</strong> Pela intercessão de São Miguel e do Coro Celeste das Virtudes, o Senhor não nos deixe cair em tentação, mas nos livre de todo mal.<br>
+                <em>(1 Pai Nosso, 3 Ave Marias)</em></p>
+
+            <p><strong>7ª Saudação (Principados):</strong> Pela intercessão de São Miguel e do Coro Celeste dos Principados, o Senhor encha as nossas almas do espírito de verdadeira e sincera obediência.<br>
+                <em>(1 Pai Nosso, 3 Ave Marias)</em></p>
+
+            <p><strong>8ª Saudação (Arcanjos):</strong> Pela intercessão de São Miguel e do Coro Celeste dos Arcanjos, o Senhor nos conceda o dom da perseverança na fé e nas boas obras.<br>
+                <em>(1 Pai Nosso, 3 Ave Marias)</em></p>
+
+            <p><strong>9ª Saudação (Anjos):</strong> Pela intercessão de São Miguel e do Coro Celeste dos Anjos, o Senhor nos conceda ser guardados por eles nesta vida e conduzidos à glória eterna.<br>
+                <em>(1 Pai Nosso, 3 Ave Marias)</em></p>
+
+            <p><strong>Pai-Nossos Finais do Rosário Angélico:</strong><br>
+                • 1 Pai Nosso em honra de <strong>São Miguel Arcanjo</strong>.<br>
+                • 1 Pai Nosso em honra de <strong>São Gabriel Arcanjo</strong>.<br>
+                • 1 Pai Nosso em honra de <strong>São Rafael Arcanjo</strong>.<br>
+                • 1 Pai Nosso em honra do <strong>Santo Anjo da Guarda</strong>.</p>
+        </div>
+
+        <div class="quaresma-step">
+            <h4>3. Oração Inicial do Papa Leão XIII</h4>
+            <p>“São Miguel Arcanjo, defendei-nos no combate, sede o nosso refúgio contra as maldades e ciladas do demônio. Ordene-lhe Deus, instantemente o pedimos; e vós, Príncipe da Milícia Celeste, pelo divino poder, precipitai no inferno a Satanás e a todos os espíritos malignos que andam pelo mundo para perder as almas. Amém.”<br>
                 <em>Sacratíssimo Coração de Jesus, tende piedade de nós! (3 vezes)</em></p>
         </div>
 
         <div class="quaresma-step">
-            <h4>3. Ladainha de São Miguel Arcanjo:</h4>
+            <h4>4. Ladainha de São Miguel Arcanjo</h4>
             <p>Senhor, tende piedade de nós.<br>
                 Jesus Cristo, tende piedade de nós.<br>
                 Senhor, tende piedade de nós.<br>
@@ -650,31 +722,657 @@
         </div>
 
         <div class="quaresma-step">
-            <h4>4. Orações aos Santos Arcanjos:</h4>
-            <p>Reza-se com reverência:<br>
-                • <strong>1 Pai Nosso</strong> em honra de São Miguel Arcanjo.<br>
-                • <strong>1 Pai Nosso</strong> em honra de São Gabriel Arcanjo.<br>
-                • <strong>1 Pai Nosso</strong> em honra de São Rafael Arcanjo.</p>
-        </div>
-
-        <div class="quaresma-step">
-            <h4>5. Consagração a São Miguel Arcanjo:</h4>
+            <h4>5. Consagração Diária a São Miguel</h4>
             <p>“Ó Príncipe nobilíssimo dos Anjos, valoroso guerreiro do Altíssimo, zeloso defensor da glória do Senhor, terror dos espíritos rebeldes, amor e delícia de todos os Anjos justos, meu diletíssimo São Miguel Arcanjo, desejando eu fazer parte do número dos vossos devotos e servos, a vós hoje me consagro, me dou e me ofereço. Ponho a minha pessoa, o meu trabalho, a minha família e tudo o que me pertence sob a vossa potentíssima proteção. Defendei-me nas tentações, sustentai-me nas batalhas da vida e conduzi a minha alma à glória do Céu. Amém.”</p>
         </div>
 
         <div class="quaresma-step">
-            <h4>6. Oração Augusta Rainha dos Céus:</h4>
-            <p>“Augusta Rainha dos céus e Senhora dos Anjos, vós que recebestes de Deus o poder e a missão de esmagar a cabeça de Satanás, pedimos-vos humildemente: enviai as legiões celestes para que, sob as vossas ordens, persigam os demônios, combatam-nos por toda a parte, repreendam a sua audácia e os precipitem no abismo. Quem como Deus? Santos Anjos e Arcanjos, defendei-nos e guardai-nos! Amém.”</p>
-        </div>
-
-        <div class="quaresma-step">
-            <h4>7. Oração Final de Bênção e Vitória:</h4>
-            <p>“Levanta-se Deus, pela intercessão da Bem-Aventurada Virgem Maria, de São Miguel Arcanjo e de todas as milícias celestes; sejam dispersos os seus inimigos e fujam de sua face todos os que O odeiam! Em nome do Pai, e do Filho, e do Espírito Santo. Amém.”</p>
+            <h4>6. Oração Augusta Rainha dos Céus & Encerramento</h4>
+            <p>“Augusta Rainha dos céus e Senhora dos Anjos, vós que recebestes de Deus o poder e a missão de esmagar a cabeça de Satanás, pedimos-vos humildemente: enviai as legiões celestes para que, sob as vossas ordens, persigam os demônios, combatam-nos por toda a parte, repreendam a sua audácia e os precipitem no abismo. Quem como Deus? Santos Anjos e Arcanjos, defendei-nos e guardai-nos! Levanta-se Deus por intercessão da Bem-Aventurada Virgem Maria e de São Miguel Arcanjo, e sejam dispersos os seus inimigos. Em nome do Pai, e do Filho, e do Espírito Santo. Amém.”</p>
         </div>
     </div>
 </div>
 
-<!-- Modal Senhor do Bonfim -->
+<!-- MODAL: Rezas do Rosário Completo & Ladainha Lauretana -->
+<div id="modalRosarioCompleto" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Livrinho do Santo Terço & Ladainha Lauretana</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+
+        <div class="modal-lead">
+            <strong>Guia Completo de Oração, Meditação e Devoção Mariana:</strong> <em>“Maria, Mãe de Jesus, rogai por nós.”</em>[cite: 1] Roteiro completo, fundamentos bíblicos, orações e a Santa Ladainha[cite: 1].
+        </div>
+
+        <div class="quaresma-step">
+            <h4>O que é a Reza do Terço?</h4>
+            <p>O Santo Terço é uma oração de contemplação dos mistérios da vida de Jesus Cristo, rezada com a repetição de orações como o Pai-Nosso, a Ave-Maria e o Glória ao Pai[cite: 1]. A estrutura tradicional reúne cinco dezenas, e cada dezena é dedicada a um mistério[cite: 1]. A oração mariana conduz a pessoa a meditar no Evangelho enquanto repete as Ave-Marias[cite: 1].</p>
+            <p><em>Uma forma simples de entender:</em> o Terço não é apenas repetir palavras; cada Ave-Maria acompanha a meditação de um acontecimento da vida de Cristo, contemplado com Maria[cite: 1].</p>
+        </div>
+
+        <div class="quaresma-step">
+            <h4>Como Começou essa Devoção?</h4>
+            <p>A devoção do Rosário foi se formando ao longo dos séculos dentro da tradição cristã[cite: 1]. A oração das Ave-Marias e a meditação dos mistérios foram sendo organizadas progressivamente até chegar à forma conhecida hoje[cite: 1]. A tradição católica atribui grande importância à pregação e difusão do Rosário, especialmente na tradição ligada a São Domingos e à Ordem Dominicana, enquanto a forma atual dos mistérios foi ampliada posteriormente com os Mistérios Luminosos[cite: 1].</p>
+            <p>É importante distinguir a origem histórica da devoção das passagens bíblicas: a Bíblia não apresenta um texto chamado “Santo Terço” pronto para ser rezado[cite: 1]. O Terço é uma devoção desenvolvida pela Igreja a partir de orações e acontecimentos bíblicos, especialmente aqueles relacionados à vida de Jesus e Maria[cite: 1].</p>
+        </div>
+
+        <div class="quaresma-step">
+            <h4>Onde a Bíblia Fundamenta essa Devoção?</h4>
+            <ul>
+                <li><strong>Ave-Maria — Saudação do Anjo:</strong> <a href="https://www.bibliaonline.com.br/acf/lc/1/28" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 1,28</a> — a saudação do anjo Gabriel a Maria[cite: 1].</li>
+                <li><strong>Ave-Maria — Visitação:</strong> <a href="https://www.bibliaonline.com.br/acf/lc/1/41-45" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 1,41-45</a> — Isabel proclama a bem-aventurança de Maria[cite: 1].</li>
+                <li><strong>“Bendito é o fruto...”:</strong> <a href="https://www.bibliaonline.com.br/acf/lc/1/42" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 1,42</a> — Isabel bendiz o fruto do ventre de Maria[cite: 1].</li>
+                <li><strong>Maria, Mãe de Deus:</strong> <a href="https://www.bibliaonline.com.br/acf/lc/1/43" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 1,43</a> — Isabel chama Maria de “mãe do meu Senhor”[cite: 1].</li>
+                <li><strong>Pai-Nosso:</strong> <a href="https://www.bibliaonline.com.br/acf/mt/6/9-13" target="_blank" rel="noopener noreferrer" class="versiculo-link">Mateus 6,9-13</a> e <a href="https://www.bibliaonline.com.br/acf/lc/11/2-4" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 11,2-4</a> — Jesus ensina seus discípulos a rezar[cite: 1].</li>
+                <li><strong>Mistérios do Rosário:</strong> Os acontecimentos contemplados no Terço são encontrados nos Evangelhos e em Atos dos Apóstolos; alguns aspectos dos mistérios marianos pertencem à tradição da Igreja[cite: 1].</li>
+            </ul>
+        </div>
+
+        <div class="quaresma-step">
+            <h4>Passo a Passo de Como Rezar Completamente no Terço</h4>
+            <p><strong>1. Na Cruz:</strong> Faça o Sinal da Cruz e reze o Pedido Inicial e o Creio[cite: 1].<br>
+                <strong>2. Na 1ª Conta Grande:</strong> Reze 1 Pai-Nosso[cite: 1].<br>
+                <strong>3. Nas 3 Contas Pequenas:</strong> Reze 3 Ave-Marias (oferecidas em honra à Santíssima Trindade pedindo aumento da Fé, Esperança e Caridade)[cite: 1].<br>
+                <strong>4. No Espaço / Medalha:</strong> Reze 1 Glória ao Pai e a Oração de Fátima (Ó meu Jesus...)[cite: 1].<br>
+                <strong>5. Nas 5 Dezenas:</strong> Para cada dezena, anuncie o Mistério correspondente[cite: 1], faça a reflexão bíblica e reze: <strong>1 Pai-Nosso</strong> na conta grande[cite: 1], <strong>10 Ave-Marias</strong> nas 10 contas pequenas[cite: 1], <strong>1 Glória ao Pai</strong> e a <strong>Oração de Fátima</strong>[cite: 1].<br>
+                <strong>6. Ao Final das 5 Dezenas:</strong> Reze os Agradecimentos, a Salve-Rainha, a Oração Final e a Ladainha de Nossa Senhora[cite: 1].</p>
+        </div>
+
+        <div class="quaresma-step">
+            <h4>Guia Rápido dos Mistérios para Toda a Semana</h4>
+            <table class="custom-table">
+                <thead>
+                <tr><th>Dia da Semana</th><th>Mistérios Meditados</th></tr>
+                </thead>
+                <tbody>
+                <tr><td>Segunda-feira</td><td>Mistérios Gozosos[cite: 1]</td></tr>
+                <tr><td>Terça-feira</td><td>Mistérios Dolorosos[cite: 1]</td></tr>
+                <tr><td>Quarta-feira</td><td>Mistérios Gloriosos[cite: 1]</td></tr>
+                <tr><td>Quinta-feira</td><td>Mistérios Luminosos[cite: 1]</td></tr>
+                <tr><td>Sexta-feira</td><td>Mistérios Dolorosos[cite: 1]</td></tr>
+                <tr><td>Sábado</td><td>Mistérios Gozosos[cite: 1]</td></tr>
+                <tr><td>Domingo</td><td>Mistérios Gloriosos[cite: 1]</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="rezas-container">
+            <h3>Orações do Terço em Detalhe:</h3>
+
+            <h4>Sinal da Cruz:</h4>
+            <p>"Em nome do Pai, e do Filho, e do Espírito Santo. Amém."[cite: 1]</p>
+
+            <h4>Pedido Inicial do Santo Terço:</h4>
+            <p>"Senhor meu Deus, eu vos ofereço este Santo Terço por minhas intenções, pelas necessidades da minha família, pelos que sofrem, pelos enfermos, pelos que precisam de oração e por todas as intenções que trago no coração. Pela intercessão da Santíssima Virgem Maria, conduzi-me sempre para mais perto de Jesus. Amém."[cite: 1]</p>
+
+            <h4>Creio (Credo dos Apóstolos):</h4>
+            <p>"Creio em Deus Pai todo-poderoso, Criador do céu e da terra; e em Jesus Cristo, seu único Filho, nosso Senhor; que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos, foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus; está sentado à direita de Deus Pai todo-poderoso, donde há de vir a julgar os vivos e os mortos. Creio no Espírito Santo; na Santa Igreja Católica; na comunhão dos santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém."[cite: 1]</p>
+
+            <h4>Pai-Nosso:</h4>
+            <p>"Pai nosso, que estais nos céus, santificado seja o vosso nome; venha a nós o vosso Reino; seja feita a vossa vontade, assim na terra como no céu. O pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas, assim como nós perdoamos a quem nos tem ofendido; e não nos deixeis cair em tentação, mas livrai-nos do mal. Amém."[cite: 1]</p>
+
+            <h4>Ave-Maria:</h4>
+            <p>"Ave, Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora de nossa morte. Amém."[cite: 1]</p>
+
+            <h4>Glória ao Pai:</h4>
+            <p>"Glória ao Pai, ao Filho e ao Espírito Santo. Como era no princípio, agora e sempre. Amém."[cite: 1]</p>
+
+            <h4>Oração de Fátima (Jaculatória):</h4>
+            <p>"Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno; levai as almas todas para o céu e socorrei principalmente as que mais precisarem."[cite: 1]</p>
+
+            <h4>Agradecimento & Salve-Rainha:</h4>
+            <p>"Infinitas graças vos damos, soberana Rainha, pelos benefícios que todos os dias recebemos de vossas mãos maternais. Dignai-vos agora e para sempre tomar-nos debaixo do vosso poderoso amparo e para mais vos obrigar, vos saudamos com uma Salve Rainha:<br>
+                Salve, Rainha, Mãe de misericórdia, vida, doçura e esperança nossa, salve! A vós bradamos, os degredados filhos de Eva; a vós suspiramos, gemendo e chorando neste vale de lágrimas. Eia, pois, advogada nossa, esses vossos olhos misericordiosos a nós volvei; e depois deste desterro, mostrai-nos Jesus, bendito fruto do vosso ventre. Ó clemente, ó piedosa, ó doce sempre Virgem Maria. Rogai por nós, Santa Mãe de Deus, para que sejamos dignos das promessas de Cristo. Amém."[cite: 1]</p>
+
+            <h4>Oração Final do Terço:</h4>
+            <p>"Senhor Jesus Cristo, nós vos agradecemos por este momento de oração. Pela intercessão da Santíssima Virgem Maria, ajudai-nos a viver o Evangelho, crescer na fé, na esperança e na caridade e permanecer sempre próximos de vós. Amém."[cite: 1]</p>
+
+            <h3>Ladainha de Nossa Senhora (Ladainha Lauretana Completa):</h3>
+            <p>Senhor, tende piedade de nós.<br>
+                Jesus Cristo, tende piedade de nós.<br>
+                Senhor, tende piedade de nós.<br>
+                Jesus Cristo, ouvi-nos.<br>
+                Jesus Cristo, atendei-nos.<br>
+                Pai do Céu, que sois Deus, <em>tende piedade de nós.</em><br>
+                Filho, Redentor do mundo, que sois Deus, <em>tende piedade de nós.</em><br>
+                Espírito Santo, que sois Deus, <em>tende piedade de nós.</em><br>
+                Santíssima Trindade, que sois um só Deus, <em>tende piedade de nós.</em><br>
+                Santa Maria — <em>Rogai por nós.</em>[cite: 1]<br>
+                Santa Mãe de Deus — <em>Rogai por nós.</em>[cite: 1]<br>
+                Santa Virgem das virgens — <em>Rogai por nós.</em>[cite: 1]<br>
+                Mãe de Cristo — <em>Rogai por nós.</em>[cite: 1]<br>
+                Mãe da Igreja — <em>Rogai por nós.</em>[cite: 1]<br>
+                Mãe da divina graça — <em>Rogai por nós.</em>[cite: 1]<br>
+                Mãe puríssima — <em>Rogai por nós.</em>[cite: 1]<br>
+                Mãe castíssima — <em>Rogai por nós.</em>[cite: 1]<br>
+                Mãe sempre virgem — <em>Rogai por nós.</em>[cite: 1]<br>
+                Mãe imaculada — <em>Rogai por nós.</em>[cite: 1]<br>
+                Mãe amável — <em>Rogai por nós.</em>[cite: 1]<br>
+                Mãe admirável — <em>Rogai por nós.</em>[cite: 1]<br>
+                Mãe do bom conselho — <em>Rogai por nós.</em>[cite: 1]<br>
+                Mãe do Criador — <em>Rogai por nós.</em>[cite: 1]<br>
+                Mãe do Salvador — <em>Rogai por nós.</em>[cite: 1]<br>
+                Virgem prudentíssima — <em>Rogai por nós.</em>[cite: 1]<br>
+                Virgem venerável — <em>Rogai por nós.</em>[cite: 1]<br>
+                Virgem louvável — <em>Rogai por nós.</em>[cite: 1]<br>
+                Virgem poderosa — <em>Rogai por nós.</em>[cite: 1]<br>
+                Virgem clemente — <em>Rogai por nós.</em>[cite: 1]<br>
+                Virgem fiel — <em>Rogai por nós.</em>[cite: 1]<br>
+                Espelho de justiça — <em>Rogai por nós.</em>[cite: 1]<br>
+                Sede da sabedoria — <em>Rogai por nós.</em>[cite: 1]<br>
+                Causa da nossa alegria — <em>Rogai por nós.</em>[cite: 1]<br>
+                Vaso espiritual — <em>Rogai por nós.</em>[cite: 1]<br>
+                Vaso honorífico — <em>Rogai por nós.</em>[cite: 1]<br>
+                Vaso insigne de devoção — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rosa mística — <em>Rogai por nós.</em>[cite: 1]<br>
+                Torre de Davi — <em>Rogai por nós.</em>[cite: 1]<br>
+                Torre de marfim — <em>Rogai por nós.</em>[cite: 1]<br>
+                Casa de ouro — <em>Rogai por nós.</em>[cite: 1]<br>
+                Arca da aliança — <em>Rogai por nós.</em>[cite: 1]<br>
+                Porta do céu — <em>Rogai por nós.</em>[cite: 1]<br>
+                Estrela da manhã — <em>Rogai por nós.</em>[cite: 1]<br>
+                Saúde dos enfermos — <em>Rogai por nós.</em>[cite: 1]<br>
+                Refúgio dos pecadores — <em>Rogai por nós.</em>[cite: 1]<br>
+                Consoladora dos aflitos — <em>Rogai por nós.</em>[cite: 1]<br>
+                Auxílio dos cristãos — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha dos Anjos — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha dos Patriarcas — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha dos Profetas — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha dos Apóstolos — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha dos Mártires — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha dos Confessores — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha das Virgens — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha de todos os Santos — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha concebida sem pecado original — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha assunta ao céu — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha do Santíssimo Rosário — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha da família — <em>Rogai por nós.</em>[cite: 1]<br>
+                Rainha da paz — <em>Rogai por nós.</em>[cite: 1]</p>
+            <p>Cordeiro de Deus, que tirais os pecados do mundo, <em>perdoai-nos, Senhor.</em>[cite: 1]<br>
+                Cordeiro de Deus, que tirais os pecados do mundo, <em>ouvi-nos, Senhor.</em>[cite: 1]<br>
+                Cordeiro de Deus, que tirais os pecados do mundo, <em>tende piedade de nós.</em>[cite: 1]</p>
+            <p><strong>V.</strong> Rogai por nós, Santa Mãe de Deus.<br>
+                <strong>R.</strong> Para que sejamos dignos das promessas de Cristo. Amém.[cite: 1]</p>
+            <p><strong>Oremos:</strong> Senhor Deus, nós vos suplicamos que concedais aos vossos servos perpétua saúde de alma e de corpo; e que, pela gloriosa intercessão da bem-aventurada sempre Virgem Maria, sejamos livres da presente tristeza e gozemos da eterna alegria. Por Cristo, nosso Senhor. Amém.[cite: 1]</p>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: Mistérios Gozosos -->
+<div id="modalGozosos" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Mistérios Gozosos (da Alegria)</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Os Mistérios Gozosos são meditados às <strong>segundas-feiras e sábados</strong>, conduzindo-nos a contemplar a Encarnação e infância do Senhor Jesus[cite: 1].</p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Passo a Passo no Terço</h4>
+            <p>1. <strong>Sinal da Cruz & Pedido Inicial:</strong> Faça o sinal da cruz e ofereça as intenções do Santo Terço[cite: 1].<br>
+                2. <strong>Na Cruz:</strong> Reze o <em>Creio em Deus Pai</em>[cite: 1].<br>
+                3. <strong>Primeira Conta Grande:</strong> Reze 1 <em>Pai-Nosso</em>[cite: 1].<br>
+                4. <strong>Três Contas Pequenas:</strong> Reze 3 <em>Ave-Marias</em> pedindo o aumento da Fé, Esperança e Caridade[cite: 1].<br>
+                5. <strong>Glória & Jaculatória:</strong> Reze o <em>Glória ao Pai</em> e a oração <em>“Ó meu Jesus...”</em>[cite: 1]<br>
+                6. <strong>Em Cada uma das 5 Dezenas:</strong> Anuncie o Mistério, leia a passagem/meditação e reze: <strong>1 Pai-Nosso</strong>, <strong>10 Ave-Marias</strong>, <strong>1 Glória ao Pai</strong> e a <strong>Oração de Fátima</strong>[cite: 1].<br>
+                7. <strong>Conclusão:</strong> Reze o Agradecimento, a Salve-Rainha e a Oração Final[cite: 1].</p>
+        </div>
+
+        <div class="rezas-container">
+            <h3>Os 5 Mistérios Gozosos:</h3>
+
+            <p><strong>1º Mistério: A Anunciação do Anjo a Maria</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/lc/1/26-38" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 1,26-38</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Humildade.<br>
+                <em>Oração:</em> "Ó Maria, Virgem Imaculada, que pela Anunciação do Anjo Gabriel aceitastes ser Mãe de Deus, ensinai-nos a humildade e a obediência à vontade divina."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima (Ó meu Jesus)[cite: 1]</p>
+
+            <p><strong>2º Mistério: A Visitação de Maria a Isabel</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/lc/1/39-56" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 1,39-56</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Caridade Fraterna.<br>
+                <em>Oração:</em> "Virgem Santíssima, que apressadamente vos pusestes a caminho para servir vossa prima Isabel, concedei-nos a graça de amar e servir o próximo com alegria e prontidão."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>3º Mistério: O Nascimento de Jesus em Belém</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/lc/2/1-20" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 2,1-20</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Pobreza de Espírito e Desapego.<br>
+                <em>Oração:</em> "Jesus, Menino Deus, que nascestes pobre num presépio, ensinai-nos a desapegar-nos das riquezas e a encontrar a verdadeira alegria na simplicidade e no serviço."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>4º Mistério: A Apresentação de Jesus no Templo</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/lc/2/22-40" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 2,22-40</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Pureza e Obediência.<br>
+                <em>Oração:</em> "Senhor, que fostes apresentado no Templo em sacrifício por nós, purificai nossos corações e ensinai-nos a obediência à vossa Lei e à da Igreja."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>5º Mistério: A Perda e o Encontro de Jesus no Templo</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/lc/2/41-52" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 2,41-52</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Conversão e Procura Fiel de Deus.<br>
+                <em>Oração:</em> "Jesus, que angustiastes vossos pais ao vos perderdes, mas vos revelastes no Templo, ajudai-nos a nunca nos afastarmos de vós e a vos procurar sempre com fervor e fé."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: Mistérios Dolorosos -->
+<div id="modalDolorosos" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Mistérios Dolorosos (da Dor)</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Os Mistérios Dolorosos são meditados às <strong>terças e sextas-feiras</strong>, convidando-nos a refletir na Paixão, Sofrimento e Morte Redentora de Cristo[cite: 1].</p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Passo a Passo no Terço</h4>
+            <p>1. <strong>Sinal da Cruz & Pedido Inicial:</strong> Ofereça este terço em reparação aos ultrajes cometidos contra o Sagrado Coração[cite: 1].<br>
+                2. <strong>Na Cruz:</strong> Reze o <em>Creio em Deus Pai</em>[cite: 1].<br>
+                3. <strong>Primeira Conta Grande:</strong> Reze 1 <em>Pai-Nosso</em>[cite: 1].<br>
+                4. <strong>Três Contas Pequenas:</strong> Reze 3 <em>Ave-Marias</em> pedindo o dom da pureza, perseverança e fidelidade[cite: 1].<br>
+                5. <strong>Glória & Jaculatória:</strong> Reze o <em>Glória ao Pai</em> e <em>“Ó meu Jesus...”</em>[cite: 1]<br>
+                6. <strong>Em Cada uma das 5 Dezenas:</strong> Anuncie o Mistério, faça a oração meditada e reze: <strong>1 Pai-Nosso</strong>, <strong>10 Ave-Marias</strong>, <strong>1 Glória ao Pai</strong> e a <strong>Oração de Fátima</strong>[cite: 1].<br>
+                7. <strong>Encerramento:</strong> Reze a Salve-Rainha e a Oração Final de Agradecimento[cite: 1].</p>
+        </div>
+
+        <div class="rezas-container">
+            <h3>Os 5 Mistérios Dolorosos:</h3>
+
+            <p><strong>1º Mistério: A Agonia de Jesus no Horto das Oliveiras</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/lc/22/39-46" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 22,39-46</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Contrição sincera e arrependimento dos pecados.<br>
+                <em>Oração:</em> "Jesus, que em vossa agonia suastes sangue por nossos pecados, concedei-nos a graça de um sincero arrependimento e de uma verdadeira contrição."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>2º Mistério: A Flagelação de Jesus atado à coluna</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/jo/19/1" target="_blank" rel="noopener noreferrer" class="versiculo-link">João 19,1</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Mortificação dos sentidos e pureza corporal.<br>
+                <em>Oração:</em> "Senhor, que fostes cruelmente flagelado por nossos crimes, ensinai-nos a dominar nossos sentidos e a suportar com paciência as adversidades da vida."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>3º Mistério: A Coroação de Espinhos</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/mt/27/27-31" target="_blank" rel="noopener noreferrer" class="versiculo-link">Mateus 27,27-31</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Desprezo das vaidades e humildade mental.<br>
+                <em>Oração:</em> "Jesus, coroado de espinhos em escárnio, ajudai-nos a renunciar à vaidade e ao orgulho, e a abraçar a humildade em todas as nossas ações."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>4º Mistério: Jesus Carrega a Cruz a Caminho do Calvário</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/lc/23/26-32" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 23,26-32</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Paciência nas tribulações e abraço da Cruz diária.<br>
+                <em>Oração:</em> "Cristo, que com a Cruz às costas seguistes para o Calvário, dai-nos força para carregar nossas cruzes diárias com resignação e fé em vossa providência."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>5º Mistério: A Crucificação e Morte de Jesus</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/lc/23/33-49" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 23,33-49</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Amor a Jesus, perdão e salvação das almas.<br>
+                <em>Oração:</em> "Ó Bom Jesus, que na Cruz destes a vida por nós, acendei em nossos corações o fogo do vosso amor e a caridade para com todos, até mesmo com aqueles que nos ofendem."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: Mistérios Gloriosos -->
+<div id="modalGloriosos" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Mistérios Gloriosos (da Glória)</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Os Mistérios Gloriosos são meditados às <strong>quartas-feiras e domingos</strong>, celebrando a vitória triunfal de Cristo sobre a morte e a exaltação da Mãe de Deus[cite: 1].</p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Passo a Passo no Terço</h4>
+            <p>1. <strong>Início:</strong> Sinal da Cruz e Pedido Inicial com fervor[cite: 1].<br>
+                2. <strong>Na Cruz:</strong> Recitação do <em>Creio</em>[cite: 1].<br>
+                3. <strong>Contas Iniciais:</strong> 1 <em>Pai-Nosso</em>, 3 <em>Ave-Marias</em> pelas virtudes teologais, seguidos do <em>Glória ao Pai</em> e <em>Ó meu Jesus</em>[cite: 1].<br>
+                4. <strong>Em Cada uma das 5 Dezenas:</strong> Anúncio solene do mistério de glória, oração do mistério e recitação de: <strong>1 Pai-Nosso</strong>, <strong>10 Ave-Marias</strong>, <strong>1 Glória ao Pai</strong> e <strong>Oração de Fátima</strong>[cite: 1].<br>
+                5. <strong>Conclusão:</strong> Agradecimento a Nossa Senhora, Salve-Rainha e a Oração Final de ação de graças[cite: 1].</p>
+        </div>
+
+        <div class="rezas-container">
+            <h3>Os 5 Mistérios Gloriosos:</h3>
+
+            <p><strong>1º Mistério: A Ressurreição Triunfante de Jesus</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/mt/28/1-10" target="_blank" rel="noopener noreferrer" class="versiculo-link">Mateus 28,1-10</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> O dom da Fé viva e renovação espiritual.<br>
+                <em>Oração:</em> "Jesus Ressuscitado, que vencestes a morte e nos abristes as portas do Céu, aumentai nossa fé e a certeza da vida eterna."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>2º Mistério: A Ascensão de Jesus ao Céu</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/at/1/6-12" target="_blank" rel="noopener noreferrer" class="versiculo-link">Atos 1,6-12</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Esperança firme e desejo ardente do Céu.<br>
+                <em>Oração:</em> "Senhor, que subistes aos Céus para preparar-nos um lugar, elevai nossos corações das coisas terrenas e dai-nos a esperança das realidades celestes."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>3º Mistério: A Vinda do Espírito Santo em Pentecostes</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/at/2/1-13" target="_blank" rel="noopener noreferrer" class="versiculo-link">Atos 2,1-13</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Dons do Espírito Santo e zelo apostólico.<br>
+                <em>Oração:</em> "Espírito Santo Divino, que em Pentecostes descestes sobre os Apóstolos, iluminai-nos com vossos dons e guiai-nos no caminho da santidade."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>4º Mistério: A Assunção de Nossa Senhora ao Céu</strong><br>
+                <em>Meditação:</em> Conforme a Tradição Dogmática da Santa Igreja[cite: 1].<br>
+                <em>Fruto / Virtude:</em> Devoção terna a Maria e graça de uma Santa Morte.<br>
+                <em>Oração:</em> "Virgem Maria, que fostes assunta ao Céu em corpo e alma, sede nosso refúgio e intercedei por nós, para que tenhamos uma boa morte e alcancemos a glória do Céu."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>5º Mistério: A Coroação de Maria como Rainha dos Céus e da Terra</strong><br>
+                <em>Meditação:</em> Conforme a Tradição da Igreja[cite: 1] (<a href="https://www.bibliaonline.com.br/acf/ap/12/1" target="_blank" rel="noopener noreferrer" class="versiculo-link">Apocalipse 12,1</a>).<br>
+                <em>Fruto / Virtude:</em> Confiança filial na intercessão de Maria e Perseverança Final.<br>
+                <em>Oração:</em> "Rainha do Céu e da Terra, coroada de glória, rogai por nós e por todos os pecadores, para que um dia possamos compartilhar convosco a bem-aventurança eterna."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: Mistérios Luminosos -->
+<div id="modalLuminosos" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Mistérios Luminosos (da Luz)</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Os Mistérios Luminosos são meditados às <strong>quintas-feiras</strong>, instituídos por São João Paulo II para contemplarmos a vida pública e a luz salvífica de Jesus Cristo[cite: 1].</p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Passo a Passo no Terço</h4>
+            <p>1. <strong>Início:</strong> Sinal da Cruz e oferecimento pelo Papa, pela Igreja e pela santificação pessoal[cite: 1].<br>
+                2. <strong>Na Cruz:</strong> Oração do <em>Creio</em>[cite: 1].<br>
+                3. <strong>Contas Iniciais:</strong> 1 <em>Pai-Nosso</em>, 3 <em>Ave-Marias</em>, 1 <em>Glória</em> e <em>Ó meu Jesus</em>[cite: 1].<br>
+                4. <strong>Nas 5 Dezenas:</strong> Anunciar o mistério de luz, acolher a Palavra de Deus e rezar: <strong>1 Pai-Nosso</strong>, <strong>10 Ave-Marias</strong>, <strong>1 Glória ao Pai</strong> e a <strong>Oração de Fátima</strong>[cite: 1].<br>
+                5. <strong>Conclusão:</strong> Agradecimento, Salve-Rainha e Oração Final[cite: 1].</p>
+        </div>
+
+        <div class="rezas-container">
+            <h3>Os 5 Mistérios Luminosos:</h3>
+
+            <p><strong>1º Mistério: O Batismo de Jesus no Rio Jordão</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/mt/3/13-17" target="_blank" rel="noopener noreferrer" class="versiculo-link">Mateus 3,13-17</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Fidelidade fervorosa às promessas do Santo Batismo.<br>
+                <em>Oração:</em> "Jesus, que no Jordão fostes batizado e revelastes vossa divindade, dai-nos a graça de viver fielmente as promessas do nosso batismo e de ser vossas testemunhas no mundo."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>2º Mistério: A Auto-revelação de Jesus nas Bodas de Caná</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/jo/2/1-12" target="_blank" rel="noopener noreferrer" class="versiculo-link">João 2,1-12</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Confiança plena na poderosa intercessão da Virgem Maria.<br>
+                <em>Oração:</em> "Senhor, que em Caná transformastes a água em vinho por intercessão de Maria, fortalecei nossa fé em vós e nossa inteira confiança na intercessão de vossa Mãe."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>3º Mistério: O Anúncio do Reino de Deus e o Convite à Conversão</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/mc/1/14-15" target="_blank" rel="noopener noreferrer" class="versiculo-link">Marcos 1,14-15</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Verdadeira conversão do coração e acolhimento do Evangelho.<br>
+                <em>Oração:</em> "Jesus, que proclamastes o Reino de Deus e chamastes à conversão, tomai posse de nossos corações e transformai-nos para que vivamos segundo vossa santíssima vontade."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>4º Mistério: A Transfiguração de Jesus no Monte Tabor</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/mt/17/1-8" target="_blank" rel="noopener noreferrer" class="versiculo-link">Mateus 17,1-8</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Busca constante da Santidade e escuta da Palavra.<br>
+                <em>Oração:</em> "Cristo Transfigurado, que revelastes vossa glória aos discípulos, acendei em nós o desejo da santidade e a esperança de um dia contemplar vossa face no Céu."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+
+            <p><strong>5º Mistério: A Instituição da Santíssima Eucaristia</strong><br>
+                <em>Meditação Bíblica:</em> <a href="https://www.bibliaonline.com.br/acf/lc/22/14-20" target="_blank" rel="noopener noreferrer" class="versiculo-link">Lucas 22,14-20</a>[cite: 1]<br>
+                <em>Fruto / Virtude:</em> Adoração ardente ao Santíssimo Sacramento e amor à Santa Missa.<br>
+                <em>Oração:</em> "Jesus Eucarístico, que na Última Ceia vos destes como alimento e nos deixastes o sacramento do vosso amor, aumentai nossa fé e devoção à Eucaristia, fonte de vida eterna."<br>
+                <strong>Reza-se:</strong> 1 Pai-Nosso • 10 Ave-Marias • Glória ao Pai • Oração de Fátima[cite: 1]</p>
+        </div>
+    </div>
+</div>
+
+<!-- Terço da Divina Misericórdia -->
+<div id="modalMisericordia" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Terço da Divina Misericórdia</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Revelado por Jesus a Santa Faustina Kowalska: <em>"Pela recitação deste terço agrada-me conceder tudo o que me pedirem."</em> Reze preferencialmente às 15:00 horas (Hora da Misericórdia).</p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Completamente no Terço de 5 Dezenas</h4>
+            <p><strong>1. Na Cruz:</strong> Sinal da Cruz: <em>"Em nome do Pai, e do Filho, e do Espírito Santo. Amém."</em>[cite: 1]<br>
+                <strong>2. Nas Primeiras Contas:</strong><br>
+                • 1 <strong>Pai-Nosso</strong>[cite: 1]<br>
+                • 1 <strong>Ave-Maria</strong>[cite: 1]<br>
+                • 1 <strong>Creio (Credo)</strong>[cite: 1]<br>
+                <strong>3. Nas Contas Grandes (do Pai-Nosso):</strong> Rezar:<br>
+                <em>“Eterno Pai, eu Vos ofereço o Corpo e o Sangue, a Alma e a Divindade de Vosso diletíssimo Filho, Nosso Senhor Jesus Cristo, em expiação dos nossos pecados e dos do mundo inteiro.”</em><br>
+                <strong>4. Nas 10 Contas Pequenas (da Ave-Maria):</strong> Rezar:<br>
+                <em>“Pela Sua dolorosa Paixão, tende misericórdia de nós e do mundo inteiro.”</em> (10 vezes)<br>
+                <strong>5. Ao Final das 5 Dezenas (Conclusão):</strong> Rezar 3 vezes:<br>
+                <em>“Deus Santo, Deus Forte, Deus Imortal, tende piedade de nós e do mundo inteiro.”</em> (3 vezes)<br>
+                <strong>6. Jaculatória de Encerramento:</strong><br>
+                <em>“Ó Sangue e Água que jorrastes do Coração de Jesus como fonte de misericórdia para nós, eu confio em Vós! Jesus, eu confio em Vós! Amém.”</em></p>
+        </div>
+    </div>
+</div>
+
+<!-- Terço das Santas Chagas -->
+<div id="modalSantasChagas" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Terço das Santas Chagas de Jesus</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Devoção sublime de cura, libertação e reparação ensinada por Nosso Senhor à Irmã Maria Marta Chambon.</p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Completamente no Terço Comum</h4>
+            <p><strong>1. Na Cruz:</strong> Sinal da Cruz e Oração Inicial:<br>
+                <em>“Ó Jesus, Divino Redentor, sede misericordioso para conosco e para com o mundo inteiro. Amém. Deus Santo, Deus Forte, Deus Imortal, tende piedade de nós e do mundo inteiro. Graça e misericórdia, meu Jesus, nos perigos presentes; cobri-nos com o Vosso Sangue Precioso. Amém.”</em><br><br>
+                <strong>2. Nas Contas Iniciais:</strong> Rezar 1 Pai-Nosso, 1 Ave-Maria e 1 Creio.<br><br>
+                <strong>3. Nas Contas Grandes (do Pai-Nosso):</strong><br>
+                <em>“Eterno Pai, eu Vos ofereço as Chagas de Nosso Senhor Jesus Cristo, para curar as de nossas almas.”</em><br><br>
+                <strong>4. Nas Contas Pequenas (da Ave-Maria):</strong><br>
+                <em>“Meu Jesus, perdão e misericórdia, pelos méritos de Vossas Santas Chagas.”</em> (10 vezes em cada dezena)<br><br>
+                <strong>5. Oração de Conclusão (ao final das 5 dezenas):</strong> Rezar 3 vezes:<br>
+                <em>“Eterno Pai, eu Vos ofereço as Santas Chagas de Vosso Filho para a salvação da humanidade e alívio das almas. Em nome do Pai, do Filho e do Espírito Santo. Amém.”</em></p>
+        </div>
+    </div>
+</div>
+
+<!-- Terço das Lágrimas de Nossa Senhora -->
+<div id="modalLagrimas" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Terço das Lágrimas de Nossa Senhora</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Revelado por Nossa Senhora das Lágrimas à Irmã Amália de Jesus Flagelado em Campinas/SP (Coroa de 7 grupos de 7 contas = 49 contas).</p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Completamente no Terço das Lágrimas</h4>
+            <p><strong>1. Na Cruz:</strong> Sinal da Cruz e Oração Preparatória:<br>
+                <em>“Jesus Crucificado, prostrados aos Vossos pés, nós Vos oferecemos as lágrimas daquela que, com tanto amor, Vos acompanhou no caminho doloroso da Cruz. Fazei, ó bom Mestre, que compreendamos os ensinamentos que nos dão as lágrimas de Vossa Mãe Santíssima, para que, cumprindo a Vossa santíssima vontade aqui na terra, sejamos dignos de Vos louvar por toda a eternidade no Céu. Amém.”</em><br><br>
+                <strong>2. Nas Contas Grandes (7 contas divisórias):</strong><br>
+                <em>“Vede, ó Jesus, que são as lágrimas d’Aquela que mais Vos amou na terra e mais intensamente Vos ama no Céu.”</em><br><br>
+                <strong>3. Nas Contas Pequenas (7 grupos de 7 contas):</strong><br>
+                <em>“Meu Jesus, ouvi os nossos rogos, pelas lágrimas de Vossa Mãe Santíssima.”</em> (7 vezes em cada uma das 7 septenas)<br><br>
+                <strong>4. Nas 3 Contas Finais:</strong> Rezar 3 vezes:<br>
+                <em>“Vede, ó Jesus, que são as lágrimas d’Aquela que mais Vos amou na terra e mais intensamente Vos ama no Céu.”</em><br><br>
+                <strong>5. Oração de Encerramento:</strong><br>
+                <em>“Ó Virgem Dolorosíssima, as Vossas santas lágrimas destruam o império infernal! Pela Vossa divina mansidão, ó Jesus Manietado, salvai o mundo da perdição! Em nome do Pai, do Filho e do Espírito Santo. Amém.”</em></p>
+        </div>
+    </div>
+</div>
+
+<!-- Terço do Sagrado Coração de Jesus -->
+<div id="modalSagradoCoracao" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Terço do Sagrado Coração de Jesus</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Inesgotável manancial de amor, abrigo seguro e reparação ao Coração trespassado de Jesus Cristo.</p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Completamente no Terço Comum de 5 Dezenas</h4>
+            <p><strong>1. Na Cruz:</strong> Sinal da Cruz e Oração do <em>Creio em Deus Pai</em>[cite: 1].<br>
+                <strong>2. Nas Primeiras Contas:</strong> 1 Pai-Nosso, 1 Ave-Maria e 1 Glória ao Pai[cite: 1].<br>
+                <strong>3. Nas Contas Grandes (do Pai-Nosso):</strong><br>
+                <em>“Doce Coração de Jesus, sede o meu amor!”</em><br>
+                <strong>4. Nas 10 Contas Pequenas (da Ave-Maria):</strong><br>
+                <em>“Doce Coração de Maria, sede a minha salvação!”</em> (10 vezes)<br>
+                <strong>5. Ao Final de Cada Dezena:</strong><br>
+                <em>“Jesus, manso e humilde de coração, fazei o nosso coração semelhante ao Vosso.”</em><br>
+                <strong>6. Conclusão Final (ao término das 5 dezenas):</strong><br>
+                <em>“Sagrado Coração de Jesus, que tanto nos amais, fazei que eu vos ame cada vez mais! Sagrado Coração de Jesus, eu confio e espero em Vós! Coração Imaculado de Maria, rogai por nós. Amém.”</em></p>
+        </div>
+    </div>
+</div>
+
+<!-- Terço de São Bento -->
+<div id="modalSaoBento" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Terço & Oração de São Bento</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Escudo e arma invencível de libertação e vitória contra o mal e todas as tentações.</p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Completamente no Terço</h4>
+            <p><strong>1. Na Cruz:</strong> Sinal da Cruz e Oração da Santa Medalha de São Bento:<br>
+                <em>“A Cruz Sagrada seja a minha luz, não seja o dragão meu guia. Retira-te, satanás! Nunca me aconselhes coisas vãs. É mau o que me ofereces, bebe tu mesmo o teu veneno. Em nome do Pai, do Filho e do Espírito Santo. Amém.”</em><br><br>
+                <strong>2. Contas Iniciais:</strong> 1 Pai-Nosso, 1 Ave-Maria e 1 Creio.<br><br>
+                <strong>3. Nas Contas Grandes:</strong><br>
+                <em>“São Bento, glorioso Patriarca dos Monges, pela vossa santa intercessão, livrai-nos das ciladas do demônio, protegei nossos lares e dai-nos a paz de Cristo.”</em><br><br>
+                <strong>4. Nas Contas Pequenas:</strong><br>
+                <em>“Crux Sacra Sit Mihi Lux! Não seja o dragão meu guia!”</em> (10 vezes)<br><br>
+                <strong>5. Oração de Encerramento:</strong><br>
+                <em>“Ó Deus, que ornastes o glorioso São Bento com o espírito de todos os justos, concedei-nos a graça de sermos fortalecidos na fé e protegidos contra todo o mal nesta vida e na hora da morte. Por Cristo, Nosso Senhor. Amém.”</em></p>
+        </div>
+    </div>
+</div>
+
+<!-- Terço de Nossa Senhora Desatadora dos Nós -->
+<div id="modalDesatadora" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Terço de Nossa Senhora Desatadora dos Nós</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Para desatar os nós do pecado, aflições financeiras, vícios, enfermidades e discórdias familiares.</p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Completamente no Terço</h4>
+            <p><strong>1. Na Cruz:</strong> Sinal da Cruz e Ato de Contrição (ou Creio)[cite: 1].<br>
+                <strong>2. Oração Inicial:</strong><br>
+                <em>“Virgem Maria, Mãe do belo amor, Mãe que nunca recusa acudir a um filho necessitado, eu entrego hoje em vossas mãos maternais todos os nós da minha vida que me impedem de caminhar na santidade. Olhai com misericórdia para a minha aflição e desatai este nó (mencione a sua intenção). Amém.”</em><br><br>
+                <strong>3. Contas Iniciais:</strong> 1 Pai-Nosso e 3 Ave-Marias.<br><br>
+                <strong>4. Nas 5 Dezenas:</strong> Rezar o Mistério do Rosário próprio do dia da semana (Gozosos, Dolorosos, Gloriosos ou Luminosos)[cite: 1]:<br>
+                • Na conta grande: <strong>1 Pai-Nosso</strong>[cite: 1]<br>
+                • Nas 10 contas pequenas: <strong>10 Ave-Marias</strong>[cite: 1]<br>
+                • Ao final de cada dezena: <strong>1 Glória ao Pai</strong>[cite: 1] + a jaculatória: <em>“Nossa Senhora Desatadora dos Nós, rogai por nós e desatai os nós da nossa vida!”</em><br><br>
+                <strong>5. Oração Final:</strong><br>
+                <em>“Maria, Mãe de Deus e nossa Mãe, que com paciência infinita desfazes os laços do inimigo, recebei o nó da minha tribulação e, pelo Vosso divino poder junto a Jesus, desatai-o para a maior glória de Deus. Amém.”</em></p>
+        </div>
+    </div>
+</div>
+
+<!-- Terço de São José -->
+<div id="modalSaoJose" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Terço de São José (Terror dos Demônios)</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Para alcançar a providência no trabalho, pureza, paz doméstica, fidelidade e o consolo na hora da morte.</p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Completamente no Terço</h4>
+            <p><strong>1. Na Cruz:</strong> Sinal da Cruz e Oração do <em>Creio em Deus Pai</em>[cite: 1].<br>
+                <strong>2. Contas Iniciais:</strong> 1 Pai-Nosso, 1 Ave-Maria e 1 Glória ao Pai[cite: 1].<br>
+                <strong>3. Nas Contas Grandes (do Pai-Nosso):</strong><br>
+                <em>“Meu glorioso São José, nas vossas maiores aflições e tribulações, o Anjo do Senhor vos consolou. Consolai, guardai e socorrei também a minha alma!”</em><br>
+                <strong>4. Nas Contas Pequenas (da Ave-Maria):</strong><br>
+                <em>“São José, pai adotivo de Jesus e castíssimo esposo da Virgem Maria, rogai por nós que recorremos a vós.”</em> (10 vezes)<br>
+                <strong>5. Ao Final de Cada Dezena:</strong> 1 Glória ao Pai.<br>
+                <strong>6. Oração de Conclusão (ao término das 5 dezenas):</strong><br>
+                <em>“Lembrai-vos, ó puríssimo esposo da Virgem Maria, meu doce protetor São José, que nunca se ouviu dizer que algum daqueles que recorreram à vossa proteção e imploraram o vosso socorro tenha ficado sem consolo. Cheio de confiança, apresento-me diante de vós. Não desprezeis as minhas súplicas, ó pai nutrício do Redentor, mas acolhei-as favoravelmente. Amém. São José, Terror dos Demônios, rogai por nós!”</em></p>
+        </div>
+    </div>
+</div>
+
+<!-- Terço de Santo Expedito -->
+<div id="modalSantoExpedito" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Terço de Santo Expedito (Causas Urgentes)</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Socorro pronto nas aflições desesperadas, nas batalhas contra o atraso espiritual e a procrastinação.</p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Completamente no Terço</h4>
+            <p><strong>1. Na Cruz:</strong> Sinal da Cruz e Oração do <em>Creio em Deus Pai</em>[cite: 1].<br>
+                <strong>2. Contas Iniciais:</strong> 1 Pai-Nosso, 1 Ave-Maria e 1 Glória ao Pai[cite: 1].<br>
+                <strong>3. Nas Contas Grandes:</strong><br>
+                <em>“Santo Expedito, mártir invencível da fé e defensor dos aflitos, vós que recebestes a coroa da glória no Céu, atendei com prontidão a minha súplica urgente!”</em><br>
+                <strong>4. Nas Contas Pequenas:</strong><br>
+                <em>“Santo Expedito, das causas justas e urgentes, socorrei-me nesta hora de provação.”</em> (10 vezes)<br>
+                <strong>5. Ao Final de Cada Dezena:</strong> 1 Glória ao Pai.<br>
+                <strong>6. Jaculatória e Oração Final:</strong><br>
+                <em>“Hoje, e não amanhã! Hodie, non cras! Glorioso Santo Expedito, rogai por nós que a vós recorremos para que sejamos livres de todo desespero. Por Nosso Senhor Jesus Cristo. Amém.”</em></p>
+        </div>
+    </div>
+</div>
+
+<!-- Terço de Santa Teresinha -->
+<div id="modalSantaTeresinha" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Terço de Santa Teresinha do Menino Jesus (Das 24 Rosas)</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>A "Pequena Via" do Amor e da Infância Espiritual: <em>"Passarei o meu Céu fazendo o bem sobre a terra. Farei cair uma chuva de rosas!"</em></p>
+
+        <div class="quaresma-step">
+            <h4>Como Rezar Completamente o Terço das 24 Contas</h4>
+            <p><strong>1. Na Cruz:</strong> Sinal da Cruz: <em>"Em nome do Pai, do Filho e do Espírito Santo. Amém."</em>[cite: 1]<br><br>
+                <strong>2. Oração Inicial:</strong><br>
+                <em>“Santíssima Trindade, Pai, Filho e Espírito Santo, eu Vos agradeço por todas as graças e virtudes com que enriquecestes a alma de Santa Teresinha do Menino Jesus durante os seus 24 anos na terra. Pelos méritos de tão querida santinha, concedei-me a graça que ardentemente Vos peço.”</em><br><br>
+                <strong>3. Nas 24 Contas (em memória dos 24 anos de sua vida terrena):</strong><br>
+                Em cada conta reza-se:<br>
+                • <strong>1 Glória ao Pai</strong>[cite: 1]<br>
+                • <em>“Santa Teresinha do Menino Jesus e da Sagrada Face, fazei cair uma chuva de rosas sobre a minha vida e ensinai-me o caminho da simplicidade, do amor e da humildade.”</em><br><br>
+                <strong>4. Oração de Encerramento:</strong><br>
+                <em>“Ó Santa Teresinha, florzinha do Menino Jesus, derramai vossas rosas de bênçãos sobre nós, convertei os pecadores, curai os enfermos e alcançai-nos de Deus a graça da salvação eterna. Amém.”</em></p>
+        </div>
+    </div>
+</div>
+
+<!-- Consagração a Nossa Senhora -->
+<div id="modalConsagracaoNossaSenhora" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Consagração Total a Nossa Senhora</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>A Santa Escravidão de Amor segundo o Tratado da Verdadeira Devoção de São Luís Maria Grignion de Montfort.</p>
+        <div class="rezas-container">
+            <p>“Ó Sabedoria eterna e encarnada! Ó amabilíssimo e adorável Jesus, verdadeiro Deus e verdadeiro homem, único Filho do Pai Eterno e de Maria sempre Virgem! Adoro-Vos profundamente no seio e nas glórias de Vosso Pai, durante a eternidade, e no seio virginal de Maria, Vossa Mãe digníssima, no tempo da Vossa Encarnação.<br><br>
+                Eu, pecador infiel, renovo e ratifico hoje, em vossas mãos, os votos do meu Batismo: renuncio para sempre a Satanás, a suas pompas e a suas obras, e dou-me inteiramente a Jesus Cristo, Sabedoria Encarnada, para carregar a minha cruz em Seu seguimento todos os dias da minha vida.<br><br>
+                E, para Lhe ser mais fiel do que tenho sido até aqui, escolho-vos hoje, ó Maria, na presença de toda a corte celeste, por minha Mãe e Senhora. Entrego-vos e consagro-vos, na qualidade de escravo de amor, o meu corpo e a minha alma, os meus bens interiores e exteriores, e o próprio valor das minhas boas ações passadas, presentes e futuras, deixando-vos pleno e total direito de dispor de mim e de tudo o que me pertence, sem exceção, segundo o vosso beneplácito, para a maior glória de Deus, no tempo e na eternidade. Amém.”</p>
+        </div>
+    </div>
+</div>
+
+<!-- Via-Sacra Completa -->
+<div id="modalViaSacra" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Via-Sacra Completa (As 14 Estações)</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p><em>“Nós Vos adoramos, Senhor Jesus Cristo, e Vos bendizemos, porque pela Vossa Santa Cruz remistes o mundo.”</em></p>
+        <div class="rezas-container">
+            <ol>
+                <li><strong>1ª Estação:</strong> Jesus é condenado à morte.</li>
+                <li><strong>2ª Estação:</strong> Jesus carrega a Cruz às costas.</li>
+                <li><strong>3ª Estação:</strong> Jesus cai pela primeira vez.</li>
+                <li><strong>4ª Estação:</strong> Jesus encontra Sua Mãe Santíssima.</li>
+                <li><strong>5ª Estação:</strong> Simão Cireneu ajuda Jesus a levar a Cruz.</li>
+                <li><strong>6ª Estação:</strong> Verônica enxuga o Rosto de Jesus.</li>
+                <li><strong>7ª Estação:</strong> Jesus cai pela segunda vez.</li>
+                <li><strong>8ª Estação:</strong> Jesus consola as mulheres de Jerusalém.</li>
+                <li><strong>9ª Estação:</strong> Jesus cai pela terceira vez.</li>
+                <li><strong>10ª Estação:</strong> Jesus é despojado de Suas vestes.</li>
+                <li><strong>11ª Estação:</strong> Jesus é pregado na Cruz.</li>
+                <li><strong>12ª Estação:</strong> Jesus morre na Cruz.</li>
+                <li><strong>13ª Estação:</strong> Jesus é descido da Cruz e entregue a Sua Mãe.</li>
+                <li><strong>14ª Estação:</strong> Jesus é depositado no Santo Sepulcro.</li>
+            </ol>
+            <p><strong>Oração Final:</strong> “Senhor Jesus, que morrestes por amor a nós, dai-nos a graça de abraçar as nossas cruzes cotidianas e ressuscitar convosco para a vida eterna. Amém.”</p>
+        </div>
+    </div>
+</div>
+
+<!-- Consagração ao Senhor do Bonfim -->
 <div id="modalBonfim" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" aria-label="Fechar">&times;</span>
@@ -687,135 +1385,7 @@
     </div>
 </div>
 
-<!-- Modal Gozosos -->
-<div id="modalGozosos" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-        <span class="close-button" aria-label="Fechar">&times;</span>
-        <h2>Mistérios Gozosos</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>Os Mistérios Gozosos (ou da Alegria) são meditados às segundas-feiras e sábados, e nos lembram os momentos de alegria da vida de Jesus e Maria. Eles nos convidam à humildade e à caridade.</p>
-        <div class="rezas-container">
-            <h3>Rezas dos Mistérios Gozosos:</h3>
-            <p><strong>1º Mistério: A Anunciação do Anjo Gabriel à Nossa Senhora</strong><br>
-                Fruto: Humildade.<br>
-                Oração: "Ó Maria, Virgem Imaculada, que pela Anunciação do Anjo Gabriel aceitastes ser Mãe de Deus, ensinai-nos a humildade e a obediência à vontade divina."</p>
-
-            <p><strong>2º Mistério: A Visitação de Nossa Senhora à sua prima Santa Isabel</strong><br>
-                Fruto: Caridade Fraterna.<br>
-                Oração: "Virgem Santíssima, que apressadamente vos pusestes a caminho para servir vossa prima Isabel, concedei-nos a graça de amar e servir o próximo com alegria e prontidão."</p>
-
-            <p><strong>3º Mistério: O Nascimento de Jesus em Belém</strong><br>
-                Fruto: Pobreza de Espírito.<br>
-                Oração: "Jesus, Menino Deus, que nascestes pobre num presépio, ensinai-nos a desapegar-nos das riquezas e a encontrar a verdadeira alegria na simplicidade e no serviço."</p>
-
-            <p><strong>4º Mistério: A Apresentação do Menino Jesus no Templo</strong><br>
-                Fruto: Pureza e Obediência.<br>
-                Oração: "Senhor, que fostes apresentado no Templo em sacrifício por nós, purificai nossos corações e ensinai-nos a obediência à vossa Lei e à da Igreja."</p>
-
-            <p><strong>5º Mistério: A Perda e Encontro de Jesus no Templo</strong><br>
-                Fruto: Conversão e Procura de Deus.<br>
-                Oração: "Jesus, que angustiastes vossos pais ao vos perderdes, mas vos revelastes no Templo, ajudai-nos a nunca nos afastarmos de vós e a vos procurar sempre com fervor e fé."</p>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Dolorosos -->
-<div id="modalDolorosos" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-        <span class="close-button" aria-label="Fechar">&times;</span>
-        <h2>Mistérios Dolorosos</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>Os Mistérios Dolorosos (ou da Dor) são meditados às terças e sextas-feiras, e nos convidam a refletir sobre a Paixão e Morte de Jesus Cristo, buscando a paciência e a contrição pelos nossos pecados.</p>
-        <div class="rezas-container">
-            <h3>Rezas dos Mistérios Dolorosos:</h3>
-            <p><strong>1º Mistério: A Agonia de Jesus no Horto das Oliveiras</strong><br>
-                Fruto: Arrependimento dos pecados.<br>
-                Oração: "Jesus, que em vossa agonia suastes sangue por nossos pecados, concedei-nos a graça de um sincero arrependimento e de uma verdadeira contrição."</p>
-
-            <p><strong>2º Mistério: A Flagelação de Jesus</strong><br>
-                Fruto: Mortificação dos sentidos.<br>
-                Oração: "Senhor, que fostes cruelmente flagelado por nossos crimes, ensinai-nos a dominar nossos sentidos e a suportar com paciência as adversidades da vida."</p>
-
-            <p><strong>3º Mistério: A Coroação de Espinhos</strong><br>
-                Fruto: Desprezo das vaidades.<br>
-                Oração: "Jesus, coroado de espinhos em escárnio, ajudai-nos a renunciar à vaidade e ao orgulho, e a abraçar a humildade em todas as nossas ações."</p>
-
-            <p><strong>4º Mistério: Jesus com a Cruz às Costas a Caminho do Calvário</strong><br>
-                Fruto: Paciência nas tribulações.<br>
-                Oração: "Cristo, que com a Cruz às costas seguistes para o Calvário, dai-nos força para carregar nossas cruzes diárias com resignação e fé em vossa providência."</p>
-
-            <p><strong>5º Mistério: A Crucificação e Morte de Jesus</strong><br>
-                Fruto: Amor a Jesus e aos inimigos.<br>
-                Oração: "Ó Bom Jesus, que na Cruz destes a vida por nós, acendei em nossos corações o fogo do vosso amor e a caridade para com todos, até mesmo com aqueles que nos ofendem."</p>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Gloriosos -->
-<div id="modalGloriosos" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-        <span class="close-button" aria-label="Fechar">&times;</span>
-        <h2>Mistérios Gloriosos</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>Os Mistérios Gloriosos (ou da Glória) são meditados às quartas-feiras e domingos, celebrando a vitória de Jesus sobre a morte e a glorificação de Maria, nos inspirando à fé, esperança e perseverança.</p>
-        <div class="rezas-container">
-            <h3>Rezas dos Mistérios Gloriosos:</h3>
-            <p><strong>1º Mistério: A Ressurreição de Jesus</strong><br>
-                Fruto: Fé.<br>
-                Oração: "Jesus Ressuscitado, que vencestes a morte e nos abristes as portas do Céu, aumentai nossa fé e a certeza da vida eterna."</p>
-
-            <p><strong>2º Mistério: A Ascensão de Jesus ao Céu</strong><br>
-                Fruto: Esperança.<br>
-                Oração: "Senhor, que subistes aos Céus para preparar-nos um lugar, elevai nossos corações das coisas terrenas e dai-nos a esperança das realidades celestes."</p>
-
-            <p><strong>3º Mistério: A Descida do Espírito Santo sobre os Apóstolos</strong><br>
-                Fruto: Dons do Espírito Santo.<br>
-                Oração: "Espírito Santo Divino, que em Pentecostes descestes sobre os Apóstolos, iluminai-nos com vossos dons e guiai-nos no caminho da santidade."</p>
-
-            <p><strong>4º Mistério: A Assunção de Nossa Senhora ao Céu</strong><br>
-                Fruto: Devoção a Maria e boa morte.<br>
-                Oração: "Virgem Maria, que fostes assunta ao Céu em corpo e alma, sede nosso refúgio e intercedei por nós, para que tenhamos uma boa morte e alcancemos a glória do Céu."</p>
-
-            <p><strong>5º Mistério: A Coroação de Nossa Senhora no Céu</strong><br>
-                Fruto: Confiança na intercessão de Maria.<br>
-                Oração: "Rainha do Céu e da Terra, coroada de glória, rogai por nós e por todos os pecadores, para que um dia possamos compartilhar convosco a bem-aventurança eterna."</p>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Luminosos -->
-<div id="modalLuminosos" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-        <span class="close-button" aria-label="Fechar">&times;</span>
-        <h2>Mistérios Luminosos</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>Os Mistérios Luminosos (ou da Luz) são meditados às quintas-feiras, e nos convidam a contemplar a vida pública de Jesus, desde o Batismo no Jordão até a instituição da Eucaristia, iluminando nosso caminho de fé.</p>
-        <div class="rezas-container">
-            <h3>Rezas dos Mistérios Luminosos:</h3>
-            <p><strong>1º Mistério: O Batismo de Jesus no Rio Jordão</strong><br>
-                Fruto: Fidelidade às promessas do batismo.<br>
-                Oração: "Jesus, que no Jordão fostes batizado e revelastes vossa divindade, dai-nos a graça de viver fielmente as promessas do nosso batismo e de ser vossas testemunhas no mundo."</p>
-
-            <p><strong>2º Mistério: A Revelação de Jesus nas Bodas de Caná</strong><br>
-                Fruto: Confiança em Maria.<br>
-                Oração: "Senhor, que em Caná transformastes a água em vinho, por intercessão de Maria, fortalecei nossa fé em vós e nossa confiança na intercessão de vossa Mãe."</p>
-
-            <p><strong>3º Mistério: O Anúncio do Reino de Deus e o Convite à Conversão</strong><br>
-                Fruto: Conversão.<br>
-                Oração: "Jesus, que proclamastes o Reino de Deus e chamastes à conversão, tomai posse de nossos corações e transformai-nos para que vivamos segundo vossa vontade."</p>
-
-            <p><strong>4º Mistério: A Transfiguração de Jesus</strong><br>
-                Fruto: Desejo de Santidade.<br>
-                Oração: "Cristo Transfigurado, que revelastes vossa glória aos discípulos, acendei em nós o desejo da santidade e a esperança de um dia contemplar vossa face no Céu."</p>
-
-            <p><strong>5º Mistério: A Instituição da Eucaristia</strong><br>
-                Fruto: Adoração ao Santíssimo Sacramento.<br>
-                Oração: "Jesus Eucarístico, que na Última Ceia vos destes como alimento e nos deixastes o sacramento do vosso amor, aumentai nossa fé e devoção à Eucaristia, fonte de vida eterna."</p>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Principais Orações -->
+<!-- Principais Orações Católicas -->
 <div id="modalPrincipaisOracoes" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" aria-label="Fechar">&times;</span>
@@ -823,13 +1393,13 @@
         <p>Essas orações são pilares da fé católica, recitadas diariamente por milhões de fiéis.</p>
         <div class="rezas-container">
             <h3>Pai Nosso:</h3>
-            <p>"Pai nosso que estais no céu, santificado seja o Vosso nome; venha a nós o Vosso Reino; seja feita a Vossa vontade assim na Terra como no Céu; o pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas assim como nós perdoamos a quem nos tem ofendido; e não nos deixei cair em tentação, mas livrai-nos do mal. Amém."</p>
+            <p>"Pai nosso que estais no céu, santificado seja o Vosso nome; venha a nós o Vosso Reino; seja feita a Vossa vontade assim na Terra como no Céu; o pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas assim como nós perdoamos a quem nos tem ofendido; e não nos deixei cair em tentação, mas livrai-nos do mal. Amém."[cite: 1]</p>
 
             <h3>Ave Maria:</h3>
-            <p>"Ave Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres e bendito é o fruto do vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém."</p>
+            <p>"Ave Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres e bendito é o fruto do vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém."[cite: 1]</p>
 
             <h3>Glória ao Pai:</h3>
-            <p>"Glória ao Pai, ao Filho e ao Espírito Santo, como era no princípio, agora e sempre. Amém."</p>
+            <p>"Glória ao Pai, ao Filho e ao Espírito Santo, como era no princípio, agora e sempre. Amém."[cite: 1]</p>
 
             <h3>Ato de Fé:</h3>
             <p>"Meu Deus, creio firmemente em todas as verdades que nos revelaste e que nos ensinas por tua Igreja, porque não te podes enganar nem nos enganar."</p>
@@ -843,36 +1413,7 @@
     </div>
 </div>
 
-<!-- Modal Rosário Completo -->
-<div id="modalRosarioCompleto" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-        <span class="close-button" aria-label="Fechar">&times;</span>
-        <h2>Rezas do Rosário Completo</h2>
-        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
-        <p>Aqui você encontrará as orações comuns recitadas no início e no fim do Terço ou Rosário, complementando a meditação dos mistérios.</p>
-        <div class="rezas-container">
-            <h3>Sinal da Cruz:</h3>
-            <p>"Em nome do Pai, e do Filho, e do Espírito Santo. Amém."</p>
-
-            <h3>Creio (Credo):</h3>
-            <p>"Creio em Deus Pai Todo-Poderoso, Criador do céu e da terra. E em Jesus Cristo, seu único Filho, Nosso Senhor, que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos, foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus; está sentado à direita de Deus Pai Todo-Poderoso, de onde há de vir a julgar os vivos e os mortos. Creio no Espírito Santo; na Santa Igreja Católica; na comunhão dos Santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém."</p>
-
-            <h3>Pai Nosso, Ave Maria e Glória ao Pai:</h3>
-            <p>Conforme nas Principais Orações Católicas.</p>
-
-            <h3>Oração de Fátima (Ó meu Jesus):</h3>
-            <p>"Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai as almas todas para o Céu, principalmente as que mais precisarem."</p>
-
-            <h3>Salve Rainha:</h3>
-            <p>"Salve Rainha, Mãe de misericórdia, vida, doçura e esperança nossa, salve! A vós bradamos, os degredados filhos de Eva; a vós suspiramos, gemendo e chorando neste vale de lágrimas. Eia, pois, advogada nossa, esses vossos olhos misericordiosos a nós volvei; e depois deste desterro, mostrai-nos Jesus, bendito fruto do vosso ventre, ó clemente, ó piedosa, ó doce sempre Virgem Maria. Rogai por nós, Santa Mãe de Deus, para que sejamos dignos das promessas de Cristo. Amém."</p>
-
-            <h3>Oração a São Miguel Arcanjo:</h3>
-            <p>"São Miguel Arcanjo, defendei-nos no combate, sede o nosso refúgio contra as maldades e ciladas do demônio. Ordene-lhe Deus, humildemente vos pedimos; e vós, Príncipe da Milícia Celeste, pela virtude divina, precipitai no inferno a Satanás e a todos os espíritos malignos que andam pelo mundo para perder as almas. Amém."</p>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Consagração a Deus -->
+<!-- Consagração a Deus -->
 <div id="modalConsagracaoDeus" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" aria-label="Fechar">&times;</span>
@@ -908,7 +1449,7 @@
     </div>
 </div>
 
-<!-- Modal Oração a Deus Todo Poderoso -->
+<!-- Oração a Deus Todo Poderoso -->
 <div id="modalOracaoTodoPoderoso" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" aria-label="Fechar">&times;</span>
@@ -926,7 +1467,7 @@
     </div>
 </div>
 
-<!-- Modal Bom Cristão -->
+<!-- Como ser um bom Cristão na prática -->
 <div id="modalBomCristao" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" aria-label="Fechar">&times;</span>
@@ -1011,7 +1552,7 @@
     </div>
 </div>
 
-<!-- Modal Catecismo -->
+<!-- Catecismo da Igreja Católica -->
 <div id="modalCatecismo" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" aria-label="Fechar">&times;</span>
@@ -1058,7 +1599,7 @@
     </div>
 </div>
 
-<!-- Modal Fé Católica -->
+<!-- A Fé Católica -->
 <div id="modalFeCatolica" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" aria-label="Fechar">&times;</span>
@@ -1078,7 +1619,7 @@
     </div>
 </div>
 
-<!-- Modal Inclusão -->
+<!-- O Acolhimento na Fé -->
 <div id="modalInclusao" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" aria-label="Fechar">&times;</span>
@@ -1105,7 +1646,7 @@
     </div>
 </div>
 
-<!-- Modal Carlo Acutis -->
+<!-- Como ser Santo segundo Carlo Acutis -->
 <div id="modalAcutis" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" aria-label="Fechar">&times;</span>
@@ -1125,7 +1666,7 @@
     </div>
 </div>
 
-<!-- Modal Deus Todo-Poderoso -->
+<!-- Perspectiva Bíblica de Deus Todo-Poderoso -->
 <div id="modalDeusPoderoso" class="modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" aria-label="Fechar">&times;</span>
@@ -1178,7 +1719,7 @@
                     console.warn('Bloqueio ou falha de reprodução:', err);
                     radioPlayerButton.className = '';
                     radioPlayerButton.textContent = '▶';
-                    radioStatus.textContent = 'Clique para tentar novamente 😔';
+                    radioStatus.textContent = 'Rádio Desligada';
                 });
             }
         };
@@ -1188,7 +1729,7 @@
             catholicRadio.src = ""; // Libera recursos de rede
             radioPlayerButton.className = '';
             radioPlayerButton.textContent = '▶';
-            radioStatus.textContent = 'Rádio Pausada';
+            radioStatus.textContent = 'Rádio Desligada';
             isConnecting = false;
         };
 
@@ -1204,7 +1745,7 @@
             isConnecting = false;
             radioPlayerButton.className = '';
             radioPlayerButton.textContent = '▶';
-            radioStatus.textContent = 'Erro de Conexão 😔';
+            radioStatus.textContent = 'Rádio Desligada';
         });
 
         // --- Gerenciador de Modais ---
