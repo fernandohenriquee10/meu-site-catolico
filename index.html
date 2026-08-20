@@ -450,6 +450,25 @@
             text-decoration: none;
         }
 
+        /* --- Estilo para links dos documentos oficiais --- */
+        .documento-link {
+            color: #5e1d44;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary-dark);
+            transition: all 0.2s ease;
+            padding: 0 2px;
+            background-color: rgba(214, 51, 132, 0.05);
+            border-radius: 3px;
+        }
+
+        .documento-link:hover {
+            color: #fff;
+            background-color: var(--primary-dark);
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
         /* --- Rodapé --- */
         footer {
             text-align: center;
@@ -624,6 +643,16 @@
         <button class="botao-secao" data-modal-target="modalAcutis">Como ser Santo segundo Carlo Acutis</button>
         <button class="botao-secao" data-modal-target="modalDeusPoderoso">Perspectiva Bíblica de Deus Todo-Poderoso</button>
         <button class="botao-secao" data-modal-target="modalInclusao">O Acolhimento na Fé</button>
+    </div>
+
+    <!-- Nova Seção: Documentos da Igreja Católica -->
+    <div class="section-header-title">Documentos Oficiais da Igreja</div>
+    <div class="container-cards">
+        <button class="botao-secao" data-modal-target="modalEnciclicas">Encíclicas</button>
+        <button class="botao-secao" data-modal-target="modalExortacoes">Exortações Apostólicas</button>
+        <button class="botao-secao" data-modal-target="modalConstituicoes">Constituições Apostólicas</button>
+        <button class="botao-secao" data-modal-target="modalMotuProprio">Motu Próprio</button>
+        <button class="botao-secao" data-modal-target="modalBulasBreves">Bulas e Breves</button>
     </div>
 </main>
 
@@ -2087,6 +2116,116 @@
     </div>
 </div>
 
+<!-- ==================== MODAIS DOS DOCUMENTOS DA IGREJA ==================== -->
+
+<!-- ENCÍCLICAS -->
+<div id="modalEnciclicas" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Encíclicas</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>As encíclicas são cartas solenes do Papa dirigidas aos bispos e fiéis, tratando de temas doutrinários, morais ou pastorais de grande importância para a Igreja e o mundo. São ferramentas fundamentais de ensino do Magistério Pontifício.</p>
+        <div class="rezas-container">
+            <h3>Principais Encíclicas Papais:</h3>
+            <ul>
+                <li><strong><em>Rerum Novarum</em> (1891) – Papa Leão XIII</strong> – Sobre a condição dos operários e a justiça social, é considerada o marco da Doutrina Social da Igreja, defendendo os direitos dos trabalhadores e criticando tanto o capitalismo desumano quanto o socialismo ateu. <a href="https://www.vatican.va/content/leo-xiii/pt/encyclicals/documents/hf_l-xiii_enc_15051891_rerum-novarum.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Pacem in Terris</em> (1963) – São João XXIII</strong> – Sobre a paz entre todos os povos, baseada na verdade, justiça, caridade e liberdade. É uma das mais influentes encíclicas do século XX, escrita em meio à Guerra Fria. <a href="https://www.vatican.va/content/john-xxiii/pt/encyclicals/documents/hf_j-xxiii_enc_11041963_pacem.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Humanae Vitae</em> (1968) – São Paulo VI</strong> – Sobre a regulação da natalidade. Reafirma o ensinamento da Igreja sobre a contracepção, a dignidade do ato conjugal e a abertura à vida, sendo um documento profético sobre as consequências da revolução sexual. <a href="https://www.vatican.va/content/paul-vi/pt/encyclicals/documents/hf_p-vi_enc_25071968_humanae-vitae.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Redemptor Hominis</em> (1979) – São João Paulo II</strong> – A primeira encíclica de João Paulo II, centrada em Cristo como Redentor do homem e na dignidade da pessoa humana, inaugurando seu pontificado com uma visão cristocêntrica e humanista. <a href="https://www.vatican.va/content/john-paul-ii/pt/encyclicals/documents/hf_jp-ii_enc_04031979_redemptor-hominis.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Veritatis Splendor</em> (1993) – São João Paulo II</strong> – Sobre os fundamentos da moral católica, reafirmando a existência de normas morais objetivas e universais, válidas para todos os tempos. É uma das mais importantes encíclicas sobre a teologia moral. <a href="https://www.vatican.va/content/john-paul-ii/pt/encyclicals/documents/hf_jp-ii_enc_06081993_veritatis-splendor.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Evangelium Vitae</em> (1995) – São João Paulo II</strong> – Sobre o valor e a inviolabilidade da vida humana, desde a concepção até a morte natural. Condena o aborto, a eutanásia e a pena de morte, propondo uma "cultura da vida". <a href="https://www.vatican.va/content/john-paul-ii/pt/encyclicals/documents/hf_jp-ii_enc_25031995_evangelium-vitae.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Deus Caritas Est</em> (2005) – Papa Bento XVI</strong> – Sobre o amor cristão (ágape), distinguindo-o do amor erótico. O Papa Bento XVI mostra como a caridade é a essência da fé e como a Igreja deve servir os pobres como parte de sua missão. <a href="https://www.vatican.va/content/benedict-xvi/pt/encyclicals/documents/hf_ben-xvi_enc_20051225_deus-caritas-est.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Caritas in Veritate</em> (2009) – Papa Bento XVI</strong> – Sobre o desenvolvimento humano integral na caridade e na verdade, tratando de questões econômicas e sociais à luz da Doutrina Social da Igreja, incluindo a crise financeira global. <a href="https://www.vatican.va/content/benedict-xvi/pt/encyclicals/documents/hf_ben-xvi_enc_20090629_caritas-in-veritate.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Lumen Fidei</em> (2013) – Papa Francisco</strong> – Sobre a fé como luz que ilumina a existência humana. A primeira encíclica de Francisco, iniciada por Bento XVI, apresenta a fé como uma resposta ao amor de Deus e como fundamento da esperança. <a href="https://www.vatican.va/content/francesco/pt/encyclicals/documents/papa-francesco_20130629_enciclica-lumen-fidei.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Laudato Si'</em> (2015) – Papa Francisco</strong> – Sobre o cuidado da Casa Comum, abordando a ecologia integral. O Papa Francisco liga a crise ambiental à crise social, convocando uma conversão ecológica que una justiça social e cuidado da criação. <a href="https://www.vatican.va/content/francesco/pt/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Fratelli Tutti</em> (2020) – Papa Francisco</strong> – Sobre a fraternidade e a amizade social. Inspirada em São Francisco de Assis, propõe um novo modelo de sociedade baseado no diálogo, na paz, na acolhida aos migrantes e na rejeição da guerra e do individualismo. <a href="https://www.vatican.va/content/francesco/pt/encyclicals/documents/papa-francesco_20201003_enciclica-fratelli-tutti.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- EXORTAÇÕES APOSTÓLICAS -->
+<div id="modalExortacoes" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Exortações Apostólicas</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>As exortações apostólicas são documentos que estimulam os fiéis a viver a fé de maneira mais profunda, oferecendo orientações pastorais para o dia a dia da Igreja.</p>
+        <div class="rezas-container">
+            <h3>Principais Exortações Apostólicas:</h3>
+            <ul>
+                <li><strong><em>Evangelii Gaudium</em> (2013) – Papa Francisco</strong> – Sobre o anúncio do Evangelho no mundo atual. É o "programa de governo" do Papa Francisco, que convoca toda a Igreja a uma reforma missionária e a uma conversão pastoral, com ênfase na alegria do Evangelho e na misericórdia. <a href="https://www.vatican.va/content/francesco/pt/apost_exhortations/documents/papa-francesco_esortazione-ap_20131124_evangelii-gaudium.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Amoris Laetitia</em> (2016) – Papa Francisco</strong> – Sobre o amor na família. Trata das alegrias e desafios do matrimônio e da vida familiar, propondo uma pastoral do acompanhamento para as famílias em situação de fragilidade. <a href="https://www.vatican.va/content/francesco/pt/apost_exhortations/documents/papa-francesco_esortazione-ap_20160319_amoris-laetitia.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Christus Vivit</em> (2019) – Papa Francisco</strong> – Sobre os jovens, a fé e o discernimento vocacional. Escrita após o Sínodo dos Jovens, é uma carta dirigida aos jovens de todo o mundo, encorajando-os a serem protagonistas da fé e da mudança na Igreja. <a href="https://www.vatican.va/content/francesco/pt/apost_exhortations/documents/papa-francesco_esortazione-ap_20190325_christus-vivit.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Querida Amazonia</em> (2020) – Papa Francisco</strong> – Sobre a região amazônica, convocando um compromisso integral com a ecologia, a justiça social e a inculturação da fé, valorizando os povos indígenas e suas culturas. <a href="https://www.vatican.va/content/francesco/pt/apost_exhortations/documents/papa-francesco_esortazione-ap_20200202_querida-amazonia.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>C’est la Confiance</em> (2023) – Papa Francisco</strong> – Sobre a confiança no amor misericordioso de Deus, inspirada na vida e espiritualidade de Santa Teresinha do Menino Jesus, que é proclamada Doutora da Igreja.
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- CONSTITUIÇÕES APOSTÓLICAS -->
+<div id="modalConstituicoes" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Constituições Apostólicas</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>As constituições apostólicas são documentos solenes que estabelecem normas e diretrizes para a vida da Igreja, frequentemente usadas para reformas litúrgicas ou para definir doutrinas importantes.</p>
+        <div class="rezas-container">
+            <h3>Exemplos de Constituições Apostólicas:</h3>
+            <ul>
+                <li><strong><em>Munificentissimus Deus</em> (1950) – Papa Pio XII</strong> – Define o dogma da Assunção de Nossa Senhora em corpo e alma ao Céu, um dos poucos dogmas marianos proclamados por um Papa no século XX. <a href="https://www.vatican.va/content/pius-xii/pt/apost_constitutions/documents/hf_p-xii_apc_19501101_munificentissimus-deus.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Ineffabilis Deus</em> (1854) – Papa Pio IX</strong> – Define o dogma da Imaculada Conceição de Maria, proclamando que a Virgem Maria foi concebida sem pecado original por uma graça especial de Deus.
+                <li><strong><em>Sacrosanctum Concilium</em> (1963) – Papa Paulo VI</strong> – Na verdade, é a Constituição Apostólica do Concílio Vaticano II sobre a Sagrada Liturgia, que promoveu a reforma litúrgica e o uso da língua vernácula na Missa. <a href="https://www.vatican.va/archive/hist_councils/ii_vatican_council/documents/vat-ii_const_19631204_sacrosanctum-concilium_po.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Praedicate Evangelium</em> (2022) – Papa Francisco</strong> – Sobre a reforma da Cúria Romana, reorganizando os dicastérios e estruturas do governo central da Igreja para uma maior eficiência e sinodalidade. <a href="https://www.vatican.va/content/francesco/pt/apost_constitutions/documents/20220319-costituzione-ap-praedicate-evangelium.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- MOTU PRÓPRIO -->
+<div id="modalMotuProprio" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Motu Próprio</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>Um Motu Próprio é um documento emitido pelo Papa por iniciativa própria, sem a necessidade de consulta a outros órgãos da Igreja. Geralmente trata de assuntos específicos, disciplinares ou administrativos.</p>
+        <div class="rezas-container">
+            <h3>Exemplos de Motu Próprio:</h3>
+            <ul>
+                <li><strong><em>Summorum Pontificum</em> (2007) – Papa Bento XVI</strong> – Sobre o uso da forma extraordinária do Rito Romano (Missa Tridentina), ampliando as condições para sua celebração. <a href="https://www.vatican.va/content/benedict-xvi/pt/motu_proprio/documents/hf_ben-xvi_motu-proprio_20070707_summorum-pontificum.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Traditionis Custodes</em> (2021) – Papa Francisco</strong> – Restringe a celebração da Missa no Rito Antigo, reafirmando a liturgia do Concílio Vaticano II como a forma ordinária e única do Rito Romano. <a href="https://www.vatican.va/content/francesco/pt/motu_proprio/documents/20210716-motu-proprio-traditionis-custodes.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Vos Estis Lux Mundi</em> (2019) – Papa Francisco</strong> – Estabelece normas universais para o combate ao abuso sexual e à negligência dos superiores eclesiásticos na proteção de menores e pessoas vulneráveis. <a href="https://www.vatican.va/content/francesco/pt/motu_proprio/documents/papa-francesco-motu-proprio-20190507_vos-estis-lux-mundi.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+                <li><strong><em>Aperuit Illis</em> (2019) – Papa Francisco</strong> – Institui o Domingo da Palavra de Deus, dedicado à celebração, reflexão e divulgação da Sagrada Escritura nas comunidades católicas. <a href="https://www.vatican.va/content/francesco/pt/motu_proprio/documents/papa-francesco-motu-proprio-20190930_aperuit-illis.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- BULAS E BREVES -->
+<div id="modalBulasBreves" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Bulas e Breves</h2>
+        <img src="https://images.pexels.com/photos/5875445/pexels-photo-5875445.jpeg" alt="Terço Católico" class="terco-img">
+        <p>As Bulas e Breves são documentos formais que têm um peso maior em termos de autoridade. As bulas são usadas para proclamações importantes, como definições de dogmas, convocações de concílios ou canonizações. Os breves são versões menos solenes, usadas para questões administrativas ou de menor porte.<p>
+        <div class="rezas-container">
+            <h3>Exemplos de Bulas:</h3>
+            <ul>
+                <li><strong><em>Unam Sanctam</em> (1302) – Papa Bonifácio VIII</strong> – Uma das bulas mais importantes da história, que afirma a plenitude do poder do Papa e a necessidade da submissão ao Romano Pontífice para a salvação. Como não há versão oficial em português no site do Vaticano, disponibilizamos o texto em latim e, abaixo, um resumo do seu conteúdo.
+                <li><strong><em>Ineffabilis Deus</em> (1854) – Papa Pio IX</strong> – Define o dogma da Imaculada Conceição de Maria.
+                <li><strong><em>Munificentissimus Deus</em> (1950) – Papa Pio XII</strong> – Define o dogma da Assunção de Nossa Senhora. <a href="https://www.vatican.va/content/pius-xii/pt/apost_constitutions/documents/hf_p-xii_apc_19501101_munificentissimus-deus.html" target="_blank" rel="noopener noreferrer" class="documento-link">Leia aqui</a></li>
+            </ul>
+            <h4>Resumo da Bula <em>Unam Sanctam</em> (1302):</h4>
+            <p>Esta bula é um dos documentos mais importantes da história da Igreja. Nela, o Papa Bonifácio VIII afirma a plenitude do poder espiritual do Papa e a necessidade de submissão ao Romano Pontífice para a salvação da alma. A bula declara que a Igreja é una, santa, católica e apostólica, e que fora dela não há salvação. Além disso, estabelece que tanto o poder espiritual quanto o temporal estão submetidos à autoridade do Papa, sendo este o único que pode julgar em questões de fé e moral, enquanto ele mesmo é julgado apenas por Deus. Este documento foi fundamental para a definição da supremacia papal na Idade Média.</p>
+            <h3>Exemplos de Breves:</h3>
+            <ul>
+                <li>Os breves são usados para comunicar decisões, conceder privilégios, ou responder a questões menos solenes. Não há uma lista exaustiva, mas muitos documentos pontifícios de caráter administrativo são publicados como breves.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <!-- ==================== JAVASCRIPT OTIMIZADO & SEGURO ==================== -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -2115,7 +2254,7 @@
                     isConnecting = false;
                     radioPlayerButton.className = 'playing';
                     radioPlayerButton.textContent = '❚❚';
-                    radioStatus.textContent = 'Tocando Rádio Católica';
+                    radioStatus.textContent = 'Tocando Rádio Aparecida';
                 }).catch(err => {
                     isConnecting = false;
                     console.warn('Bloqueio ou falha de reprodução:', err);
@@ -2128,7 +2267,7 @@
 
         const stopRadio = () => {
             catholicRadio.pause();
-            catholicRadio.src = ""; // Libera recursos de rede
+            catholicRadio.src = "";
             radioPlayerButton.className = '';
             radioPlayerButton.textContent = '▶';
             radioStatus.textContent = 'Rádio Católica';
