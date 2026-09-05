@@ -83,7 +83,77 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- Player de Rádio Integrado --- */
+        /* --- Barra de Pesquisa abaixo do título --- */
+        .search-bar-wrapper {
+            max-width: 600px;
+            margin: 0 auto 1.8rem auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+            box-shadow: 0 4px 20px rgba(214, 51, 132, 0.25);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .search-bar:focus-within {
+            box-shadow: 0 6px 30px rgba(214, 51, 132, 0.45);
+            border-color: var(--primary-dark);
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background: transparent;
+            padding: 0.5rem 0;
+        }
+
+        .search-bar input::placeholder {
+            color: #aaa;
+            font-weight: 300;
+        }
+
+        .search-bar button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .search-bar button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.4);
+        }
+
+        /* --- Player de Rádio e Ações do Header --- */
+        .header-actions-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
         #radio-player-container {
             display: inline-flex;
             align-items: center;
@@ -149,37 +219,59 @@
             letter-spacing: 0.3px;
         }
 
-        /* --- Novos botões de cabeçalho --- */
-        .header-actions {
+        /* --- Botões de autenticação e feedback no header --- */
+        .header-auth-buttons {
             display: inline-flex;
             align-items: center;
-            gap: 0.8rem;
-            margin-left: 1.2rem;
-            vertical-align: middle;
+            gap: 0.6rem;
+            margin-left: 0.5rem;
         }
 
-        .btn-criar-conta {
-            background: linear-gradient(135deg, #e91e63, #c2185b);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        .btn-auth {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 50px;
-            padding: 0.5rem 1.4rem;
+            padding: 0.45rem 1.2rem;
             color: #fff;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 500;
+            font-size: 0.85rem;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
-        .btn-criar-conta:hover {
+        .btn-auth:hover {
+            border-color: var(--primary-light);
+            background: rgba(214, 51, 132, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.6);
-            background: linear-gradient(135deg, #f06292, #d81b60);
         }
 
-        .btn-feedback {
+        .btn-auth .avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: white;
+            object-fit: cover;
+        }
+
+        .btn-auth .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .btn-feedback-header {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             border-radius: 50%;
@@ -192,114 +284,14 @@
             color: white;
             font-size: 1.3rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
         }
 
-        .btn-feedback:hover {
+        .btn-feedback-header:hover {
             border-color: var(--primary-light);
             transform: scale(1.08);
             box-shadow: 0 0 20px rgba(214, 51, 132, 0.4);
-        }
-
-        /* --- Banner de Cookies --- */
-        #cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-            background: rgba(20, 5, 15, 0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-top: 1px solid var(--glass-border);
-            padding: 1rem 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 1.2rem;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.4s ease;
-        }
-
-        #cookie-banner.hidden {
-            transform: translateY(100%);
-        }
-
-        #cookie-banner p {
-            font-size: 0.95rem;
-            color: #f0e0e8;
-            max-width: 700px;
-            margin: 0;
-            text-align: center;
-        }
-
-        #cookie-banner p a {
-            color: var(--primary-light);
-            text-decoration: underline;
-            font-weight: 500;
-        }
-
-        #cookie-banner .btn-cookie-accept {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border: none;
-            border-radius: 50px;
-            padding: 0.6rem 1.8rem;
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.3);
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        #cookie-banner .btn-cookie-accept:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.5);
-        }
-
-        /* --- Modal de Feedback --- */
-        .feedback-modal .modal-content {
-            max-width: 550px;
-        }
-
-        .feedback-modal textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border-radius: 12px;
-            border: 1px solid #e6a8bf;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            resize: vertical;
-            min-height: 120px;
-            background: #fff;
-            color: var(--text-dark);
-        }
-
-        .feedback-modal textarea:focus {
-            outline: 2px solid var(--primary);
-            border-color: transparent;
-        }
-
-        .feedback-modal .btn-enviar-feedback {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border: none;
-            border-radius: 50px;
-            padding: 0.7rem 2rem;
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 0.5rem;
-        }
-
-        .feedback-modal .btn-enviar-feedback:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
         }
 
         /* --- Conteúdo Principal e Seções --- */
@@ -622,6 +614,209 @@
             text-decoration: none;
         }
 
+        /* --- Estilos do Modal de Autenticação --- */
+        .auth-modal .modal-content {
+            max-width: 480px;
+            padding: 2.2rem 2rem;
+        }
+
+        .auth-modal .auth-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+            border-bottom: 2px solid #f0d0dd;
+        }
+
+        .auth-modal .auth-tab {
+            background: none;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #a08090;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .auth-modal .auth-tab.active {
+            color: var(--primary-dark);
+            border-bottom-color: var(--primary);
+        }
+
+        .auth-modal .auth-tab:hover {
+            color: var(--primary);
+        }
+
+        .auth-modal .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .auth-modal .auth-form.hidden {
+            display: none;
+        }
+
+        .auth-modal .auth-form input {
+            padding: 0.8rem 1.2rem;
+            border: 1.5px solid #e6c0d2;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: border 0.3s;
+            background: #fff;
+            color: var(--text-dark);
+        }
+
+        .auth-modal .auth-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .auth-modal .btn-auth-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 50px;
+            padding: 0.8rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .auth-modal .btn-auth-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
+        }
+
+        .auth-modal .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 0.5rem 0;
+            color: #a08090;
+            font-size: 0.85rem;
+        }
+
+        .auth-modal .auth-divider::before,
+        .auth-modal .auth-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #e6c0d2;
+        }
+
+        .auth-modal .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .auth-modal .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .auth-modal .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .auth-modal .social-btn.google {
+            border-color: #db4437;
+            color: #db4437;
+        }
+        .auth-modal .social-btn.facebook {
+            border-color: #4267B2;
+            color: #4267B2;
+        }
+        .auth-modal .social-btn.apple {
+            border-color: #333;
+            color: #333;
+        }
+
+        .auth-modal .auth-error {
+            color: #d32f2f;
+            font-size: 0.85rem;
+            text-align: center;
+            min-height: 1.4rem;
+        }
+
+        /* --- Banner de Cookies --- */
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: rgba(20, 5, 15, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid var(--glass-border);
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.4s ease;
+        }
+
+        #cookie-banner.hidden {
+            transform: translateY(100%);
+        }
+
+        #cookie-banner p {
+            font-size: 0.95rem;
+            color: #f0e0e8;
+            max-width: 700px;
+            margin: 0;
+            text-align: center;
+        }
+
+        #cookie-banner p a {
+            color: var(--primary-light);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        #cookie-banner .btn-cookie-accept {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 50px;
+            padding: 0.6rem 1.8rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.3);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        #cookie-banner .btn-cookie-accept:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.5);
+        }
+
         /* --- Rodapé --- */
         footer {
             text-align: center;
@@ -712,15 +907,19 @@
             }
             .modal-content h2 { font-size: 1.6rem; }
             .modal-content h3 { font-size: 1.3rem; }
-            .header-actions {
-                margin-left: 0.5rem;
-                gap: 0.5rem;
+            .header-auth-buttons {
+                margin-left: 0;
             }
-            .btn-criar-conta {
-                padding: 0.4rem 1rem;
+            .btn-auth {
+                padding: 0.35rem 0.8rem;
                 font-size: 0.75rem;
             }
-            .btn-feedback {
+            .btn-auth .avatar {
+                width: 22px;
+                height: 22px;
+                font-size: 0.7rem;
+            }
+            .btn-feedback-header {
                 width: 38px;
                 height: 38px;
                 font-size: 1rem;
@@ -731,6 +930,19 @@
             }
             #cookie-banner p {
                 font-size: 0.85rem;
+            }
+            .search-bar {
+                padding: 0.3rem 0.3rem 0.3rem 0.8rem;
+            }
+            .search-bar input {
+                font-size: 0.9rem;
+            }
+            .search-bar button {
+                padding: 0.4rem 1rem;
+                font-size: 0.75rem;
+            }
+            .auth-modal .modal-content {
+                padding: 1.8rem 1.2rem;
             }
         }
     </style>
@@ -750,17 +962,27 @@
     <h1>✞ Reza do terço, rosário e oração ✞</h1>
     <p>Consagrado à disciplina, fé e adoração do Cristão(ã) Católico(a)</p>
 
-    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.8rem;">
+    <!-- Barra de Pesquisa (abaixo do título) -->
+    <div class="search-bar-wrapper">
+        <div class="search-bar" id="mainSearchBar">
+            <input type="text" id="searchInput" placeholder="Buscar orações, terços, mistérios..." aria-label="Pesquisar no site">
+            <button id="searchButton" aria-label="Executar busca">Buscar</button>
+        </div>
+    </div>
+
+    <div class="header-actions-wrapper">
         <div id="radio-player-container">
             <audio id="catholicRadio" preload="none" crossorigin="anonymous"></audio>
             <button id="radio-player-button" aria-label="Tocar ou pausar Rádio Católica">▶</button>
             <span id="radio-status">Rádio Católica</span>
         </div>
 
-        <!-- Novos botões: Criar Conta e Feedback -->
-        <div class="header-actions">
-            <button class="btn-criar-conta" id="btnCriarConta">Criar Conta</button>
-            <button class="btn-feedback" id="btnFeedback" aria-label="Conversas e Feedback" title="Conversas e Feedback">
+        <!-- Botões de autenticação e feedback -->
+        <div class="header-auth-buttons">
+            <button class="btn-auth" id="authButton" aria-label="Entrar ou ver perfil">
+                <span id="authLabel">Entrar</span>
+            </button>
+            <button class="btn-feedback-header" id="btnFeedbackHeader" aria-label="Conversas e Feedback" title="Conversas e Feedback">
                 💬
             </button>
         </div>
@@ -769,7 +991,7 @@
 
 <main>
     <div class="section-header-title">Santos Mistérios do Terço</div>
-    <div class="container-cards">
+    <div class="container-cards" id="misteriosContainer">
         <button class="botao-misterio" data-modal-target="modalGozosos">Mistérios Gozosos</button>
         <button class="botao-misterio" data-modal-target="modalDolorosos">Mistérios Dolorosos</button>
         <button class="botao-misterio" data-modal-target="modalGloriosos">Mistérios Gloriosos</button>
@@ -777,7 +999,7 @@
     </div>
 
     <div class="section-header-title">Devoções Principais & Quaresma Sagrada</div>
-    <div class="container-cards">
+    <div class="container-cards" id="devoesContainer">
         <button class="botao-secao btn-destaque-arcanjo" data-modal-target="modalQuaresmaSaoMiguel">⚔ Quaresma & Rosário de São Miguel ⚔</button>
         <button class="botao-secao" data-modal-target="modalBonfim">Consagração ao Senhor do Bonfim</button>
         <button class="botao-secao" data-modal-target="modalRosarioCompleto">Rezas do Rosário & Ladainha</button>
@@ -787,7 +1009,7 @@
     </div>
 
     <div class="section-header-title">Variados Terços de Poder & Graça</div>
-    <div class="container-cards">
+    <div class="container-cards" id="tercosContainer">
         <button class="botao-secao" data-modal-target="modalMisericordia">Terço da Divina Misericórdia</button>
         <button class="botao-secao" data-modal-target="modalSantasChagas">Terço das Santas Chagas</button>
         <button class="botao-secao" data-modal-target="modalSangueCristo">Terço do Preciosíssimo Sangue</button>
@@ -813,7 +1035,7 @@
     </div>
 
     <div class="section-header-title">Palavras Sagradas de Cristo Explicadas</div>
-    <div class="container-cards">
+    <div class="container-cards" id="palavrasContainer">
         <button class="botao-secao" data-modal-target="modalCristoMontanha">As Bem-Aventuranças (Mt 5)</button>
         <button class="botao-secao" data-modal-target="modalCristoAmor">O Mandamento Novo do Amor (Jo 13)</button>
         <button class="botao-secao" data-modal-target="modalCristoVideira">A Videira Verdadeira (Jo 15)</button>
@@ -823,7 +1045,7 @@
     </div>
 
     <div class="section-header-title">Prática Cristã Cotidiana & Doutrina</div>
-    <div class="container-cards">
+    <div class="container-cards" id="praticaContainer">
         <button class="botao-secao" data-modal-target="modalOQueFazer">O Que o Católico DEVE Fazer</button>
         <button class="botao-secao" data-modal-target="modalOQueNaoFazer">O Que o Católico NÃO DEVE Fazer</button>
         <button class="botao-secao" data-modal-target="modalViaSacra">Via-Sacra Completa (14 Estações)</button>
@@ -839,7 +1061,7 @@
 
     <!-- Nova Seção: Documentos da Igreja Católica -->
     <div class="section-header-title">Documentos Oficiais da Igreja</div>
-    <div class="container-cards">
+    <div class="container-cards" id="documentosContainer">
         <button class="botao-secao" data-modal-target="modalEnciclicas">Encíclicas</button>
         <button class="botao-secao" data-modal-target="modalExortacoes">Exortações Apostólicas</button>
         <button class="botao-secao" data-modal-target="modalConstituicoes">Constituições Apostólicas</button>
@@ -2504,6 +2726,46 @@
     </div>
 </div>
 
+<!-- ==================== MODAL DE AUTENTICAÇÃO ==================== -->
+<div id="modalAuth" class="modal auth-modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" id="authModalClose" aria-label="Fechar">&times;</span>
+        <h2>Bem-vindo(a)</h2>
+        <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">Entrar</button>
+            <button class="auth-tab" data-tab="register">Criar Conta</button>
+        </div>
+        <div id="authError" class="auth-error"></div>
+
+        <!-- Formulário de Login -->
+        <form class="auth-form" id="loginForm">
+            <input type="email" placeholder="E-mail" id="loginEmail" required>
+            <input type="password" placeholder="Senha" id="loginPassword" required>
+            <button type="submit" class="btn-auth-submit">Entrar</button>
+            <div class="auth-divider">ou continue com</div>
+            <div class="social-login">
+                <button type="button" class="social-btn google" data-social="google">Google</button>
+                <button type="button" class="social-btn facebook" data-social="facebook">Facebook</button>
+                <button type="button" class="social-btn apple" data-social="apple">Apple</button>
+            </div>
+        </form>
+
+        <!-- Formulário de Cadastro -->
+        <form class="auth-form hidden" id="registerForm">
+            <input type="text" placeholder="Nome completo" id="registerName" required>
+            <input type="email" placeholder="E-mail" id="registerEmail" required>
+            <input type="password" placeholder="Senha (mínimo 6 caracteres)" id="registerPassword" required minlength="6">
+            <button type="submit" class="btn-auth-submit">Criar Conta</button>
+            <div class="auth-divider">ou continue com</div>
+            <div class="social-login">
+                <button type="button" class="social-btn google" data-social="google">Google</button>
+                <button type="button" class="social-btn facebook" data-social="facebook">Facebook</button>
+                <button type="button" class="social-btn apple" data-social="apple">Apple</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <!-- ==================== JAVASCRIPT OTIMIZADO & SEGURO ==================== -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -2567,7 +2829,7 @@
             radioStatus.textContent = 'Rádio Católica';
         });
 
-        // --- Gerenciador de Modais ---
+        // --- Gerenciador de Modais (geral) ---
         const modals = document.querySelectorAll('.modal');
         const modalButtons = document.querySelectorAll('[data-modal-target]');
         const closeButtons = document.querySelectorAll('.close-button');
@@ -2614,7 +2876,6 @@
         const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
         const COOKIE_CONSENT_KEY = 'cookie_consent_given';
 
-        // Verifica se já aceitou
         if (localStorage.getItem(COOKIE_CONSENT_KEY) === 'true') {
             cookieBanner.classList.add('hidden');
         }
@@ -2624,46 +2885,247 @@
             cookieBanner.classList.add('hidden');
         });
 
-        // --- Botão Criar Conta (simulação) ---
-        document.getElementById('btnCriarConta').addEventListener('click', () => {
-            alert('Funcionalidade de criação de conta em desenvolvimento.\nEm breve você poderá criar sua conta para acessar recursos exclusivos!');
+        // --- SISTEMA DE AUTENTICAÇÃO ---
+        const authModal = document.getElementById('modalAuth');
+        const authButton = document.getElementById('authButton');
+        const authLabel = document.getElementById('authLabel');
+        const authModalClose = document.getElementById('authModalClose');
+        const authTabs = document.querySelectorAll('.auth-tab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const authError = document.getElementById('authError');
+
+        // Estado do usuário (simulado com localStorage)
+        const USER_KEY = 'site_user_data';
+
+        function getUser() {
+            try {
+                const data = localStorage.getItem(USER_KEY);
+                return data ? JSON.parse(data) : null;
+            } catch { return null; }
+        }
+
+        function setUser(user) {
+            localStorage.setItem(USER_KEY, JSON.stringify(user));
+            updateUI();
+        }
+
+        function logout() {
+            localStorage.removeItem(USER_KEY);
+            updateUI();
+        }
+
+        // Atualiza a interface com base no estado do usuário
+        function updateUI() {
+            const user = getUser();
+            if (user) {
+                // Mostra avatar com inicial e nome
+                const initial = user.name ? user.name.charAt(0).toUpperCase() : 'U';
+                authLabel.innerHTML = `<span class="avatar"><span>${initial}</span></span> <span class="auth-name" style="display:none;">${user.name || 'Usuário'}</span>`;
+                // No mobile, mostra apenas o avatar
+                if (window.innerWidth < 768) {
+                    authLabel.innerHTML = `<span class="avatar"><span>${initial}</span></span>`;
+                }
+                authButton.title = `Olá, ${user.name || 'Usuário'}! Clique para sair`;
+                // Ao clicar no botão, logout
+                authButton.onclick = () => {
+                    if (confirm('Deseja sair da sua conta?')) {
+                        logout();
+                        alert('Você saiu da sua conta.');
+                    }
+                };
+            } else {
+                authLabel.innerHTML = 'Entrar';
+                authButton.title = 'Entrar ou criar conta';
+                authButton.onclick = () => {
+                    abrirModalPorId('modalAuth');
+                };
+            }
+        }
+
+        // Abrir modal de autenticação via botão
+        authButton.addEventListener('click', (e) => {
+            const user = getUser();
+            if (user) {
+                // Se estiver logado, o logout é tratado pelo onclick sobrescrito
+                return;
+            }
+            abrirModalPorId('modalAuth');
         });
 
-        // --- Botão Feedback (abre modal de feedback) ---
-        document.getElementById('btnFeedback').addEventListener('click', () => {
-            // Abre um modal simples de feedback (pode ser aprimorado)
-            const feedbackModal = document.createElement('div');
-            feedbackModal.className = 'modal active feedback-modal';
-            feedbackModal.setAttribute('role', 'dialog');
-            feedbackModal.setAttribute('aria-modal', 'true');
-            feedbackModal.innerHTML = `
-                <div class="modal-content">
-                    <span class="close-button" aria-label="Fechar">&times;</span>
-                    <h2>Conversas e Feedback</h2>
-                    <p>Envie sua mensagem, sugestão ou oração. Sua opinião é muito importante para nós!</p>
-                    <textarea placeholder="Escreva aqui sua mensagem..." rows="4"></textarea>
-                    <br>
-                    <button class="btn-enviar-feedback" onclick="alert('Mensagem enviada! Obrigado pelo seu contato.')">Enviar</button>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #5e1d44;">Este é um canal de acolhimento. Sua mensagem será lida com carinho.</p>
-                </div>
-            `;
-            document.body.appendChild(feedbackModal);
+        // Fechar modal de autenticação
+        authModalClose.addEventListener('click', () => {
+            fecharTodosModais();
+        });
 
-            // Fechar modal
-            const closeFeedback = feedbackModal.querySelector('.close-button');
-            closeFeedback.addEventListener('click', () => {
-                feedbackModal.remove();
-                document.body.classList.remove('modal-open');
-            });
-
-            feedbackModal.addEventListener('click', (e) => {
-                if (e.target === feedbackModal) {
-                    feedbackModal.remove();
-                    document.body.classList.remove('modal-open');
+        // Alternar abas de login/cadastro
+        authTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                authTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const target = tab.dataset.tab;
+                if (target === 'login') {
+                    loginForm.classList.remove('hidden');
+                    registerForm.classList.add('hidden');
+                } else {
+                    loginForm.classList.add('hidden');
+                    registerForm.classList.remove('hidden');
                 }
+                authError.textContent = '';
             });
+        });
 
-            document.body.classList.add('modal-open');
+        // Função para mostrar erro no auth
+        function showAuthError(msg) {
+            authError.textContent = msg;
+        }
+
+        // Login com e-mail/senha
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+
+            if (!email || !password) {
+                showAuthError('Preencha todos os campos.');
+                return;
+            }
+
+            // Simulação: verifica se existe usuário com esse email
+            const users = JSON.parse(localStorage.getItem('site_users') || '[]');
+            const found = users.find(u => u.email === email && u.password === password);
+            if (found) {
+                setUser({ name: found.name, email: found.email, avatar: found.avatar || null });
+                fecharTodosModais();
+                alert(`Bem-vindo(a) de volta, ${found.name}!`);
+            } else {
+                // Se não encontrou, mas é o primeiro login, cria automaticamente (para demonstração)
+                // Verifica se já existe usuário com esse email (senão, sugere criar conta)
+                const existing = users.find(u => u.email === email);
+                if (existing) {
+                    showAuthError('Senha incorreta. Tente novamente ou crie uma nova conta.');
+                } else {
+                    showAuthError('Usuário não encontrado. Crie uma conta primeiro.');
+                }
+            }
+        });
+
+        // Cadastro com e-mail/senha
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const password = document.getElementById('registerPassword').value.trim();
+
+            if (!name || !email || !password) {
+                showAuthError('Preencha todos os campos.');
+                return;
+            }
+            if (password.length < 6) {
+                showAuthError('A senha deve ter pelo menos 6 caracteres.');
+                return;
+            }
+
+            // Salva usuário
+            const users = JSON.parse(localStorage.getItem('site_users') || '[]');
+            if (users.find(u => u.email === email)) {
+                showAuthError('Este e-mail já está cadastrado. Faça login.');
+                return;
+            }
+            const newUser = { name, email, password, avatar: null };
+            users.push(newUser);
+            localStorage.setItem('site_users', JSON.stringify(users));
+            setUser({ name, email, avatar: null });
+            fecharTodosModais();
+            alert(`Conta criada com sucesso! Bem-vindo(a), ${name}!`);
+        });
+
+        // Login social (simulado)
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const provider = btn.dataset.social;
+                // Simula login social com nome fictício
+                const fakeName = provider.charAt(0).toUpperCase() + provider.slice(1) + ' User';
+                const fakeEmail = `${provider.toLowerCase()}@exemplo.com`;
+                // Salva ou cria usuário
+                const users = JSON.parse(localStorage.getItem('site_users') || '[]');
+                let found = users.find(u => u.email === fakeEmail);
+                if (!found) {
+                    found = { name: fakeName, email: fakeEmail, password: 'social', avatar: null };
+                    users.push(found);
+                    localStorage.setItem('site_users', JSON.stringify(users));
+                }
+                setUser({ name: found.name, email: found.email, avatar: found.avatar || null });
+                fecharTodosModais();
+                alert(`Conectado com ${provider}!`);
+            });
+        });
+
+        // --- PESQUISA FUNCIONAL ---
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const allButtons = document.querySelectorAll('.botao-misterio, .botao-secao');
+
+        function performSearch(query) {
+            const q = query.toLowerCase().trim();
+            if (!q) {
+                // Mostra todos
+                allButtons.forEach(btn => btn.style.display = '');
+                return;
+            }
+            // Filtra botões pelo texto
+            allButtons.forEach(btn => {
+                const text = btn.textContent.toLowerCase();
+                // Verifica se o texto do botão contém a busca ou se o modal alvo contém
+                const match = text.includes(q);
+                btn.style.display = match ? '' : 'none';
+            });
+            // Mostra mensagem se nenhum resultado
+            const visible = document.querySelectorAll('.botao-misterio[style*="display: none"], .botao-secao[style*="display: none"]');
+            // Se todos estiverem ocultos, mostrar mensagem
+            const anyVisible = Array.from(allButtons).some(btn => btn.style.display !== 'none');
+            const existingMsg = document.getElementById('searchNoResults');
+            if (!anyVisible && q) {
+                if (!existingMsg) {
+                    const msg = document.createElement('p');
+                    msg.id = 'searchNoResults';
+                    msg.style.textAlign = 'center';
+                    msg.style.color = '#ffd6e0';
+                    msg.style.margin = '2rem 0';
+                    msg.style.fontSize = '1.1rem';
+                    msg.textContent = `Nenhum resultado encontrado para "${q}". Tente outra palavra.`;
+                    const container = document.querySelector('main');
+                    container.appendChild(msg);
+                }
+            } else {
+                if (existingMsg) existingMsg.remove();
+            }
+        }
+
+        searchButton.addEventListener('click', () => {
+            performSearch(searchInput.value);
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                performSearch(searchInput.value);
+            }
+        });
+
+        // Limpa a pesquisa e mostra tudo ao clicar em um botão (opcional)
+        allButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                searchInput.value = '';
+                performSearch('');
+            });
+        });
+
+        // --- INICIALIZAÇÃO ---
+        updateUI();
+
+        // Ajusta o avatar no header para mobile
+        window.addEventListener('resize', () => {
+            updateUI();
         });
     });
 </script>
