@@ -27,6 +27,8 @@
             --radius-btn: 30px;
             --radius-card: 22px;
             --shadow-sacred: 0 10px 30px rgba(0, 0, 0, 0.45);
+            --danger: #c62828;
+            --danger-hover: #b71c1c;
         }
 
         *, *::before, *::after {
@@ -262,6 +264,7 @@
             font-size: 0.8rem;
             color: white;
             object-fit: cover;
+            overflow: hidden;
         }
 
         .btn-auth .avatar img {
@@ -660,7 +663,8 @@
             display: none;
         }
 
-        .auth-modal .auth-form input {
+        .auth-modal .auth-form input,
+        .auth-modal .auth-form select {
             padding: 0.8rem 1.2rem;
             border: 1.5px solid #e6c0d2;
             border-radius: 12px;
@@ -669,21 +673,13 @@
             transition: border 0.3s;
             background: #fff;
             color: var(--text-dark);
+            width: 100%;
         }
 
-        .auth-modal .auth-form input:focus {
+        .auth-modal .auth-form input:focus,
+        .auth-modal .auth-form select:focus {
             outline: none;
             border-color: var(--primary);
-        }
-
-        .auth-modal .auth-form input.error {
-            border-color: #d32f2f;
-            background: #fff5f5;
-        }
-
-        .auth-modal .auth-form input.success {
-            border-color: #2e7d32;
-            background: #f0fff0;
         }
 
         .auth-modal .btn-auth-submit {
@@ -697,34 +693,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
-            position: relative;
         }
 
-        .auth-modal .btn-auth-submit:hover:not(:disabled) {
+        .auth-modal .btn-auth-submit:hover {
             transform: scale(1.02);
             box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
-        }
-
-        .auth-modal .btn-auth-submit:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .auth-modal .btn-auth-submit .spinner {
-            display: inline-block;
-            width: 1.2rem;
-            height: 1.2rem;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-top-color: white;
-            border-radius: 50%;
-            animation: spin 0.6s linear infinite;
-            vertical-align: middle;
-            margin-right: 0.5rem;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
         }
 
         .auth-modal .auth-divider {
@@ -792,40 +765,210 @@
             min-height: 1.4rem;
         }
 
-        .auth-modal .auth-success {
-            color: #2e7d32;
+        /* --- Estilos do Modal de Perfil --- */
+        .profile-modal .modal-content {
+            max-width: 560px;
+            padding: 2.2rem 2rem;
+        }
+
+        .profile-modal .profile-avatar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-modal .profile-avatar .avatar-preview {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            object-fit: cover;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            overflow: hidden;
+        }
+
+        .profile-modal .profile-avatar .avatar-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-modal .profile-avatar input[type="file"] {
             font-size: 0.85rem;
-            text-align: center;
-            min-height: 1.4rem;
+            color: var(--text-muted);
+        }
+
+        .profile-modal .profile-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .profile-modal .profile-form .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .profile-modal .profile-form .form-row label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .profile-modal .profile-form .form-row input,
+        .profile-modal .profile-form .form-row select {
+            padding: 0.7rem 1rem;
+            border: 1.5px solid #e6c0d2;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            background: #fff;
+            color: var(--text-dark);
+            width: 100%;
+        }
+
+        .profile-modal .profile-form .form-row input:focus,
+        .profile-modal .profile-form .form-row select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .profile-modal .btn-save-profile {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 50px;
+            padding: 0.8rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .profile-modal .btn-save-profile:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
+        }
+
+        .profile-modal .danger-zone {
+            margin-top: 2rem;
+            border-top: 2px solid #f0d0dd;
+            padding-top: 1.5rem;
+        }
+
+        .profile-modal .danger-zone h3 {
+            color: var(--danger);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .profile-modal .danger-zone p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .profile-modal .danger-zone .danger-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-modal .danger-zone .btn-danger {
+            background: var(--danger);
+            border: none;
+            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .profile-modal .danger-zone .btn-danger:hover {
+            background: var(--danger-hover);
+            transform: scale(1.03);
+        }
+
+        .profile-modal .danger-zone .btn-danger-outline {
+            background: transparent;
+            border: 2px solid var(--danger);
+            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            color: var(--danger);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .profile-modal .danger-zone .btn-danger-outline:hover {
+            background: var(--danger);
+            color: white;
         }
 
         /* --- Estilos do Modal de Feedback --- */
         .feedback-modal .modal-content {
-            max-width: 520px;
+            max-width: 600px;
+        }
+
+        .feedback-modal .feedback-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 1rem 0;
+            padding-right: 0.5rem;
+        }
+
+        .feedback-modal .feedback-item {
+            background: #fff;
+            border: 1px solid #f3cbdb;
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .feedback-modal .feedback-item .feedback-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.3rem;
+        }
+
+        .feedback-modal .feedback-item .feedback-text {
+            font-size: 0.95rem;
+            color: var(--text-dark);
         }
 
         .feedback-modal textarea {
             width: 100%;
-            padding: 1rem;
+            padding: 0.8rem;
             border-radius: 12px;
             border: 1.5px solid #e6c0d2;
             font-family: 'Poppins', sans-serif;
             font-size: 1rem;
             resize: vertical;
-            min-height: 120px;
+            min-height: 100px;
             background: #fff;
             color: var(--text-dark);
-            transition: border 0.3s;
         }
 
         .feedback-modal textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(214,51,132,0.1);
-        }
-
-        .feedback-modal textarea.error {
-            border-color: #d32f2f;
         }
 
         .feedback-modal .btn-enviar-feedback {
@@ -839,33 +982,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 0.5rem;
-            position: relative;
         }
 
-        .feedback-modal .btn-enviar-feedback:hover:not(:disabled) {
+        .feedback-modal .btn-enviar-feedback:hover {
             transform: scale(1.03);
             box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
-        }
-
-        .feedback-modal .btn-enviar-feedback:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .feedback-modal .feedback-status {
-            margin-top: 0.8rem;
-            font-size: 0.95rem;
-            text-align: center;
-            min-height: 2rem;
-        }
-
-        .feedback-modal .feedback-status.success {
-            color: #2e7d32;
-        }
-
-        .feedback-modal .feedback-status.error {
-            color: #d32f2f;
         }
 
         /* --- Banner de Cookies --- */
@@ -1050,11 +1171,15 @@
                 padding: 0.4rem 1rem;
                 font-size: 0.75rem;
             }
-            .auth-modal .modal-content {
-                padding: 1.8rem 1.2rem;
-            }
+            .auth-modal .modal-content,
+            .profile-modal .modal-content,
             .feedback-modal .modal-content {
                 padding: 1.8rem 1.2rem;
+            }
+            .profile-modal .profile-avatar .avatar-preview {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
             }
         }
     </style>
@@ -2838,7 +2963,7 @@
     </div>
 </div>
 
-<!-- ==================== MODAL DE AUTENTICAÇÃO MELHORADO ==================== -->
+<!-- ==================== MODAL DE AUTENTICAÇÃO ==================== -->
 <div id="modalAuth" class="modal auth-modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" id="authModalClose" aria-label="Fechar">&times;</span>
@@ -2848,13 +2973,12 @@
             <button class="auth-tab" data-tab="register">Criar Conta</button>
         </div>
         <div id="authError" class="auth-error"></div>
-        <div id="authSuccess" class="auth-success"></div>
 
         <!-- Formulário de Login -->
-        <form class="auth-form" id="loginForm" novalidate>
+        <form class="auth-form" id="loginForm">
             <input type="email" placeholder="E-mail" id="loginEmail" required>
             <input type="password" placeholder="Senha" id="loginPassword" required>
-            <button type="submit" class="btn-auth-submit" id="loginSubmitBtn">Entrar</button>
+            <button type="submit" class="btn-auth-submit">Entrar</button>
             <div class="auth-divider">ou continue com</div>
             <div class="social-login">
                 <button type="button" class="social-btn google" data-social="google">Google</button>
@@ -2864,12 +2988,11 @@
         </form>
 
         <!-- Formulário de Cadastro -->
-        <form class="auth-form hidden" id="registerForm" novalidate>
+        <form class="auth-form hidden" id="registerForm">
             <input type="text" placeholder="Nome completo" id="registerName" required>
             <input type="email" placeholder="E-mail" id="registerEmail" required>
             <input type="password" placeholder="Senha (mínimo 6 caracteres)" id="registerPassword" required minlength="6">
-            <input type="password" placeholder="Confirme sua senha" id="registerPasswordConfirm" required minlength="6">
-            <button type="submit" class="btn-auth-submit" id="registerSubmitBtn">Criar Conta</button>
+            <button type="submit" class="btn-auth-submit">Criar Conta</button>
             <div class="auth-divider">ou continue com</div>
             <div class="social-login">
                 <button type="button" class="social-btn google" data-social="google">Google</button>
@@ -2877,6 +3000,84 @@
                 <button type="button" class="social-btn apple" data-social="apple">Apple</button>
             </div>
         </form>
+    </div>
+</div>
+
+<!-- ==================== MODAL DE PERFIL ==================== -->
+<div id="modalProfile" class="modal profile-modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" id="profileModalClose" aria-label="Fechar">&times;</span>
+        <h2>Gerenciamento de Conta</h2>
+
+        <div class="profile-avatar">
+            <div class="avatar-preview" id="profileAvatarPreview">
+                <span id="avatarPlaceholder">👤</span>
+            </div>
+            <label style="font-size:0.9rem; color: var(--text-muted); cursor:pointer;">
+                <input type="file" id="profileAvatarInput" accept="image/*" style="display:none;">
+                Escolher foto de perfil
+            </label>
+        </div>
+
+        <form class="profile-form" id="profileForm">
+            <div class="form-row">
+                <label for="profileDisplayName">Nome de Exibição</label>
+                <input type="text" id="profileDisplayName" placeholder="Seu nome público">
+            </div>
+            <div class="form-row">
+                <label for="profileNickname">Apelido</label>
+                <input type="text" id="profileNickname" placeholder="Apelido (opcional)">
+            </div>
+            <div class="form-row">
+                <label for="profileSocialName">Nome Social</label>
+                <input type="text" id="profileSocialName" placeholder="Nome social (opcional)">
+            </div>
+            <div class="form-row">
+                <label for="profileGender">Sexo</label>
+                <select id="profileGender">
+                    <option value="">Não informado</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="profileGenderSpecify">Especificar Sexo (opcional)</label>
+                <input type="text" id="profileGenderSpecify" placeholder="Especifique, se desejar">
+            </div>
+            <div class="form-row">
+                <label for="profileNewPassword">Nova Senha (deixe em branco para manter a atual)</label>
+                <input type="password" id="profileNewPassword" placeholder="Nova senha (mínimo 6 caracteres)">
+            </div>
+            <button type="submit" class="btn-save-profile">Salvar Alterações</button>
+        </form>
+
+        <!-- Zona de Perigo -->
+        <div class="danger-zone">
+            <h3>⚠️ Zona de Perigo</h3>
+            <p>Atenção redobrada. Apenas atue aqui sob estrita necessidade.</p>
+            <div class="danger-buttons">
+                <button class="btn-danger-outline" id="deactivateAccountBtn">Desativar Conta</button>
+                <button class="btn-danger" id="deleteAccountBtn">Excluir Conta Permanentemente</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== MODAL DE FEEDBACK ==================== -->
+<div id="modalFeedback" class="modal feedback-modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" id="feedbackModalClose" aria-label="Fechar">&times;</span>
+        <h2>Conversas e Feedback</h2>
+        <p style="margin-bottom:0.5rem;">Envie sua mensagem, sugestão ou oração. Sua opinião é muito importante para nós!</p>
+        <textarea id="feedbackText" placeholder="Escreva aqui sua mensagem..." rows="4"></textarea>
+        <button class="btn-enviar-feedback" id="sendFeedbackBtn">Enviar</button>
+
+        <h3 style="margin-top:1.5rem; font-size:1.2rem;">Mensagens enviadas</h3>
+        <div class="feedback-list" id="feedbackList">
+            <!-- As mensagens serão inseridas aqui via JavaScript -->
+            <p style="color: #888; text-align:center; padding:1rem;">Nenhuma mensagem ainda. Seja o primeiro a enviar!</p>
+        </div>
     </div>
 </div>
 
@@ -2980,7 +3181,6 @@
             });
         });
 
-        // Acessibilidade: fechar com tecla ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') fecharTodosModais();
         });
@@ -2999,21 +3199,22 @@
             cookieBanner.classList.add('hidden');
         });
 
-        // --- SISTEMA DE AUTENTICAÇÃO MELHORADO ---
-        const authModal = document.getElementById('modalAuth');
-        const authButton = document.getElementById('authButton');
-        const authLabel = document.getElementById('authLabel');
-        const authModalClose = document.getElementById('authModalClose');
-        const authTabs = document.querySelectorAll('.auth-tab');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const authError = document.getElementById('authError');
-        const authSuccess = document.getElementById('authSuccess');
-        const loginSubmitBtn = document.getElementById('loginSubmitBtn');
-        const registerSubmitBtn = document.getElementById('registerSubmitBtn');
+        // ============================================================
+        // SISTEMA DE AUTENTICAÇÃO E PERFIL COMPLETO
+        // ============================================================
 
-        // Estado do usuário
         const USER_KEY = 'site_user_data';
+        const USERS_KEY = 'site_users';
+
+        function getUsers() {
+            try {
+                return JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+            } catch { return []; }
+        }
+
+        function saveUsers(users) {
+            localStorage.setItem(USERS_KEY, JSON.stringify(users));
+        }
 
         function getUser() {
             try {
@@ -3032,21 +3233,26 @@
             updateUI();
         }
 
-        // Atualiza a interface
+        // Atualiza a interface do header
         function updateUI() {
             const user = getUser();
+            const authLabel = document.getElementById('authLabel');
+            const authButton = document.getElementById('authButton');
             if (user) {
-                const initial = user.name ? user.name.charAt(0).toUpperCase() : 'U';
-                authLabel.innerHTML = `<span class="avatar"><span>${initial}</span></span> <span class="auth-name" style="display:none;">${user.name || 'Usuário'}</span>`;
-                if (window.innerWidth < 768) {
-                    authLabel.innerHTML = `<span class="avatar"><span>${initial}</span></span>`;
+                const initial = user.displayName ? user.displayName.charAt(0).toUpperCase() :
+                               user.nickname ? user.nickname.charAt(0).toUpperCase() :
+                               user.email ? user.email.charAt(0).toUpperCase() : 'U';
+                let avatarHtml = '';
+                if (user.avatar) {
+                    avatarHtml = `<img src="${user.avatar}" alt="Avatar">`;
+                } else {
+                    avatarHtml = `<span>${initial}</span>`;
                 }
-                authButton.title = `Olá, ${user.name || 'Usuário'}! Clique para sair`;
+                authLabel.innerHTML = `<span class="avatar">${avatarHtml}</span>`;
+                authButton.title = `Olá, ${user.displayName || user.nickname || user.email || 'Usuário'}!`;
                 authButton.onclick = () => {
-                    if (confirm('Deseja sair da sua conta?')) {
-                        logout();
-                        showToast('Você saiu da sua conta.');
-                    }
+                    // Abre o perfil se estiver logado
+                    abrirModalPorId('modalProfile');
                 };
             } else {
                 authLabel.innerHTML = 'Entrar';
@@ -3057,48 +3263,26 @@
             }
         }
 
-        // Toast simples (substitui alert)
-        function showToast(msg) {
-            const toast = document.createElement('div');
-            toast.textContent = msg;
-            Object.assign(toast.style, {
-                position: 'fixed',
-                bottom: '80px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                background: 'rgba(20,5,15,0.9)',
-                color: '#fff',
-                padding: '12px 24px',
-                borderRadius: '50px',
-                zIndex: '9999',
-                fontFamily: 'Poppins, sans-serif',
-                fontSize: '0.95rem',
-                backdropFilter: 'blur(10px)',
-                boxShadow: '0 6px 30px rgba(0,0,0,0.5)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                maxWidth: '90%',
-                textAlign: 'center',
-                transition: 'opacity 0.3s',
-            });
-            document.body.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => toast.remove(), 400);
-            }, 3500);
-        }
+        // --- Gerenciamento do Modal de Autenticação ---
+        const authModal = document.getElementById('modalAuth');
+        const authModalClose = document.getElementById('authModalClose');
+        const authTabs = document.querySelectorAll('#modalAuth .auth-tab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const authError = document.getElementById('authError');
 
         // Abrir modal de autenticação
-        authButton.addEventListener('click', (e) => {
+        document.getElementById('authButton').addEventListener('click', () => {
             const user = getUser();
-            if (user) return;
+            if (user) {
+                abrirModalPorId('modalProfile');
+                return;
+            }
             abrirModalPorId('modalAuth');
-            authError.textContent = '';
-            authSuccess.textContent = '';
         });
 
         authModalClose.addEventListener('click', fecharTodosModais);
 
-        // Alternar abas
         authTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 authTabs.forEach(t => t.classList.remove('active'));
@@ -3112,149 +3296,384 @@
                     registerForm.classList.remove('hidden');
                 }
                 authError.textContent = '';
-                authSuccess.textContent = '';
             });
         });
 
-        function clearFieldErrors() {
-            document.querySelectorAll('.auth-form input').forEach(inp => {
-                inp.classList.remove('error', 'success');
-            });
-        }
-
-        function setFieldError(input, msg) {
-            input.classList.add('error');
-            input.classList.remove('success');
+        function showAuthError(msg) {
             authError.textContent = msg;
         }
 
-        function setFieldSuccess(input) {
-            input.classList.remove('error');
-            input.classList.add('success');
-        }
-
-        // --- Login ---
+        // Login
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value.trim();
             const password = document.getElementById('loginPassword').value.trim();
 
-            clearFieldErrors();
-            authError.textContent = '';
-            authSuccess.textContent = '';
-
             if (!email || !password) {
-                setFieldError(document.getElementById('loginEmail'), 'Preencha todos os campos.');
+                showAuthError('Preencha todos os campos.');
                 return;
             }
 
-            loginSubmitBtn.disabled = true;
-            loginSubmitBtn.innerHTML = '<span class="spinner"></span> Entrando...';
-
-            // Simula requisição
-            setTimeout(() => {
-                const users = JSON.parse(localStorage.getItem('site_users') || '[]');
-                const found = users.find(u => u.email === email && u.password === password);
-                if (found) {
-                    setUser({ name: found.name, email: found.email, avatar: found.avatar || null });
-                    fecharTodosModais();
-                    showToast(`Bem-vindo(a) de volta, ${found.name}!`);
-                    loginSubmitBtn.disabled = false;
-                    loginSubmitBtn.textContent = 'Entrar';
+            const users = getUsers();
+            const found = users.find(u => u.email === email && u.password === password);
+            if (found) {
+                // Remove a senha antes de salvar na sessão
+                const { password: _, ...userData } = found;
+                setUser(userData);
+                fecharTodosModais();
+                alert(`Bem-vindo(a) de volta, ${found.displayName || found.nickname || found.email}!`);
+            } else {
+                const existing = users.find(u => u.email === email);
+                if (existing) {
+                    showAuthError('Senha incorreta. Tente novamente.');
                 } else {
-                    const existing = users.find(u => u.email === email);
-                    if (existing) {
-                        setFieldError(document.getElementById('loginPassword'), 'Senha incorreta.');
-                    } else {
-                        setFieldError(document.getElementById('loginEmail'), 'Usuário não encontrado. Crie uma conta.');
-                    }
-                    loginSubmitBtn.disabled = false;
-                    loginSubmitBtn.textContent = 'Entrar';
+                    showAuthError('Usuário não encontrado. Crie uma conta primeiro.');
                 }
-            }, 800);
+            }
         });
 
-        // --- Cadastro ---
+        // Cadastro
         registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('registerName').value.trim();
             const email = document.getElementById('registerEmail').value.trim();
             const password = document.getElementById('registerPassword').value.trim();
-            const confirm = document.getElementById('registerPasswordConfirm').value.trim();
 
-            clearFieldErrors();
-            authError.textContent = '';
-            authSuccess.textContent = '';
-
-            let valid = true;
-            if (!name) {
-                setFieldError(document.getElementById('registerName'), 'Nome é obrigatório.');
-                valid = false;
-            } else {
-                setFieldSuccess(document.getElementById('registerName'));
-            }
-            if (!email || !email.includes('@') || !email.includes('.')) {
-                setFieldError(document.getElementById('registerEmail'), 'E-mail inválido.');
-                valid = false;
-            } else {
-                setFieldSuccess(document.getElementById('registerEmail'));
+            if (!name || !email || !password) {
+                showAuthError('Preencha todos os campos.');
+                return;
             }
             if (password.length < 6) {
-                setFieldError(document.getElementById('registerPassword'), 'Senha deve ter pelo menos 6 caracteres.');
-                valid = false;
-            } else {
-                setFieldSuccess(document.getElementById('registerPassword'));
+                showAuthError('A senha deve ter pelo menos 6 caracteres.');
+                return;
             }
-            if (password !== confirm) {
-                setFieldError(document.getElementById('registerPasswordConfirm'), 'As senhas não coincidem.');
-                valid = false;
-            } else if (confirm.length >= 6) {
-                setFieldSuccess(document.getElementById('registerPasswordConfirm'));
+
+            const users = getUsers();
+            if (users.find(u => u.email === email)) {
+                showAuthError('Este e-mail já está cadastrado. Faça login.');
+                return;
             }
-            if (!valid) return;
 
-            registerSubmitBtn.disabled = true;
-            registerSubmitBtn.innerHTML = '<span class="spinner"></span> Criando...';
-
-            setTimeout(() => {
-                const users = JSON.parse(localStorage.getItem('site_users') || '[]');
-                if (users.find(u => u.email === email)) {
-                    setFieldError(document.getElementById('registerEmail'), 'Este e-mail já está cadastrado.');
-                    registerSubmitBtn.disabled = false;
-                    registerSubmitBtn.textContent = 'Criar Conta';
-                    return;
-                }
-                const newUser = { name, email, password, avatar: null };
-                users.push(newUser);
-                localStorage.setItem('site_users', JSON.stringify(users));
-                setUser({ name, email, avatar: null });
-                fecharTodosModais();
-                showToast(`Conta criada com sucesso! Bem-vindo(a), ${name}!`);
-                registerSubmitBtn.disabled = false;
-                registerSubmitBtn.textContent = 'Criar Conta';
-            }, 800);
+            const newUser = {
+                email,
+                password,
+                displayName: name,
+                nickname: '',
+                socialName: '',
+                gender: '',
+                genderSpecify: '',
+                avatar: null,
+                createdAt: new Date().toISOString(),
+            };
+            users.push(newUser);
+            saveUsers(users);
+            const { password: _, ...userData } = newUser;
+            setUser(userData);
+            fecharTodosModais();
+            alert(`Conta criada com sucesso! Bem-vindo(a), ${name}!`);
         });
 
-        // --- Login social (simulado) ---
+        // Login social (simulado)
         document.querySelectorAll('.social-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const provider = btn.dataset.social;
                 const fakeName = provider.charAt(0).toUpperCase() + provider.slice(1) + ' User';
                 const fakeEmail = `${provider.toLowerCase()}@exemplo.com`;
-                const users = JSON.parse(localStorage.getItem('site_users') || '[]');
+                let users = getUsers();
                 let found = users.find(u => u.email === fakeEmail);
                 if (!found) {
-                    found = { name: fakeName, email: fakeEmail, password: 'social', avatar: null };
+                    found = {
+                        email: fakeEmail,
+                        password: 'social',
+                        displayName: fakeName,
+                        nickname: '',
+                        socialName: '',
+                        gender: '',
+                        genderSpecify: '',
+                        avatar: null,
+                        createdAt: new Date().toISOString(),
+                    };
                     users.push(found);
-                    localStorage.setItem('site_users', JSON.stringify(users));
+                    saveUsers(users);
                 }
-                setUser({ name: found.name, email: found.email, avatar: found.avatar || null });
+                const { password: _, ...userData } = found;
+                setUser(userData);
                 fecharTodosModais();
-                showToast(`Conectado com ${provider}!`);
+                alert(`Conectado com ${provider}!`);
             });
         });
 
-        // --- PESQUISA FUNCIONAL ---
+        // --- Gerenciamento do Perfil ---
+        const profileModal = document.getElementById('modalProfile');
+        const profileModalClose = document.getElementById('profileModalClose');
+        const profileForm = document.getElementById('profileForm');
+        const profileAvatarInput = document.getElementById('profileAvatarInput');
+        const profileAvatarPreview = document.getElementById('profileAvatarPreview');
+        const avatarPlaceholder = document.getElementById('avatarPlaceholder');
+
+        // Preencher o formulário de perfil com os dados do usuário
+        function loadProfile() {
+            const user = getUser();
+            if (!user) return;
+            document.getElementById('profileDisplayName').value = user.displayName || '';
+            document.getElementById('profileNickname').value = user.nickname || '';
+            document.getElementById('profileSocialName').value = user.socialName || '';
+            document.getElementById('profileGender').value = user.gender || '';
+            document.getElementById('profileGenderSpecify').value = user.genderSpecify || '';
+            document.getElementById('profileNewPassword').value = '';
+            // Avatar
+            if (user.avatar) {
+                avatarPlaceholder.innerHTML = `<img src="${user.avatar}" alt="Avatar" style="width:100%;height:100%;object-fit:cover;">`;
+            } else {
+                const initial = user.displayName ? user.displayName.charAt(0).toUpperCase() :
+                               user.nickname ? user.nickname.charAt(0).toUpperCase() :
+                               user.email ? user.email.charAt(0).toUpperCase() : 'U';
+                avatarPlaceholder.textContent = initial;
+                avatarPlaceholder.style.background = '#eee';
+                avatarPlaceholder.style.display = 'flex';
+                avatarPlaceholder.style.alignItems = 'center';
+                avatarPlaceholder.style.justifyContent = 'center';
+                avatarPlaceholder.style.width = '100%';
+                avatarPlaceholder.style.height = '100%';
+                avatarPlaceholder.style.fontSize = '2.5rem';
+                avatarPlaceholder.style.color = 'var(--primary)';
+            }
+        }
+
+        // Salvar alterações do perfil
+        profileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const user = getUser();
+            if (!user) {
+                alert('Nenhum usuário logado.');
+                return;
+            }
+
+            const displayName = document.getElementById('profileDisplayName').value.trim();
+            const nickname = document.getElementById('profileNickname').value.trim();
+            const socialName = document.getElementById('profileSocialName').value.trim();
+            const gender = document.getElementById('profileGender').value;
+            const genderSpecify = document.getElementById('profileGenderSpecify').value.trim();
+            const newPassword = document.getElementById('profileNewPassword').value.trim();
+
+            // Atualizar dados do usuário na lista de usuários
+            let users = getUsers();
+            const userIndex = users.findIndex(u => u.email === user.email);
+            if (userIndex === -1) {
+                alert('Erro: usuário não encontrado.');
+                return;
+            }
+
+            // Atualiza campos
+            users[userIndex].displayName = displayName || users[userIndex].displayName;
+            users[userIndex].nickname = nickname || users[userIndex].nickname;
+            users[userIndex].socialName = socialName || users[userIndex].socialName;
+            users[userIndex].gender = gender || users[userIndex].gender;
+            users[userIndex].genderSpecify = genderSpecify || users[userIndex].genderSpecify;
+            if (newPassword.length >= 6) {
+                users[userIndex].password = newPassword;
+            }
+            // Avatar já foi atualizado via upload (salvo em user.avatar)
+
+            // Salva a lista atualizada
+            saveUsers(users);
+
+            // Atualiza o usuário na sessão (remove senha)
+            const { password: _, ...userData } = users[userIndex];
+            setUser(userData);
+
+            alert('Perfil atualizado com sucesso!');
+            fecharTodosModais();
+        });
+
+        // Upload e redimensionamento de avatar
+        profileAvatarInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    // Redimensionar para 200x200 (canvas)
+                    const canvas = document.createElement('canvas');
+                    const size = 200;
+                    canvas.width = size;
+                    canvas.height = size;
+                    const ctx = canvas.getContext('2d');
+                    // Desenhar a imagem redimensionada e centralizada (corte quadrado)
+                    const aspect = img.width / img.height;
+                    let sx, sy, sw, sh;
+                    if (aspect > 1) {
+                        // largura maior
+                        sw = img.height;
+                        sh = img.height;
+                        sx = (img.width - sw) / 2;
+                        sy = 0;
+                    } else {
+                        sw = img.width;
+                        sh = img.width;
+                        sx = 0;
+                        sy = (img.height - sh) / 2;
+                    }
+                    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, size, size);
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                    // Atualizar preview
+                    avatarPlaceholder.innerHTML = `<img src="${dataUrl}" alt="Avatar" style="width:100%;height:100%;object-fit:cover;">`;
+                    // Salvar no usuário atual
+                    const user = getUser();
+                    if (user) {
+                        user.avatar = dataUrl;
+                        setUser(user);
+                        // Também atualizar na lista de usuários
+                        let users = getUsers();
+                        const idx = users.findIndex(u => u.email === user.email);
+                        if (idx !== -1) {
+                            users[idx].avatar = dataUrl;
+                            saveUsers(users);
+                        }
+                    }
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Desativar conta (simulação)
+        document.getElementById('deactivateAccountBtn').addEventListener('click', () => {
+            if (confirm('Tem certeza que deseja desativar sua conta? Você poderá reativá-la posteriormente.')) {
+                const user = getUser();
+                if (user) {
+                    let users = getUsers();
+                    const idx = users.findIndex(u => u.email === user.email);
+                    if (idx !== -1) {
+                        users[idx].active = false;
+                        saveUsers(users);
+                        logout();
+                        alert('Conta desativada com sucesso.');
+                        fecharTodosModais();
+                    }
+                }
+            }
+        });
+
+        // Excluir conta permanentemente
+        document.getElementById('deleteAccountBtn').addEventListener('click', () => {
+            if (confirm('ATENÇÃO: Esta ação é irreversível. Tem certeza que deseja excluir sua conta permanentemente?')) {
+                const user = getUser();
+                if (user) {
+                    let users = getUsers();
+                    const idx = users.findIndex(u => u.email === user.email);
+                    if (idx !== -1) {
+                        users.splice(idx, 1);
+                        saveUsers(users);
+                        logout();
+                        alert('Conta excluída permanentemente.');
+                        fecharTodosModais();
+                    }
+                }
+            }
+        });
+
+        // Fechar modal de perfil
+        profileModalClose.addEventListener('click', fecharTodosModais);
+
+        // Quando o modal de perfil for aberto, carregar os dados
+        // Usar MutationObserver para detectar abertura do modal
+        const profileObserver = new MutationObserver(() => {
+            if (profileModal.classList.contains('active')) {
+                loadProfile();
+            }
+        });
+        profileObserver.observe(profileModal, { attributes: true, attributeFilter: ['class'] });
+
+        // ============================================================
+        // SISTEMA DE FEEDBACK (COMENTÁRIOS)
+        // ============================================================
+
+        const feedbackModal = document.getElementById('modalFeedback');
+        const feedbackModalClose = document.getElementById('feedbackModalClose');
+        const feedbackText = document.getElementById('feedbackText');
+        const sendFeedbackBtn = document.getElementById('sendFeedbackBtn');
+        const feedbackList = document.getElementById('feedbackList');
+
+        const FEEDBACK_KEY = 'site_feedback_messages';
+
+        function getFeedbackMessages() {
+            try {
+                return JSON.parse(localStorage.getItem(FEEDBACK_KEY) || '[]');
+            } catch { return []; }
+        }
+
+        function saveFeedbackMessages(messages) {
+            localStorage.setItem(FEEDBACK_KEY, JSON.stringify(messages));
+        }
+
+        function renderFeedback() {
+            const messages = getFeedbackMessages();
+            if (messages.length === 0) {
+                feedbackList.innerHTML = `<p style="color: #888; text-align:center; padding:1rem;">Nenhuma mensagem ainda. Seja o primeiro a enviar!</p>`;
+                return;
+            }
+            let html = '';
+            // Ordem cronológica (mais recentes primeiro)
+            const sorted = [...messages].reverse();
+            sorted.forEach(msg => {
+                const date = new Date(msg.timestamp);
+                const dateStr = date.toLocaleDateString('pt-BR') + ' ' + date.toLocaleTimeString('pt-BR');
+                html += `
+                    <div class="feedback-item">
+                        <div class="feedback-meta">
+                            <span>${msg.author || 'Anônimo'}</span>
+                            <span>${dateStr}</span>
+                        </div>
+                        <div class="feedback-text">${msg.text}</div>
+                    </div>
+                `;
+            });
+            feedbackList.innerHTML = html;
+        }
+
+        // Enviar feedback
+        sendFeedbackBtn.addEventListener('click', () => {
+            const text = feedbackText.value.trim();
+            if (!text) {
+                alert('Por favor, escreva uma mensagem.');
+                return;
+            }
+            const user = getUser();
+            const author = user ? (user.displayName || user.nickname || user.email || 'Anônimo') : 'Anônimo';
+            const messages = getFeedbackMessages();
+            messages.push({
+                text: text,
+                author: author,
+                timestamp: Date.now(),
+            });
+            saveFeedbackMessages(messages);
+            feedbackText.value = '';
+            renderFeedback();
+            alert('Mensagem enviada com sucesso! Obrigado por contribuir.');
+        });
+
+        // Abrir modal de feedback
+        document.getElementById('btnFeedbackHeader').addEventListener('click', () => {
+            abrirModalPorId('modalFeedback');
+            renderFeedback();
+        });
+
+        feedbackModalClose.addEventListener('click', fecharTodosModais);
+
+        // Se o modal de feedback for aberto, renderizar novamente
+        const feedbackObserver = new MutationObserver(() => {
+            if (feedbackModal.classList.contains('active')) {
+                renderFeedback();
+            }
+        });
+        feedbackObserver.observe(feedbackModal, { attributes: true, attributeFilter: ['class'] });
+
+        // ============================================================
+        // PESQUISA FUNCIONAL
+        // ============================================================
+
         const searchInput = document.getElementById('searchInput');
         const searchButton = document.getElementById('searchButton');
         const allButtons = document.querySelectorAll('.botao-misterio, .botao-secao');
@@ -3263,15 +3682,22 @@
             const q = query.toLowerCase().trim();
             if (!q) {
                 allButtons.forEach(btn => btn.style.display = '');
+                const existingMsg = document.getElementById('searchNoResults');
+                if (existingMsg) existingMsg.remove();
                 return;
             }
+            let found = false;
             allButtons.forEach(btn => {
                 const text = btn.textContent.toLowerCase();
-                btn.style.display = text.includes(q) ? '' : 'none';
+                if (text.includes(q)) {
+                    btn.style.display = '';
+                    found = true;
+                } else {
+                    btn.style.display = 'none';
+                }
             });
-            const anyVisible = Array.from(allButtons).some(btn => btn.style.display !== 'none');
             const existingMsg = document.getElementById('searchNoResults');
-            if (!anyVisible && q) {
+            if (!found) {
                 if (!existingMsg) {
                     const msg = document.createElement('p');
                     msg.id = 'searchNoResults';
@@ -3287,10 +3713,17 @@
             }
         }
 
-        searchButton.addEventListener('click', () => performSearch(searchInput.value));
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') performSearch(searchInput.value);
+        searchButton.addEventListener('click', () => {
+            performSearch(searchInput.value);
         });
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                performSearch(searchInput.value);
+            }
+        });
+
+        // Limpar pesquisa ao clicar em qualquer botão
         allButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 searchInput.value = '';
@@ -3298,75 +3731,11 @@
             });
         });
 
-        // --- INICIALIZAÇÃO ---
+        // ============================================================
+        // INICIALIZAÇÃO
+        // ============================================================
+
         updateUI();
-        window.addEventListener('resize', updateUI);
-
-        // --- BOTÃO DE FEEDBACK MELHORADO ---
-        const btnFeedback = document.getElementById('btnFeedbackHeader');
-        btnFeedback.addEventListener('click', () => {
-            // Cria modal de feedback dinâmico
-            const feedbackModal = document.createElement('div');
-            feedbackModal.className = 'modal active feedback-modal';
-            feedbackModal.setAttribute('role', 'dialog');
-            feedbackModal.setAttribute('aria-modal', 'true');
-            feedbackModal.innerHTML = `
-                <div class="modal-content">
-                    <span class="close-button" id="feedbackCloseBtn" aria-label="Fechar">&times;</span>
-                    <h2>Conversas e Feedback</h2>
-                    <p style="margin-bottom: 0.8rem;">Envie sua mensagem, sugestão ou oração. Sua opinião é muito importante para nós!</p>
-                    <textarea id="feedbackText" placeholder="Escreva aqui sua mensagem..." rows="4"></textarea>
-                    <div class="feedback-status" id="feedbackStatus"></div>
-                    <button class="btn-enviar-feedback" id="feedbackSendBtn">Enviar</button>
-                    <p style="margin-top: 1rem; font-size: 0.85rem; color: #5e1d44;">Este é um canal de acolhimento. Sua mensagem será lida com carinho.</p>
-                </div>
-            `;
-            document.body.appendChild(feedbackModal);
-            document.body.classList.add('modal-open');
-
-            const closeBtn = feedbackModal.querySelector('#feedbackCloseBtn');
-            const sendBtn = feedbackModal.querySelector('#feedbackSendBtn');
-            const textarea = feedbackModal.querySelector('#feedbackText');
-            const statusDiv = feedbackModal.querySelector('#feedbackStatus');
-
-            const closeModal = () => {
-                feedbackModal.remove();
-                document.body.classList.remove('modal-open');
-            };
-
-            closeBtn.addEventListener('click', closeModal);
-            feedbackModal.addEventListener('click', (e) => {
-                if (e.target === feedbackModal) closeModal();
-            });
-
-            sendBtn.addEventListener('click', () => {
-                const msg = textarea.value.trim();
-                if (!msg) {
-                    statusDiv.textContent = 'Por favor, escreva uma mensagem.';
-                    statusDiv.className = 'feedback-status error';
-                    return;
-                }
-                statusDiv.textContent = 'Enviando...';
-                statusDiv.className = 'feedback-status';
-                sendBtn.disabled = true;
-                setTimeout(() => {
-                    statusDiv.textContent = '✅ Mensagem enviada com sucesso! Obrigado por contribuir.';
-                    statusDiv.className = 'feedback-status success';
-                    textarea.value = '';
-                    sendBtn.disabled = false;
-                    setTimeout(closeModal, 2500);
-                }, 1000);
-            });
-
-            // Fecha com ESC
-            const escHandler = (e) => {
-                if (e.key === 'Escape') {
-                    closeModal();
-                    document.removeEventListener('keydown', escHandler);
-                }
-            };
-            document.addEventListener('keydown', escHandler);
-        });
     });
 </script>
 
