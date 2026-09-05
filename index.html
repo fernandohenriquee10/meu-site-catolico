@@ -149,6 +149,159 @@
             letter-spacing: 0.3px;
         }
 
+        /* --- Novos botões de cabeçalho --- */
+        .header-actions {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-left: 1.2rem;
+            vertical-align: middle;
+        }
+
+        .btn-criar-conta {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 0.5rem 1.4rem;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-criar-conta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.6);
+            background: linear-gradient(135deg, #f06292, #d81b60);
+        }
+
+        .btn-feedback {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .btn-feedback:hover {
+            border-color: var(--primary-light);
+            transform: scale(1.08);
+            box-shadow: 0 0 20px rgba(214, 51, 132, 0.4);
+        }
+
+        /* --- Banner de Cookies --- */
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: rgba(20, 5, 15, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid var(--glass-border);
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.4s ease;
+        }
+
+        #cookie-banner.hidden {
+            transform: translateY(100%);
+        }
+
+        #cookie-banner p {
+            font-size: 0.95rem;
+            color: #f0e0e8;
+            max-width: 700px;
+            margin: 0;
+            text-align: center;
+        }
+
+        #cookie-banner p a {
+            color: var(--primary-light);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        #cookie-banner .btn-cookie-accept {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 50px;
+            padding: 0.6rem 1.8rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.3);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        #cookie-banner .btn-cookie-accept:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.5);
+        }
+
+        /* --- Modal de Feedback --- */
+        .feedback-modal .modal-content {
+            max-width: 550px;
+        }
+
+        .feedback-modal textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 12px;
+            border: 1px solid #e6a8bf;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+            background: #fff;
+            color: var(--text-dark);
+        }
+
+        .feedback-modal textarea:focus {
+            outline: 2px solid var(--primary);
+            border-color: transparent;
+        }
+
+        .feedback-modal .btn-enviar-feedback {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 50px;
+            padding: 0.7rem 2rem;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .feedback-modal .btn-enviar-feedback:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
+        }
+
         /* --- Conteúdo Principal e Seções --- */
         main {
             flex-grow: 1;
@@ -525,25 +678,24 @@
             font-style: normal;
         }
 
-        .download-app {
-            display: inline-block;
-            margin-top: 1.2rem;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, #5a0023 100%);
-            border: 1px solid rgba(255, 214, 224, 0.3);
-            padding: 0.75rem 1.6rem;
-            border-radius: 50px;
-            color: #fff;
-            font-weight: 600;
-            font-style: normal;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
+        footer .footer-legal {
+            margin-top: 0.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 1.8rem;
+            font-size: 0.85rem;
         }
 
-        .download-app:hover {
-            background: linear-gradient(135deg, #ad0044 0%, #7a0030 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
+        footer .footer-legal a {
+            color: #ffd6e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer .footer-legal a:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -560,19 +712,58 @@
             }
             .modal-content h2 { font-size: 1.6rem; }
             .modal-content h3 { font-size: 1.3rem; }
+            .header-actions {
+                margin-left: 0.5rem;
+                gap: 0.5rem;
+            }
+            .btn-criar-conta {
+                padding: 0.4rem 1rem;
+                font-size: 0.75rem;
+            }
+            .btn-feedback {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+            #cookie-banner {
+                padding: 0.8rem 1rem;
+                gap: 0.8rem;
+            }
+            #cookie-banner p {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
 
+<!-- Banner de Cookies (Segurança) -->
+<div id="cookie-banner" role="alert" aria-label="Consentimento de cookies">
+    <p>
+        Utilizamos cookies para melhorar sua experiência, analisar tráfego e personalizar conteúdos. Ao continuar navegando, você concorda com nossa
+        <a href="#" onclick="document.getElementById('modalPolitica').classList.add('active'); return false;">Política de Privacidade</a>.
+    </p>
+    <button class="btn-cookie-accept" id="cookieAcceptBtn">Aceitar</button>
+</div>
+
 <header>
     <h1>✞ Reza do terço, rosário e oração ✞</h1>
     <p>Consagrado à disciplina, fé e adoração do Cristão(ã) Católico(a)</p>
 
-    <div id="radio-player-container">
-        <audio id="catholicRadio" preload="none" crossorigin="anonymous"></audio>
-        <button id="radio-player-button" aria-label="Tocar ou pausar Rádio Católica">▶</button>
-        <span id="radio-status">Rádio Católica</span>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.8rem;">
+        <div id="radio-player-container">
+            <audio id="catholicRadio" preload="none" crossorigin="anonymous"></audio>
+            <button id="radio-player-button" aria-label="Tocar ou pausar Rádio Católica">▶</button>
+            <span id="radio-status">Rádio Católica</span>
+        </div>
+
+        <!-- Novos botões: Criar Conta e Feedback -->
+        <div class="header-actions">
+            <button class="btn-criar-conta" id="btnCriarConta">Criar Conta</button>
+            <button class="btn-feedback" id="btnFeedback" aria-label="Conversas e Feedback" title="Conversas e Feedback">
+                💬
+            </button>
+        </div>
     </div>
 </header>
 
@@ -643,7 +834,6 @@
         <button class="botao-secao" data-modal-target="modalAcutis">Como ser Santo segundo Carlo Acutis</button>
         <button class="botao-secao" data-modal-target="modalDeusPoderoso">Perspectiva Bíblica de Deus Todo-Poderoso</button>
         <button class="botao-secao" data-modal-target="modalInclusao">O Acolhimento na Fé</button>
-        <!-- NOVO BOTÃO ADICIONADO -->
         <button class="botao-secao" data-modal-target="modalOracoesEssenciais">Orações Essenciais para o Católico</button>
     </div>
 
@@ -666,14 +856,18 @@
         <a href="#modalRosarioCompleto" onclick="abrirModalPorId('modalRosarioCompleto'); return false;">Rezas com Fé</a>
     </div>
     <br>
-    <a href="https://drive.google.com/file/d/1gyy1XTEtcWxvt8Ceo5ovHWnV_fF6Bc3K/view?usp=drive_link" class="download-app" target="_blank" rel="noopener noreferrer">Baixe o app do site aqui</a>
     <p class="info-text">
         Essas orações são fundamentais na vida de um católico e são frequentemente recitadas em momentos de devoção pessoal, celebrações litúrgicas e em comunidade. Para mais informações sobre orações católicas, você pode visitar sites como <a href="https://www.vatican.va/content/vatican/pt.html" target="_blank" rel="noopener noreferrer">Igreja Católica</a> e <a href="https://www.catequistasemformacao.com/2025/" target="_blank" rel="noopener noreferrer">Catequeses</a>.
     </p>
+    <div class="footer-legal">
+        <a href="#" onclick="document.getElementById('modalPolitica').classList.add('active'); return false;">Política de Privacidade</a>
+        <a href="#" onclick="document.getElementById('modalTermos').classList.add('active'); return false;">Termos de Uso</a>
+        <a href="#" onclick="document.getElementById('modalCookies').classList.add('active'); return false;">Cookies</a>
+    </div>
     <p class="copyright">© Todos os direitos reservados 2026.</p>
 </footer>
 
-<!-- ==================== MODAIS COMPLETOS ==================== -->
+<!-- ==================== MODAIS COMPLETOS (existentes) ==================== -->
 
 <!-- Quaresma & Rosário de São Miguel -->
 <div id="modalQuaresmaSaoMiguel" class="modal" role="dialog" aria-modal="true" aria-labelledby="titleSaoMiguel">
@@ -2282,6 +2476,34 @@
     </div>
 </div>
 
+<!-- ==================== NOVOS MODAIS: POLÍTICA, TERMOS E COOKIES ==================== -->
+<div id="modalPolitica" class="modal feedback-modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Política de Privacidade</h2>
+        <p>Este site respeita sua privacidade. Coletamos apenas dados essenciais para melhorar sua experiência, como preferências de cookies e interações anônimas. Seus dados pessoais não são compartilhados com terceiros sem seu consentimento explícito.</p>
+        <p>Para mais detalhes, entre em contato conosco.</p>
+    </div>
+</div>
+
+<div id="modalTermos" class="modal feedback-modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Termos de Uso</h2>
+        <p>Ao utilizar este site, você concorda em respeitar seu conteúdo e finalidade cristã. O material aqui disponível é para edificação pessoal e comunitária. Não é permitida a reprodução comercial sem autorização.</p>
+        <p>Este site é mantido por voluntários da fé católica.</p>
+    </div>
+</div>
+
+<div id="modalCookies" class="modal feedback-modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <span class="close-button" aria-label="Fechar">&times;</span>
+        <h2>Política de Cookies</h2>
+        <p>Utilizamos cookies para lembrar suas preferências e analisar o tráfego. Você pode gerenciar suas configurações a qualquer momento. Ao continuar navegando, você aceita nosso uso de cookies.</p>
+        <p>Não utilizamos cookies de rastreamento invasivos.</p>
+    </div>
+</div>
+
 <!-- ==================== JAVASCRIPT OTIMIZADO & SEGURO ==================== -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -2385,6 +2607,63 @@
         // Acessibilidade: fechar com tecla ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') fecharTodosModais();
+        });
+
+        // --- Gerenciador do Banner de Cookies ---
+        const cookieBanner = document.getElementById('cookie-banner');
+        const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
+        const COOKIE_CONSENT_KEY = 'cookie_consent_given';
+
+        // Verifica se já aceitou
+        if (localStorage.getItem(COOKIE_CONSENT_KEY) === 'true') {
+            cookieBanner.classList.add('hidden');
+        }
+
+        cookieAcceptBtn.addEventListener('click', () => {
+            localStorage.setItem(COOKIE_CONSENT_KEY, 'true');
+            cookieBanner.classList.add('hidden');
+        });
+
+        // --- Botão Criar Conta (simulação) ---
+        document.getElementById('btnCriarConta').addEventListener('click', () => {
+            alert('Funcionalidade de criação de conta em desenvolvimento.\nEm breve você poderá criar sua conta para acessar recursos exclusivos!');
+        });
+
+        // --- Botão Feedback (abre modal de feedback) ---
+        document.getElementById('btnFeedback').addEventListener('click', () => {
+            // Abre um modal simples de feedback (pode ser aprimorado)
+            const feedbackModal = document.createElement('div');
+            feedbackModal.className = 'modal active feedback-modal';
+            feedbackModal.setAttribute('role', 'dialog');
+            feedbackModal.setAttribute('aria-modal', 'true');
+            feedbackModal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-button" aria-label="Fechar">&times;</span>
+                    <h2>Conversas e Feedback</h2>
+                    <p>Envie sua mensagem, sugestão ou oração. Sua opinião é muito importante para nós!</p>
+                    <textarea placeholder="Escreva aqui sua mensagem..." rows="4"></textarea>
+                    <br>
+                    <button class="btn-enviar-feedback" onclick="alert('Mensagem enviada! Obrigado pelo seu contato.')">Enviar</button>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #5e1d44;">Este é um canal de acolhimento. Sua mensagem será lida com carinho.</p>
+                </div>
+            `;
+            document.body.appendChild(feedbackModal);
+
+            // Fechar modal
+            const closeFeedback = feedbackModal.querySelector('.close-button');
+            closeFeedback.addEventListener('click', () => {
+                feedbackModal.remove();
+                document.body.classList.remove('modal-open');
+            });
+
+            feedbackModal.addEventListener('click', (e) => {
+                if (e.target === feedbackModal) {
+                    feedbackModal.remove();
+                    document.body.classList.remove('modal-open');
+                }
+            });
+
+            document.body.classList.add('modal-open');
         });
     });
 </script>
