@@ -676,6 +676,16 @@
             border-color: var(--primary);
         }
 
+        .auth-modal .auth-form input.error {
+            border-color: #d32f2f;
+            background: #fff5f5;
+        }
+
+        .auth-modal .auth-form input.success {
+            border-color: #2e7d32;
+            background: #f0fff0;
+        }
+
         .auth-modal .btn-auth-submit {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border: none;
@@ -687,11 +697,34 @@
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
+            position: relative;
         }
 
-        .auth-modal .btn-auth-submit:hover {
+        .auth-modal .btn-auth-submit:hover:not(:disabled) {
             transform: scale(1.02);
             box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
+        }
+
+        .auth-modal .btn-auth-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .auth-modal .btn-auth-submit .spinner {
+            display: inline-block;
+            width: 1.2rem;
+            height: 1.2rem;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         .auth-modal .auth-divider {
@@ -757,6 +790,82 @@
             font-size: 0.85rem;
             text-align: center;
             min-height: 1.4rem;
+        }
+
+        .auth-modal .auth-success {
+            color: #2e7d32;
+            font-size: 0.85rem;
+            text-align: center;
+            min-height: 1.4rem;
+        }
+
+        /* --- Estilos do Modal de Feedback --- */
+        .feedback-modal .modal-content {
+            max-width: 520px;
+        }
+
+        .feedback-modal textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1.5px solid #e6c0d2;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+            background: #fff;
+            color: var(--text-dark);
+            transition: border 0.3s;
+        }
+
+        .feedback-modal textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(214,51,132,0.1);
+        }
+
+        .feedback-modal textarea.error {
+            border-color: #d32f2f;
+        }
+
+        .feedback-modal .btn-enviar-feedback {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 50px;
+            padding: 0.7rem 2rem;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+            position: relative;
+        }
+
+        .feedback-modal .btn-enviar-feedback:hover:not(:disabled) {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
+        }
+
+        .feedback-modal .btn-enviar-feedback:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .feedback-modal .feedback-status {
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+            text-align: center;
+            min-height: 2rem;
+        }
+
+        .feedback-modal .feedback-status.success {
+            color: #2e7d32;
+        }
+
+        .feedback-modal .feedback-status.error {
+            color: #d32f2f;
         }
 
         /* --- Banner de Cookies --- */
@@ -942,6 +1051,9 @@
                 font-size: 0.75rem;
             }
             .auth-modal .modal-content {
+                padding: 1.8rem 1.2rem;
+            }
+            .feedback-modal .modal-content {
                 padding: 1.8rem 1.2rem;
             }
         }
@@ -2726,7 +2838,7 @@
     </div>
 </div>
 
-<!-- ==================== MODAL DE AUTENTICAÇÃO ==================== -->
+<!-- ==================== MODAL DE AUTENTICAÇÃO MELHORADO ==================== -->
 <div id="modalAuth" class="modal auth-modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" id="authModalClose" aria-label="Fechar">&times;</span>
@@ -2736,12 +2848,13 @@
             <button class="auth-tab" data-tab="register">Criar Conta</button>
         </div>
         <div id="authError" class="auth-error"></div>
+        <div id="authSuccess" class="auth-success"></div>
 
         <!-- Formulário de Login -->
-        <form class="auth-form" id="loginForm">
+        <form class="auth-form" id="loginForm" novalidate>
             <input type="email" placeholder="E-mail" id="loginEmail" required>
             <input type="password" placeholder="Senha" id="loginPassword" required>
-            <button type="submit" class="btn-auth-submit">Entrar</button>
+            <button type="submit" class="btn-auth-submit" id="loginSubmitBtn">Entrar</button>
             <div class="auth-divider">ou continue com</div>
             <div class="social-login">
                 <button type="button" class="social-btn google" data-social="google">Google</button>
@@ -2751,11 +2864,12 @@
         </form>
 
         <!-- Formulário de Cadastro -->
-        <form class="auth-form hidden" id="registerForm">
+        <form class="auth-form hidden" id="registerForm" novalidate>
             <input type="text" placeholder="Nome completo" id="registerName" required>
             <input type="email" placeholder="E-mail" id="registerEmail" required>
             <input type="password" placeholder="Senha (mínimo 6 caracteres)" id="registerPassword" required minlength="6">
-            <button type="submit" class="btn-auth-submit">Criar Conta</button>
+            <input type="password" placeholder="Confirme sua senha" id="registerPasswordConfirm" required minlength="6">
+            <button type="submit" class="btn-auth-submit" id="registerSubmitBtn">Criar Conta</button>
             <div class="auth-divider">ou continue com</div>
             <div class="social-login">
                 <button type="button" class="social-btn google" data-social="google">Google</button>
@@ -2885,7 +2999,7 @@
             cookieBanner.classList.add('hidden');
         });
 
-        // --- SISTEMA DE AUTENTICAÇÃO ---
+        // --- SISTEMA DE AUTENTICAÇÃO MELHORADO ---
         const authModal = document.getElementById('modalAuth');
         const authButton = document.getElementById('authButton');
         const authLabel = document.getElementById('authLabel');
@@ -2894,8 +3008,11 @@
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
         const authError = document.getElementById('authError');
+        const authSuccess = document.getElementById('authSuccess');
+        const loginSubmitBtn = document.getElementById('loginSubmitBtn');
+        const registerSubmitBtn = document.getElementById('registerSubmitBtn');
 
-        // Estado do usuário (simulado com localStorage)
+        // Estado do usuário
         const USER_KEY = 'site_user_data';
 
         function getUser() {
@@ -2915,23 +3032,20 @@
             updateUI();
         }
 
-        // Atualiza a interface com base no estado do usuário
+        // Atualiza a interface
         function updateUI() {
             const user = getUser();
             if (user) {
-                // Mostra avatar com inicial e nome
                 const initial = user.name ? user.name.charAt(0).toUpperCase() : 'U';
                 authLabel.innerHTML = `<span class="avatar"><span>${initial}</span></span> <span class="auth-name" style="display:none;">${user.name || 'Usuário'}</span>`;
-                // No mobile, mostra apenas o avatar
                 if (window.innerWidth < 768) {
                     authLabel.innerHTML = `<span class="avatar"><span>${initial}</span></span>`;
                 }
                 authButton.title = `Olá, ${user.name || 'Usuário'}! Clique para sair`;
-                // Ao clicar no botão, logout
                 authButton.onclick = () => {
                     if (confirm('Deseja sair da sua conta?')) {
                         logout();
-                        alert('Você saiu da sua conta.');
+                        showToast('Você saiu da sua conta.');
                     }
                 };
             } else {
@@ -2943,22 +3057,48 @@
             }
         }
 
-        // Abrir modal de autenticação via botão
+        // Toast simples (substitui alert)
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.textContent = msg;
+            Object.assign(toast.style, {
+                position: 'fixed',
+                bottom: '80px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                background: 'rgba(20,5,15,0.9)',
+                color: '#fff',
+                padding: '12px 24px',
+                borderRadius: '50px',
+                zIndex: '9999',
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: '0.95rem',
+                backdropFilter: 'blur(10px)',
+                boxShadow: '0 6px 30px rgba(0,0,0,0.5)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                maxWidth: '90%',
+                textAlign: 'center',
+                transition: 'opacity 0.3s',
+            });
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 400);
+            }, 3500);
+        }
+
+        // Abrir modal de autenticação
         authButton.addEventListener('click', (e) => {
             const user = getUser();
-            if (user) {
-                // Se estiver logado, o logout é tratado pelo onclick sobrescrito
-                return;
-            }
+            if (user) return;
             abrirModalPorId('modalAuth');
+            authError.textContent = '';
+            authSuccess.textContent = '';
         });
 
-        // Fechar modal de autenticação
-        authModalClose.addEventListener('click', () => {
-            fecharTodosModais();
-        });
+        authModalClose.addEventListener('click', fecharTodosModais);
 
-        // Alternar abas de login/cadastro
+        // Alternar abas
         authTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 authTabs.forEach(t => t.classList.remove('active'));
@@ -2972,82 +3112,135 @@
                     registerForm.classList.remove('hidden');
                 }
                 authError.textContent = '';
+                authSuccess.textContent = '';
             });
         });
 
-        // Função para mostrar erro no auth
-        function showAuthError(msg) {
+        function clearFieldErrors() {
+            document.querySelectorAll('.auth-form input').forEach(inp => {
+                inp.classList.remove('error', 'success');
+            });
+        }
+
+        function setFieldError(input, msg) {
+            input.classList.add('error');
+            input.classList.remove('success');
             authError.textContent = msg;
         }
 
-        // Login com e-mail/senha
+        function setFieldSuccess(input) {
+            input.classList.remove('error');
+            input.classList.add('success');
+        }
+
+        // --- Login ---
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value.trim();
             const password = document.getElementById('loginPassword').value.trim();
 
+            clearFieldErrors();
+            authError.textContent = '';
+            authSuccess.textContent = '';
+
             if (!email || !password) {
-                showAuthError('Preencha todos os campos.');
+                setFieldError(document.getElementById('loginEmail'), 'Preencha todos os campos.');
                 return;
             }
 
-            // Simulação: verifica se existe usuário com esse email
-            const users = JSON.parse(localStorage.getItem('site_users') || '[]');
-            const found = users.find(u => u.email === email && u.password === password);
-            if (found) {
-                setUser({ name: found.name, email: found.email, avatar: found.avatar || null });
-                fecharTodosModais();
-                alert(`Bem-vindo(a) de volta, ${found.name}!`);
-            } else {
-                // Se não encontrou, mas é o primeiro login, cria automaticamente (para demonstração)
-                // Verifica se já existe usuário com esse email (senão, sugere criar conta)
-                const existing = users.find(u => u.email === email);
-                if (existing) {
-                    showAuthError('Senha incorreta. Tente novamente ou crie uma nova conta.');
+            loginSubmitBtn.disabled = true;
+            loginSubmitBtn.innerHTML = '<span class="spinner"></span> Entrando...';
+
+            // Simula requisição
+            setTimeout(() => {
+                const users = JSON.parse(localStorage.getItem('site_users') || '[]');
+                const found = users.find(u => u.email === email && u.password === password);
+                if (found) {
+                    setUser({ name: found.name, email: found.email, avatar: found.avatar || null });
+                    fecharTodosModais();
+                    showToast(`Bem-vindo(a) de volta, ${found.name}!`);
+                    loginSubmitBtn.disabled = false;
+                    loginSubmitBtn.textContent = 'Entrar';
                 } else {
-                    showAuthError('Usuário não encontrado. Crie uma conta primeiro.');
+                    const existing = users.find(u => u.email === email);
+                    if (existing) {
+                        setFieldError(document.getElementById('loginPassword'), 'Senha incorreta.');
+                    } else {
+                        setFieldError(document.getElementById('loginEmail'), 'Usuário não encontrado. Crie uma conta.');
+                    }
+                    loginSubmitBtn.disabled = false;
+                    loginSubmitBtn.textContent = 'Entrar';
                 }
-            }
+            }, 800);
         });
 
-        // Cadastro com e-mail/senha
+        // --- Cadastro ---
         registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('registerName').value.trim();
             const email = document.getElementById('registerEmail').value.trim();
             const password = document.getElementById('registerPassword').value.trim();
+            const confirm = document.getElementById('registerPasswordConfirm').value.trim();
 
-            if (!name || !email || !password) {
-                showAuthError('Preencha todos os campos.');
-                return;
+            clearFieldErrors();
+            authError.textContent = '';
+            authSuccess.textContent = '';
+
+            let valid = true;
+            if (!name) {
+                setFieldError(document.getElementById('registerName'), 'Nome é obrigatório.');
+                valid = false;
+            } else {
+                setFieldSuccess(document.getElementById('registerName'));
+            }
+            if (!email || !email.includes('@') || !email.includes('.')) {
+                setFieldError(document.getElementById('registerEmail'), 'E-mail inválido.');
+                valid = false;
+            } else {
+                setFieldSuccess(document.getElementById('registerEmail'));
             }
             if (password.length < 6) {
-                showAuthError('A senha deve ter pelo menos 6 caracteres.');
-                return;
+                setFieldError(document.getElementById('registerPassword'), 'Senha deve ter pelo menos 6 caracteres.');
+                valid = false;
+            } else {
+                setFieldSuccess(document.getElementById('registerPassword'));
             }
+            if (password !== confirm) {
+                setFieldError(document.getElementById('registerPasswordConfirm'), 'As senhas não coincidem.');
+                valid = false;
+            } else if (confirm.length >= 6) {
+                setFieldSuccess(document.getElementById('registerPasswordConfirm'));
+            }
+            if (!valid) return;
 
-            // Salva usuário
-            const users = JSON.parse(localStorage.getItem('site_users') || '[]');
-            if (users.find(u => u.email === email)) {
-                showAuthError('Este e-mail já está cadastrado. Faça login.');
-                return;
-            }
-            const newUser = { name, email, password, avatar: null };
-            users.push(newUser);
-            localStorage.setItem('site_users', JSON.stringify(users));
-            setUser({ name, email, avatar: null });
-            fecharTodosModais();
-            alert(`Conta criada com sucesso! Bem-vindo(a), ${name}!`);
+            registerSubmitBtn.disabled = true;
+            registerSubmitBtn.innerHTML = '<span class="spinner"></span> Criando...';
+
+            setTimeout(() => {
+                const users = JSON.parse(localStorage.getItem('site_users') || '[]');
+                if (users.find(u => u.email === email)) {
+                    setFieldError(document.getElementById('registerEmail'), 'Este e-mail já está cadastrado.');
+                    registerSubmitBtn.disabled = false;
+                    registerSubmitBtn.textContent = 'Criar Conta';
+                    return;
+                }
+                const newUser = { name, email, password, avatar: null };
+                users.push(newUser);
+                localStorage.setItem('site_users', JSON.stringify(users));
+                setUser({ name, email, avatar: null });
+                fecharTodosModais();
+                showToast(`Conta criada com sucesso! Bem-vindo(a), ${name}!`);
+                registerSubmitBtn.disabled = false;
+                registerSubmitBtn.textContent = 'Criar Conta';
+            }, 800);
         });
 
-        // Login social (simulado)
+        // --- Login social (simulado) ---
         document.querySelectorAll('.social-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const provider = btn.dataset.social;
-                // Simula login social com nome fictício
                 const fakeName = provider.charAt(0).toUpperCase() + provider.slice(1) + ' User';
                 const fakeEmail = `${provider.toLowerCase()}@exemplo.com`;
-                // Salva ou cria usuário
                 const users = JSON.parse(localStorage.getItem('site_users') || '[]');
                 let found = users.find(u => u.email === fakeEmail);
                 if (!found) {
@@ -3057,7 +3250,7 @@
                 }
                 setUser({ name: found.name, email: found.email, avatar: found.avatar || null });
                 fecharTodosModais();
-                alert(`Conectado com ${provider}!`);
+                showToast(`Conectado com ${provider}!`);
             });
         });
 
@@ -3069,20 +3262,13 @@
         function performSearch(query) {
             const q = query.toLowerCase().trim();
             if (!q) {
-                // Mostra todos
                 allButtons.forEach(btn => btn.style.display = '');
                 return;
             }
-            // Filtra botões pelo texto
             allButtons.forEach(btn => {
                 const text = btn.textContent.toLowerCase();
-                // Verifica se o texto do botão contém a busca ou se o modal alvo contém
-                const match = text.includes(q);
-                btn.style.display = match ? '' : 'none';
+                btn.style.display = text.includes(q) ? '' : 'none';
             });
-            // Mostra mensagem se nenhum resultado
-            const visible = document.querySelectorAll('.botao-misterio[style*="display: none"], .botao-secao[style*="display: none"]');
-            // Se todos estiverem ocultos, mostrar mensagem
             const anyVisible = Array.from(allButtons).some(btn => btn.style.display !== 'none');
             const existingMsg = document.getElementById('searchNoResults');
             if (!anyVisible && q) {
@@ -3094,25 +3280,17 @@
                     msg.style.margin = '2rem 0';
                     msg.style.fontSize = '1.1rem';
                     msg.textContent = `Nenhum resultado encontrado para "${q}". Tente outra palavra.`;
-                    const container = document.querySelector('main');
-                    container.appendChild(msg);
+                    document.querySelector('main').appendChild(msg);
                 }
             } else {
                 if (existingMsg) existingMsg.remove();
             }
         }
 
-        searchButton.addEventListener('click', () => {
-            performSearch(searchInput.value);
-        });
-
+        searchButton.addEventListener('click', () => performSearch(searchInput.value));
         searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                performSearch(searchInput.value);
-            }
+            if (e.key === 'Enter') performSearch(searchInput.value);
         });
-
-        // Limpa a pesquisa e mostra tudo ao clicar em um botão (opcional)
         allButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 searchInput.value = '';
@@ -3122,10 +3300,72 @@
 
         // --- INICIALIZAÇÃO ---
         updateUI();
+        window.addEventListener('resize', updateUI);
 
-        // Ajusta o avatar no header para mobile
-        window.addEventListener('resize', () => {
-            updateUI();
+        // --- BOTÃO DE FEEDBACK MELHORADO ---
+        const btnFeedback = document.getElementById('btnFeedbackHeader');
+        btnFeedback.addEventListener('click', () => {
+            // Cria modal de feedback dinâmico
+            const feedbackModal = document.createElement('div');
+            feedbackModal.className = 'modal active feedback-modal';
+            feedbackModal.setAttribute('role', 'dialog');
+            feedbackModal.setAttribute('aria-modal', 'true');
+            feedbackModal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-button" id="feedbackCloseBtn" aria-label="Fechar">&times;</span>
+                    <h2>Conversas e Feedback</h2>
+                    <p style="margin-bottom: 0.8rem;">Envie sua mensagem, sugestão ou oração. Sua opinião é muito importante para nós!</p>
+                    <textarea id="feedbackText" placeholder="Escreva aqui sua mensagem..." rows="4"></textarea>
+                    <div class="feedback-status" id="feedbackStatus"></div>
+                    <button class="btn-enviar-feedback" id="feedbackSendBtn">Enviar</button>
+                    <p style="margin-top: 1rem; font-size: 0.85rem; color: #5e1d44;">Este é um canal de acolhimento. Sua mensagem será lida com carinho.</p>
+                </div>
+            `;
+            document.body.appendChild(feedbackModal);
+            document.body.classList.add('modal-open');
+
+            const closeBtn = feedbackModal.querySelector('#feedbackCloseBtn');
+            const sendBtn = feedbackModal.querySelector('#feedbackSendBtn');
+            const textarea = feedbackModal.querySelector('#feedbackText');
+            const statusDiv = feedbackModal.querySelector('#feedbackStatus');
+
+            const closeModal = () => {
+                feedbackModal.remove();
+                document.body.classList.remove('modal-open');
+            };
+
+            closeBtn.addEventListener('click', closeModal);
+            feedbackModal.addEventListener('click', (e) => {
+                if (e.target === feedbackModal) closeModal();
+            });
+
+            sendBtn.addEventListener('click', () => {
+                const msg = textarea.value.trim();
+                if (!msg) {
+                    statusDiv.textContent = 'Por favor, escreva uma mensagem.';
+                    statusDiv.className = 'feedback-status error';
+                    return;
+                }
+                statusDiv.textContent = 'Enviando...';
+                statusDiv.className = 'feedback-status';
+                sendBtn.disabled = true;
+                setTimeout(() => {
+                    statusDiv.textContent = '✅ Mensagem enviada com sucesso! Obrigado por contribuir.';
+                    statusDiv.className = 'feedback-status success';
+                    textarea.value = '';
+                    sendBtn.disabled = false;
+                    setTimeout(closeModal, 2500);
+                }, 1000);
+            });
+
+            // Fecha com ESC
+            const escHandler = (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    document.removeEventListener('keydown', escHandler);
+                }
+            };
+            document.addEventListener('keydown', escHandler);
         });
     });
 </script>
