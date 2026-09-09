@@ -244,6 +244,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
+            position: relative;
         }
 
         .btn-auth:hover {
@@ -265,6 +266,7 @@
             color: white;
             object-fit: cover;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .btn-auth .avatar img {
@@ -765,23 +767,24 @@
             min-height: 1.4rem;
         }
 
-        /* --- Estilos do Modal de Perfil --- */
+        /* --- Estilos do Modal de Perfil (Minha Conta) --- */
         .profile-modal .modal-content {
-            max-width: 560px;
-            padding: 2.2rem 2rem;
+            max-width: 550px;
+            padding: 2.2rem 1.8rem;
         }
 
-        .profile-modal .profile-avatar {
+        .profile-modal .profile-header {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 0.8rem;
+            gap: 1.2rem;
             margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0d0dd;
         }
 
-        .profile-modal .profile-avatar .avatar-preview {
-            width: 100px;
-            height: 100px;
+        .profile-modal .profile-header .avatar-large {
+            width: 72px;
+            height: 72px;
             border-radius: 50%;
             border: 3px solid var(--primary);
             object-fit: cover;
@@ -789,144 +792,181 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 600;
             color: var(--primary);
             overflow: hidden;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: opacity 0.2s;
         }
 
-        .profile-modal .profile-avatar .avatar-preview img {
+        .profile-modal .profile-header .avatar-large:hover {
+            opacity: 0.8;
+        }
+
+        .profile-modal .profile-header .avatar-large img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .profile-modal .profile-avatar input[type="file"] {
+        .profile-modal .profile-header .profile-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .profile-modal .profile-header .profile-email {
             font-size: 0.85rem;
             color: var(--text-muted);
         }
 
-        .profile-modal .profile-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        .profile-modal .profile-header .profile-verified {
+            font-size: 0.75rem;
+            color: #2e7d32;
+            font-weight: 600;
         }
 
-        .profile-modal .profile-form .form-row {
+        .profile-modal .profile-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .profile-modal .profile-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 0.8rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .profile-modal .profile-menu-item:hover {
+            background: #f5e6ed;
+        }
+
+        .profile-modal .profile-menu-item .menu-icon {
+            font-size: 1.2rem;
+            width: 28px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .profile-modal .profile-menu-item .menu-text {
+            flex: 1;
+        }
+
+        .profile-modal .profile-menu-item .menu-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .profile-modal .profile-menu-item.danger {
+            color: var(--danger);
+        }
+
+        .profile-modal .profile-menu-item.danger:hover {
+            background: #fde8e8;
+        }
+
+        .profile-modal .profile-divider {
+            height: 1px;
+            background: #f0d0dd;
+            margin: 0.5rem 0;
+        }
+
+        .profile-modal .profile-edit-form {
+            display: none;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed #f0d0dd;
+        }
+
+        .profile-modal .profile-edit-form.active {
+            display: block;
+        }
+
+        .profile-modal .profile-edit-form .form-row {
             display: flex;
             flex-direction: column;
             gap: 0.3rem;
+            margin-bottom: 0.8rem;
         }
 
-        .profile-modal .profile-form .form-row label {
-            font-size: 0.9rem;
+        .profile-modal .profile-edit-form .form-row label {
+            font-size: 0.85rem;
             font-weight: 500;
             color: var(--text-muted);
         }
 
-        .profile-modal .profile-form .form-row input,
-        .profile-modal .profile-form .form-row select {
-            padding: 0.7rem 1rem;
+        .profile-modal .profile-edit-form .form-row input {
+            padding: 0.6rem 0.8rem;
             border: 1.5px solid #e6c0d2;
-            border-radius: 12px;
-            font-size: 1rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
             font-family: 'Poppins', sans-serif;
             background: #fff;
             color: var(--text-dark);
             width: 100%;
         }
 
-        .profile-modal .profile-form .form-row input:focus,
-        .profile-modal .profile-form .form-row select:focus {
+        .profile-modal .profile-edit-form .form-row input:focus {
             outline: none;
             border-color: var(--primary);
         }
 
-        .profile-modal .btn-save-profile {
+        .profile-modal .profile-edit-form .btn-save {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border: none;
             border-radius: 50px;
-            padding: 0.8rem;
+            padding: 0.5rem 1.5rem;
             color: white;
-            font-weight: 700;
-            font-size: 1rem;
+            font-weight: 600;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 0.5rem;
         }
 
-        .profile-modal .btn-save-profile:hover {
+        .profile-modal .profile-edit-form .btn-save:hover {
             transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.4);
         }
 
-        .profile-modal .danger-zone {
-            margin-top: 2rem;
-            border-top: 2px solid #f0d0dd;
-            padding-top: 1.5rem;
-        }
-
-        .profile-modal .danger-zone h3 {
-            color: var(--danger);
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-        }
-
-        .profile-modal .danger-zone p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .profile-modal .danger-zone .danger-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .profile-modal .danger-zone .btn-danger {
-            background: var(--danger);
-            border: none;
-            border-radius: 50px;
-            padding: 0.6rem 1.5rem;
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .profile-modal .danger-zone .btn-danger:hover {
-            background: var(--danger-hover);
-            transform: scale(1.03);
-        }
-
-        .profile-modal .danger-zone .btn-danger-outline {
+        .profile-modal .profile-edit-form .btn-cancel {
             background: transparent;
-            border: 2px solid var(--danger);
+            border: 1px solid #ccc;
             border-radius: 50px;
-            padding: 0.6rem 1.5rem;
-            color: var(--danger);
+            padding: 0.5rem 1.5rem;
+            color: var(--text-muted);
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            margin-left: 0.5rem;
         }
 
-        .profile-modal .danger-zone .btn-danger-outline:hover {
-            background: var(--danger);
-            color: white;
+        .profile-modal .profile-edit-form .btn-cancel:hover {
+            background: #f0f0f0;
         }
 
         /* --- Estilos do Modal de Feedback --- */
         .feedback-modal .modal-content {
-            max-width: 600px;
+            max-width: 650px;
         }
 
         .feedback-modal .feedback-list {
-            max-height: 300px;
+            max-height: 350px;
             overflow-y: auto;
             margin: 1rem 0;
             padding-right: 0.5rem;
@@ -938,6 +978,7 @@
             border-radius: 12px;
             padding: 0.8rem 1rem;
             margin-bottom: 0.8rem;
+            position: relative;
         }
 
         .feedback-modal .feedback-item .feedback-meta {
@@ -946,11 +987,53 @@
             font-size: 0.8rem;
             color: #888;
             margin-bottom: 0.3rem;
+            flex-wrap: wrap;
+            gap: 0.3rem;
         }
 
         .feedback-modal .feedback-item .feedback-text {
             font-size: 0.95rem;
             color: var(--text-dark);
+            word-wrap: break-word;
+        }
+
+        .feedback-modal .feedback-item .feedback-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .feedback-modal .feedback-item .feedback-actions button {
+            background: none;
+            border: none;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .feedback-modal .feedback-item .feedback-actions .edit-btn:hover {
+            background: #e3f2fd;
+            color: #0d47a1;
+        }
+
+        .feedback-modal .feedback-item .feedback-actions .delete-btn:hover {
+            background: #ffebee;
+            color: var(--danger);
+        }
+
+        .feedback-modal .feedback-item .feedback-actions .report-btn:hover {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .feedback-modal .feedback-item .feedback-actions .reported {
+            color: #e65100;
+            font-weight: 600;
         }
 
         .feedback-modal textarea {
@@ -987,6 +1070,46 @@
         .feedback-modal .btn-enviar-feedback:hover {
             transform: scale(1.03);
             box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
+        }
+
+        .feedback-modal .edit-feedback-area {
+            display: none;
+            margin-top: 0.5rem;
+        }
+
+        .feedback-modal .edit-feedback-area.active {
+            display: block;
+        }
+
+        .feedback-modal .edit-feedback-area textarea {
+            min-height: 60px;
+        }
+
+        .feedback-modal .edit-feedback-area .btn-edit-save {
+            background: var(--primary);
+            border: none;
+            border-radius: 50px;
+            padding: 0.4rem 1.2rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.3rem;
+        }
+
+        .feedback-modal .edit-feedback-area .btn-edit-cancel {
+            background: transparent;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            padding: 0.4rem 1.2rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.3rem;
+            margin-left: 0.5rem;
         }
 
         /* --- Banner de Cookies --- */
@@ -1176,10 +1299,13 @@
             .feedback-modal .modal-content {
                 padding: 1.8rem 1.2rem;
             }
-            .profile-modal .profile-avatar .avatar-preview {
-                width: 80px;
-                height: 80px;
-                font-size: 2rem;
+            .profile-modal .profile-header .avatar-large {
+                width: 56px;
+                height: 56px;
+                font-size: 1.6rem;
+            }
+            .profile-modal .profile-header .profile-name {
+                font-size: 1rem;
             }
         }
     </style>
@@ -3003,63 +3129,129 @@
     </div>
 </div>
 
-<!-- ==================== MODAL DE PERFIL ==================== -->
+<!-- ==================== MODAL DE PERFIL (MINHA CONTA) ==================== -->
 <div id="modalProfile" class="modal profile-modal" role="dialog" aria-modal="true">
     <div class="modal-content">
         <span class="close-button" id="profileModalClose" aria-label="Fechar">&times;</span>
-        <h2>Gerenciamento de Conta</h2>
+        <h2>Minha Conta</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.2rem;">Gerencie suas informações pessoais e preferências</p>
 
-        <div class="profile-avatar">
-            <div class="avatar-preview" id="profileAvatarPreview">
-                <span id="avatarPlaceholder">👤</span>
+        <!-- Input oculto para upload de foto -->
+        <input type="file" id="profileAvatarInput" accept="image/*" style="display:none;">
+
+        <!-- Cabeçalho do perfil (como na captura) -->
+        <div class="profile-header">
+            <div class="avatar-large" id="profileAvatarLarge">
+                <span id="avatarPlaceholderLarge">👤</span>
             </div>
-            <label style="font-size:0.9rem; color: var(--text-muted); cursor:pointer;">
-                <input type="file" id="profileAvatarInput" accept="image/*" style="display:none;">
-                Escolher foto de perfil
-            </label>
+            <div>
+                <div class="profile-name" id="profileDisplayNameLarge">Fernando Henrique</div>
+                <div class="profile-email" id="profileEmailLarge">fernando30henrique@gmail.com</div>
+                <div class="profile-verified" id="profileVerifiedLarge">E-mail verificado</div>
+            </div>
         </div>
 
-        <form class="profile-form" id="profileForm">
-            <div class="form-row">
-                <label for="profileDisplayName">Nome de Exibição</label>
-                <input type="text" id="profileDisplayName" placeholder="Seu nome público">
+        <!-- Menu de opções -->
+        <div class="profile-menu">
+            <!-- Mensagens -->
+            <div class="profile-menu-item" data-action="messages">
+                <span class="menu-icon">💬</span>
+                <span class="menu-text">Mensagens</span>
+                <span class="menu-sub">Suas notificações e mensagens recentes</span>
             </div>
-            <div class="form-row">
-                <label for="profileNickname">Apelido</label>
-                <input type="text" id="profileNickname" placeholder="Apelido (opcional)">
-            </div>
-            <div class="form-row">
-                <label for="profileSocialName">Nome Social</label>
-                <input type="text" id="profileSocialName" placeholder="Nome social (opcional)">
-            </div>
-            <div class="form-row">
-                <label for="profileGender">Sexo</label>
-                <select id="profileGender">
-                    <option value="">Não informado</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Feminino">Feminino</option>
-                    <option value="Outro">Outro</option>
-                </select>
-            </div>
-            <div class="form-row">
-                <label for="profileGenderSpecify">Especificar Sexo (opcional)</label>
-                <input type="text" id="profileGenderSpecify" placeholder="Especifique, se desejar">
-            </div>
-            <div class="form-row">
-                <label for="profileNewPassword">Nova Senha (deixe em branco para manter a atual)</label>
-                <input type="password" id="profileNewPassword" placeholder="Nova senha (mínimo 6 caracteres)">
-            </div>
-            <button type="submit" class="btn-save-profile">Salvar Alterações</button>
-        </form>
 
-        <!-- Zona de Perigo -->
-        <div class="danger-zone">
-            <h3>⚠️ Zona de Perigo</h3>
-            <p>Atenção redobrada. Apenas atue aqui sob estrita necessidade.</p>
-            <div class="danger-buttons">
-                <button class="btn-danger-outline" id="deactivateAccountBtn">Desativar Conta</button>
-                <button class="btn-danger" id="deleteAccountBtn">Excluir Conta Permanentemente</button>
+            <!-- Preferências de mensagens -->
+            <div class="profile-menu-item" data-action="preferences">
+                <span class="menu-icon">⚙️</span>
+                <span class="menu-text">Preferências de mensagens</span>
+                <span class="menu-sub">Escolha quais mensagens você quer receber e por onde</span>
             </div>
+
+            <div class="profile-divider"></div>
+
+            <!-- Conta - Alterar nome -->
+            <div class="profile-menu-item" data-action="change-name">
+                <span class="menu-icon">✏️</span>
+                <span class="menu-text">Alterar nome</span>
+                <span class="menu-sub">Atualize seu nome de exibição</span>
+            </div>
+
+            <!-- Conta - Alterar e-mail -->
+            <div class="profile-menu-item" data-action="change-email">
+                <span class="menu-icon">📧</span>
+                <span class="menu-text">Alterar e-mail</span>
+                <span class="menu-sub">Atualize seu endereço de e-mail</span>
+            </div>
+
+            <!-- Conta - Alterar senha -->
+            <div class="profile-menu-item" data-action="change-password">
+                <span class="menu-icon">🔒</span>
+                <span class="menu-text">Alterar senha</span>
+                <span class="menu-sub">Atualize sua senha de acesso</span>
+            </div>
+
+            <!-- Sair da conta -->
+            <div class="profile-menu-item" data-action="logout">
+                <span class="menu-icon">🚪</span>
+                <span class="menu-text">Sair da conta</span>
+                <span class="menu-sub">Deslogar do seu dispositivo atual</span>
+            </div>
+
+            <div class="profile-divider"></div>
+
+            <!-- Excluir minha conta (zona de perigo simplificada) -->
+            <div class="profile-menu-item danger" data-action="delete-account">
+                <span class="menu-icon">🗑️</span>
+                <span class="menu-text">Excluir minha conta</span>
+                <span class="menu-sub" style="color: var(--danger);">Esta ação é irreversível</span>
+            </div>
+        </div>
+
+        <!-- Áreas de edição (ocultas) -->
+        <div class="profile-edit-form" id="editNameForm">
+            <div class="form-row">
+                <label for="editDisplayName">Novo nome de exibição</label>
+                <input type="text" id="editDisplayName" placeholder="Digite o novo nome">
+            </div>
+            <button class="btn-save" id="saveNameBtn">Salvar</button>
+            <button class="btn-cancel" data-cancel="editNameForm">Cancelar</button>
+        </div>
+
+        <div class="profile-edit-form" id="editEmailForm">
+            <div class="form-row">
+                <label for="editEmail">Novo e-mail</label>
+                <input type="email" id="editEmail" placeholder="Digite o novo e-mail">
+            </div>
+            <button class="btn-save" id="saveEmailBtn">Salvar</button>
+            <button class="btn-cancel" data-cancel="editEmailForm">Cancelar</button>
+        </div>
+
+        <div class="profile-edit-form" id="editPasswordForm">
+            <div class="form-row">
+                <label for="editCurrentPassword">Senha atual</label>
+                <input type="password" id="editCurrentPassword" placeholder="Digite a senha atual">
+            </div>
+            <div class="form-row">
+                <label for="editNewPassword">Nova senha</label>
+                <input type="password" id="editNewPassword" placeholder="Nova senha (mínimo 6 caracteres)">
+            </div>
+            <div class="form-row">
+                <label for="editConfirmPassword">Confirmar nova senha</label>
+                <input type="password" id="editConfirmPassword" placeholder="Confirme a nova senha">
+            </div>
+            <button class="btn-save" id="savePasswordBtn">Salvar</button>
+            <button class="btn-cancel" data-cancel="editPasswordForm">Cancelar</button>
+        </div>
+
+        <div class="profile-edit-form" id="editPreferencesForm">
+            <div class="form-row" style="flex-direction: row; gap: 0.8rem; align-items: center;">
+                <input type="checkbox" id="prefEmailCheck" checked> <label for="prefEmailCheck" style="font-weight: 400;">Notificações por e-mail</label>
+            </div>
+            <div class="form-row" style="flex-direction: row; gap: 0.8rem; align-items: center;">
+                <input type="checkbox" id="prefPushCheck" checked> <label for="prefPushCheck" style="font-weight: 400;">Notificações push</label>
+            </div>
+            <button class="btn-save" id="savePreferencesBtn">Salvar preferências</button>
+            <button class="btn-cancel" data-cancel="editPreferencesForm">Cancelar</button>
         </div>
     </div>
 </div>
@@ -3075,7 +3267,6 @@
 
         <h3 style="margin-top:1.5rem; font-size:1.2rem;">Mensagens enviadas</h3>
         <div class="feedback-list" id="feedbackList">
-            <!-- As mensagens serão inseridas aqui via JavaScript -->
             <p style="color: #888; text-align:center; padding:1rem;">Nenhuma mensagem ainda. Seja o primeiro a enviar!</p>
         </div>
     </div>
@@ -3200,7 +3391,7 @@
         });
 
         // ============================================================
-        // SISTEMA DE AUTENTICAÇÃO E PERFIL COMPLETO
+        // SISTEMA DE AUTENTICAÇÃO E PERFIL
         // ============================================================
 
         const USER_KEY = 'site_user_data';
@@ -3233,7 +3424,7 @@
             updateUI();
         }
 
-        // Atualiza a interface do header
+        // Atualiza a interface do header e dropdown
         function updateUI() {
             const user = getUser();
             const authLabel = document.getElementById('authLabel');
@@ -3248,12 +3439,14 @@
                 } else {
                     avatarHtml = `<span>${initial}</span>`;
                 }
-                authLabel.innerHTML = `<span class="avatar">${avatarHtml}</span>`;
+                authLabel.innerHTML = `<span class="avatar" id="avatarTrigger">${avatarHtml}</span>`;
                 authButton.title = `Olá, ${user.displayName || user.nickname || user.email || 'Usuário'}!`;
-                authButton.onclick = () => {
-                    // Abre o perfil se estiver logado
+                // Abrir o perfil ao clicar no avatar
+                authLabel.querySelector('.avatar').addEventListener('click', (e) => {
+                    e.stopPropagation();
                     abrirModalPorId('modalProfile');
-                };
+                    loadProfile();
+                });
             } else {
                 authLabel.innerHTML = 'Entrar';
                 authButton.title = 'Entrar ou criar conta';
@@ -3275,7 +3468,7 @@
         document.getElementById('authButton').addEventListener('click', () => {
             const user = getUser();
             if (user) {
-                abrirModalPorId('modalProfile');
+                // Se já logado, o clique no avatar já abre perfil
                 return;
             }
             abrirModalPorId('modalAuth');
@@ -3317,7 +3510,6 @@
             const users = getUsers();
             const found = users.find(u => u.email === email && u.password === password);
             if (found) {
-                // Remove a senha antes de salvar na sessão
                 const { password: _, ...userData } = found;
                 setUser(userData);
                 fecharTodosModais();
@@ -3403,87 +3595,54 @@
             });
         });
 
-        // --- Gerenciamento do Perfil ---
+        // --- Gerenciamento do Perfil (novo layout) ---
         const profileModal = document.getElementById('modalProfile');
         const profileModalClose = document.getElementById('profileModalClose');
-        const profileForm = document.getElementById('profileForm');
         const profileAvatarInput = document.getElementById('profileAvatarInput');
-        const profileAvatarPreview = document.getElementById('profileAvatarPreview');
-        const avatarPlaceholder = document.getElementById('avatarPlaceholder');
+        const profileAvatarLarge = document.getElementById('profileAvatarLarge');
 
-        // Preencher o formulário de perfil com os dados do usuário
+        // Função para carregar dados do perfil
         function loadProfile() {
             const user = getUser();
-            if (!user) return;
-            document.getElementById('profileDisplayName').value = user.displayName || '';
-            document.getElementById('profileNickname').value = user.nickname || '';
-            document.getElementById('profileSocialName').value = user.socialName || '';
-            document.getElementById('profileGender').value = user.gender || '';
-            document.getElementById('profileGenderSpecify').value = user.genderSpecify || '';
-            document.getElementById('profileNewPassword').value = '';
-            // Avatar
+            if (!user) {
+                // Se não houver usuário, redirecionar para login
+                fecharTodosModais();
+                abrirModalPorId('modalAuth');
+                return;
+            }
+
+            // Atualizar cabeçalho
+            document.getElementById('profileDisplayNameLarge').textContent = user.displayName || user.nickname || 'Usuário';
+            document.getElementById('profileEmailLarge').textContent = user.email || 'e-mail não informado';
+            document.getElementById('profileVerifiedLarge').textContent = 'E-mail verificado';
+
+            // Avatar grande
+            const avatarPlaceholderLarge = document.getElementById('avatarPlaceholderLarge');
             if (user.avatar) {
-                avatarPlaceholder.innerHTML = `<img src="${user.avatar}" alt="Avatar" style="width:100%;height:100%;object-fit:cover;">`;
+                avatarPlaceholderLarge.innerHTML = `<img src="${user.avatar}" alt="Avatar" style="width:100%;height:100%;object-fit:cover;">`;
             } else {
                 const initial = user.displayName ? user.displayName.charAt(0).toUpperCase() :
                     user.nickname ? user.nickname.charAt(0).toUpperCase() :
                         user.email ? user.email.charAt(0).toUpperCase() : 'U';
-                avatarPlaceholder.textContent = initial;
-                avatarPlaceholder.style.background = '#eee';
-                avatarPlaceholder.style.display = 'flex';
-                avatarPlaceholder.style.alignItems = 'center';
-                avatarPlaceholder.style.justifyContent = 'center';
-                avatarPlaceholder.style.width = '100%';
-                avatarPlaceholder.style.height = '100%';
-                avatarPlaceholder.style.fontSize = '2.5rem';
-                avatarPlaceholder.style.color = 'var(--primary)';
+                avatarPlaceholderLarge.textContent = initial;
+                avatarPlaceholderLarge.style.background = '#eee';
+                avatarPlaceholderLarge.style.display = 'flex';
+                avatarPlaceholderLarge.style.alignItems = 'center';
+                avatarPlaceholderLarge.style.justifyContent = 'center';
+                avatarPlaceholderLarge.style.width = '100%';
+                avatarPlaceholderLarge.style.height = '100%';
+                avatarPlaceholderLarge.style.fontSize = '2.5rem';
+                avatarPlaceholderLarge.style.color = 'var(--primary)';
             }
+
+            // Preencher campos de edição
+            document.getElementById('editDisplayName').value = user.displayName || '';
+            document.getElementById('editEmail').value = user.email || '';
         }
 
-        // Salvar alterações do perfil
-        profileForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const user = getUser();
-            if (!user) {
-                alert('Nenhum usuário logado.');
-                return;
-            }
-
-            const displayName = document.getElementById('profileDisplayName').value.trim();
-            const nickname = document.getElementById('profileNickname').value.trim();
-            const socialName = document.getElementById('profileSocialName').value.trim();
-            const gender = document.getElementById('profileGender').value;
-            const genderSpecify = document.getElementById('profileGenderSpecify').value.trim();
-            const newPassword = document.getElementById('profileNewPassword').value.trim();
-
-            // Atualizar dados do usuário na lista de usuários
-            let users = getUsers();
-            const userIndex = users.findIndex(u => u.email === user.email);
-            if (userIndex === -1) {
-                alert('Erro: usuário não encontrado.');
-                return;
-            }
-
-            // Atualiza campos
-            users[userIndex].displayName = displayName || users[userIndex].displayName;
-            users[userIndex].nickname = nickname || users[userIndex].nickname;
-            users[userIndex].socialName = socialName || users[userIndex].socialName;
-            users[userIndex].gender = gender || users[userIndex].gender;
-            users[userIndex].genderSpecify = genderSpecify || users[userIndex].genderSpecify;
-            if (newPassword.length >= 6) {
-                users[userIndex].password = newPassword;
-            }
-            // Avatar já foi atualizado via upload (salvo em user.avatar)
-
-            // Salva a lista atualizada
-            saveUsers(users);
-
-            // Atualiza o usuário na sessão (remove senha)
-            const { password: _, ...userData } = users[userIndex];
-            setUser(userData);
-
-            alert('Perfil atualizado com sucesso!');
-            fecharTodosModais();
+        // Clique no avatar grande para trocar foto
+        profileAvatarLarge.addEventListener('click', () => {
+            profileAvatarInput.click();
         });
 
         // Upload e redimensionamento de avatar
@@ -3504,7 +3663,6 @@
                     const aspect = img.width / img.height;
                     let sx, sy, sw, sh;
                     if (aspect > 1) {
-                        // largura maior
                         sw = img.height;
                         sh = img.height;
                         sx = (img.width - sw) / 2;
@@ -3517,20 +3675,23 @@
                     }
                     ctx.drawImage(img, sx, sy, sw, sh, 0, 0, size, size);
                     const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                    // Atualizar preview
-                    avatarPlaceholder.innerHTML = `<img src="${dataUrl}" alt="Avatar" style="width:100%;height:100%;object-fit:cover;">`;
-                    // Salvar no usuário atual
+                    // Atualizar avatar no usuário
                     const user = getUser();
                     if (user) {
                         user.avatar = dataUrl;
                         setUser(user);
-                        // Também atualizar na lista de usuários
+                        // Atualizar na lista de usuários
                         let users = getUsers();
                         const idx = users.findIndex(u => u.email === user.email);
                         if (idx !== -1) {
                             users[idx].avatar = dataUrl;
                             saveUsers(users);
                         }
+                        // Atualizar visualização
+                        loadProfile();
+                        // Atualizar o avatar do header também
+                        updateUI();
+                        alert('Foto de perfil atualizada com sucesso!');
                     }
                 };
                 img.src = event.target.result;
@@ -3538,56 +3699,147 @@
             reader.readAsDataURL(file);
         });
 
-        // Desativar conta (simulação)
-        document.getElementById('deactivateAccountBtn').addEventListener('click', () => {
-            if (confirm('Tem certeza que deseja desativar sua conta? Você poderá reativá-la posteriormente.')) {
-                const user = getUser();
-                if (user) {
-                    let users = getUsers();
-                    const idx = users.findIndex(u => u.email === user.email);
-                    if (idx !== -1) {
-                        users[idx].active = false;
-                        saveUsers(users);
-                        logout();
-                        alert('Conta desativada com sucesso.');
-                        fecharTodosModais();
-                    }
-                }
-            }
-        });
-
-        // Excluir conta permanentemente
-        document.getElementById('deleteAccountBtn').addEventListener('click', () => {
-            if (confirm('ATENÇÃO: Esta ação é irreversível. Tem certeza que deseja excluir sua conta permanentemente?')) {
-                const user = getUser();
-                if (user) {
-                    let users = getUsers();
-                    const idx = users.findIndex(u => u.email === user.email);
-                    if (idx !== -1) {
-                        users.splice(idx, 1);
-                        saveUsers(users);
-                        logout();
-                        alert('Conta excluída permanentemente.');
-                        fecharTodosModais();
-                    }
-                }
-            }
-        });
-
-        // Fechar modal de perfil
+        // Fechar modal
         profileModalClose.addEventListener('click', fecharTodosModais);
 
-        // Quando o modal de perfil for aberto, carregar os dados
-        // Usar MutationObserver para detectar abertura do modal
-        const profileObserver = new MutationObserver(() => {
-            if (profileModal.classList.contains('active')) {
-                loadProfile();
-            }
+        // Alternar formulários de edição
+        document.querySelectorAll('.profile-menu-item[data-action]').forEach(item => {
+            item.addEventListener('click', () => {
+                const action = item.dataset.action;
+                // Esconder todos os formulários
+                document.querySelectorAll('.profile-edit-form').forEach(f => f.classList.remove('active'));
+
+                if (action === 'messages') {
+                    fecharTodosModais();
+                    abrirModalPorId('modalFeedback');
+                    renderFeedback();
+                } else if (action === 'preferences') {
+                    document.getElementById('editPreferencesForm').classList.add('active');
+                } else if (action === 'change-name') {
+                    document.getElementById('editNameForm').classList.add('active');
+                } else if (action === 'change-email') {
+                    document.getElementById('editEmailForm').classList.add('active');
+                } else if (action === 'change-password') {
+                    document.getElementById('editPasswordForm').classList.add('active');
+                } else if (action === 'logout') {
+                    if (confirm('Deseja sair da sua conta?')) {
+                        logout();
+                        alert('Você saiu da sua conta.');
+                        fecharTodosModais();
+                    }
+                } else if (action === 'delete-account') {
+                    if (confirm('ATENÇÃO: Esta ação é irreversível. Tem certeza que deseja excluir sua conta permanentemente?')) {
+                        const user = getUser();
+                        if (user) {
+                            let users = getUsers();
+                            const idx = users.findIndex(u => u.email === user.email);
+                            if (idx !== -1) {
+                                users.splice(idx, 1);
+                                saveUsers(users);
+                                logout();
+                                alert('Conta excluída permanentemente.');
+                                fecharTodosModais();
+                            }
+                        }
+                    }
+                }
+            });
         });
-        profileObserver.observe(profileModal, { attributes: true, attributeFilter: ['class'] });
+
+        // Cancelar edição
+        document.querySelectorAll('[data-cancel]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const formId = btn.dataset.cancel;
+                document.getElementById(formId).classList.remove('active');
+            });
+        });
+
+        // Salvar nome
+        document.getElementById('saveNameBtn').addEventListener('click', () => {
+            const user = getUser();
+            if (!user) return;
+            const newName = document.getElementById('editDisplayName').value.trim();
+            if (!newName) {
+                alert('O nome não pode estar vazio.');
+                return;
+            }
+            let users = getUsers();
+            const idx = users.findIndex(u => u.email === user.email);
+            if (idx === -1) return;
+            users[idx].displayName = newName;
+            saveUsers(users);
+            const { password: _, ...userData } = users[idx];
+            setUser(userData);
+            document.getElementById('editNameForm').classList.remove('active');
+            loadProfile();
+            alert('Nome atualizado com sucesso!');
+        });
+
+        // Salvar e-mail
+        document.getElementById('saveEmailBtn').addEventListener('click', () => {
+            const user = getUser();
+            if (!user) return;
+            const newEmail = document.getElementById('editEmail').value.trim();
+            if (!newEmail || !newEmail.includes('@')) {
+                alert('Digite um e-mail válido.');
+                return;
+            }
+            let users = getUsers();
+            const idx = users.findIndex(u => u.email === user.email);
+            if (idx === -1) return;
+            if (users.some(u => u.email === newEmail && u.email !== user.email)) {
+                alert('Este e-mail já está em uso.');
+                return;
+            }
+            users[idx].email = newEmail;
+            saveUsers(users);
+            const { password: _, ...userData } = users[idx];
+            setUser(userData);
+            document.getElementById('editEmailForm').classList.remove('active');
+            loadProfile();
+            alert('E-mail atualizado com sucesso!');
+        });
+
+        // Salvar senha
+        document.getElementById('savePasswordBtn').addEventListener('click', () => {
+            const user = getUser();
+            if (!user) return;
+            const current = document.getElementById('editCurrentPassword').value.trim();
+            const newPass = document.getElementById('editNewPassword').value.trim();
+            const confirmPass = document.getElementById('editConfirmPassword').value.trim();
+
+            let users = getUsers();
+            const idx = users.findIndex(u => u.email === user.email);
+            if (idx === -1) return;
+
+            if (users[idx].password !== current) {
+                alert('Senha atual incorreta.');
+                return;
+            }
+            if (newPass.length < 6) {
+                alert('A nova senha deve ter pelo menos 6 caracteres.');
+                return;
+            }
+            if (newPass !== confirmPass) {
+                alert('As senhas não coincidem.');
+                return;
+            }
+            users[idx].password = newPass;
+            saveUsers(users);
+            document.getElementById('editPasswordForm').classList.remove('active');
+            alert('Senha alterada com sucesso!');
+        });
+
+        // Salvar preferências
+        document.getElementById('savePreferencesBtn').addEventListener('click', () => {
+            const email = document.getElementById('prefEmailCheck').checked;
+            const push = document.getElementById('prefPushCheck').checked;
+            alert(`Preferências salvas: E-mail ${email ? 'ativado' : 'desativado'}, Push ${push ? 'ativado' : 'desativado'}`);
+            document.getElementById('editPreferencesForm').classList.remove('active');
+        });
 
         // ============================================================
-        // SISTEMA DE FEEDBACK (COMENTÁRIOS)
+        // SISTEMA DE FEEDBACK (com edição, exclusão, denúncia)
         // ============================================================
 
         const feedbackModal = document.getElementById('modalFeedback');
@@ -3615,22 +3867,98 @@
                 return;
             }
             let html = '';
-            // Ordem cronológica (mais recentes primeiro)
+            const user = getUser();
+            const currentUserEmail = user ? user.email : null;
             const sorted = [...messages].reverse();
-            sorted.forEach(msg => {
+            sorted.forEach((msg, index) => {
+                const realIndex = messages.length - 1 - index;
                 const date = new Date(msg.timestamp);
                 const dateStr = date.toLocaleDateString('pt-BR') + ' ' + date.toLocaleTimeString('pt-BR');
+                const isAuthor = currentUserEmail && msg.authorEmail === currentUserEmail;
+                const reported = msg.reported ? ' (Denunciada)' : '';
                 html += `
-                    <div class="feedback-item">
+                    <div class="feedback-item" data-index="${realIndex}">
                         <div class="feedback-meta">
-                            <span>${msg.author || 'Anônimo'}</span>
+                            <span>${msg.author || 'Anônimo'} ${reported}</span>
                             <span>${dateStr}</span>
                         </div>
-                        <div class="feedback-text">${msg.text}</div>
+                        <div class="feedback-text" id="feedback-text-${realIndex}">${msg.text}</div>
+                        <div class="feedback-actions">
+                            ${isAuthor ? `<button class="edit-btn" data-index="${realIndex}">✏️ Editar</button>` : ''}
+                            ${isAuthor ? `<button class="delete-btn" data-index="${realIndex}">🗑️ Apagar</button>` : ''}
+                            <button class="report-btn" data-index="${realIndex}">🚨 Denunciar</button>
+                        </div>
+                        <div class="edit-feedback-area" id="edit-area-${realIndex}">
+                            <textarea class="edit-textarea">${msg.text}</textarea>
+                            <button class="btn-edit-save" data-index="${realIndex}">Salvar edição</button>
+                            <button class="btn-edit-cancel" data-index="${realIndex}">Cancelar</button>
+                        </div>
                     </div>
                 `;
             });
             feedbackList.innerHTML = html;
+
+            // Event listeners para ações
+            feedbackList.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    const area = document.getElementById(`edit-area-${idx}`);
+                    area.classList.toggle('active');
+                });
+            });
+
+            feedbackList.querySelectorAll('.btn-edit-save').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    const newText = document.querySelector(`#edit-area-${idx} .edit-textarea`).value.trim();
+                    if (!newText) {
+                        alert('A mensagem não pode estar vazia.');
+                        return;
+                    }
+                    let msgs = getFeedbackMessages();
+                    if (msgs[idx]) {
+                        msgs[idx].text = newText;
+                        saveFeedbackMessages(msgs);
+                        renderFeedback();
+                        alert('Mensagem editada com sucesso.');
+                    }
+                });
+            });
+
+            feedbackList.querySelectorAll('.btn-edit-cancel').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    document.getElementById(`edit-area-${idx}`).classList.remove('active');
+                });
+            });
+
+            feedbackList.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    if (confirm('Tem certeza que deseja apagar esta mensagem?')) {
+                        let msgs = getFeedbackMessages();
+                        msgs.splice(idx, 1);
+                        saveFeedbackMessages(msgs);
+                        renderFeedback();
+                        alert('Mensagem apagada.');
+                    }
+                });
+            });
+
+            feedbackList.querySelectorAll('.report-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    if (confirm('Deseja denunciar esta mensagem? Ela será marcada para moderação.')) {
+                        let msgs = getFeedbackMessages();
+                        if (msgs[idx]) {
+                            msgs[idx].reported = true;
+                            saveFeedbackMessages(msgs);
+                            renderFeedback();
+                            alert('Mensagem denunciada. Obrigado por ajudar a manter a comunidade segura.');
+                        }
+                    }
+                });
+            });
         }
 
         // Enviar feedback
@@ -3642,11 +3970,14 @@
             }
             const user = getUser();
             const author = user ? (user.displayName || user.nickname || user.email || 'Anônimo') : 'Anônimo';
+            const authorEmail = user ? user.email : null;
             const messages = getFeedbackMessages();
             messages.push({
                 text: text,
                 author: author,
+                authorEmail: authorEmail,
                 timestamp: Date.now(),
+                reported: false,
             });
             saveFeedbackMessages(messages);
             feedbackText.value = '';
@@ -3662,7 +3993,6 @@
 
         feedbackModalClose.addEventListener('click', fecharTodosModais);
 
-        // Se o modal de feedback for aberto, renderizar novamente
         const feedbackObserver = new MutationObserver(() => {
             if (feedbackModal.classList.contains('active')) {
                 renderFeedback();
@@ -3723,7 +4053,6 @@
             }
         });
 
-        // Limpar pesquisa ao clicar em qualquer botão
         allButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 searchInput.value = '';
@@ -3734,6 +4063,14 @@
         // ============================================================
         // INICIALIZAÇÃO
         // ============================================================
+
+        // Carregar perfil ao abrir modal
+        const profileObserver2 = new MutationObserver(() => {
+            if (profileModal.classList.contains('active')) {
+                loadProfile();
+            }
+        });
+        profileObserver2.observe(profileModal, { attributes: true, attributeFilter: ['class'] });
 
         updateUI();
     });
