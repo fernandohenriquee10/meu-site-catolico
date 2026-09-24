@@ -3117,7 +3117,7 @@
         <form class="auth-form hidden" id="registerForm">
             <input type="text" placeholder="Nome completo" id="registerName" required>
             <input type="email" placeholder="E-mail" id="registerEmail" required>
-            <input type="password" placeholder="Senha (mínimo 6 caracteres)" id="registerPassword" required minlength="6">
+            <input type="password" placeholder="Senha (mínimo 8 caracteres)" id="registerPassword" required minlength="8">
             <button type="submit" class="btn-auth-submit">Criar Conta</button>
             <div class="auth-divider">ou continue com</div>
             <div class="social-login">
@@ -3198,6 +3198,13 @@
             </div>
 
             <div class="profile-divider"></div>
+
+            <!-- Desativar conta temporariamente -->
+            <div class="profile-menu-item danger" data-action="deactivate-account">
+                <span class="menu-icon">⏸️</span>
+                <span class="menu-text">Desativar minha conta</span>
+                <span class="menu-sub">Pausar o acesso e reativar ao entrar novamente</span>
+            </div>
 
             <!-- Excluir minha conta (zona de perigo simplificada) -->
             <div class="profile-menu-item danger" data-action="delete-account">
@@ -3353,6 +3360,7 @@
             modals.forEach(m => m.classList.remove('active'));
             document.body.classList.remove('modal-open');
         };
+        window.fecharTodosModais = fecharTodosModais;
 
         modalButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -3390,615 +3398,7 @@
             cookieBanner.classList.add('hidden');
         });
 
-        // ============================================================
-        // SISTEMA DE AUTENTICAÇÃO E PERFIL
-        // ============================================================
-
-        const USER_KEY = 'site_user_data';
-        const USERS_KEY = 'site_users';
-
-        function getUsers() {
-            try {
-                return JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
-            } catch { return []; }
-        }
-
-        function saveUsers(users) {
-            localStorage.setItem(USERS_KEY, JSON.stringify(users));
-        }
-
-        function getUser() {
-            try {
-                const data = localStorage.getItem(USER_KEY);
-                return data ? JSON.parse(data) : null;
-            } catch { return null; }
-        }
-
-        function setUser(user) {
-            localStorage.setItem(USER_KEY, JSON.stringify(user));
-            updateUI();
-        }
-
-        function logout() {
-            localStorage.removeItem(USER_KEY);
-            updateUI();
-        }
-
-        // Atualiza a interface do header e dropdown
-        function updateUI() {
-            const user = getUser();
-            const authLabel = document.getElementById('authLabel');
-            const authButton = document.getElementById('authButton');
-            if (user) {
-                const initial = user.displayName ? user.displayName.charAt(0).toUpperCase() :
-                    user.nickname ? user.nickname.charAt(0).toUpperCase() :
-                        user.email ? user.email.charAt(0).toUpperCase() : 'U';
-                let avatarHtml = '';
-                if (user.avatar) {
-                    avatarHtml = `<img src="${user.avatar}" alt="Avatar">`;
-                } else {
-                    avatarHtml = `<span>${initial}</span>`;
-                }
-                authLabel.innerHTML = `<span class="avatar" id="avatarTrigger">${avatarHtml}</span>`;
-                authButton.title = `Olá, ${user.displayName || user.nickname || user.email || 'Usuário'}!`;
-                // Abrir o perfil ao clicar no avatar
-                authLabel.querySelector('.avatar').addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    abrirModalPorId('modalProfile');
-                    loadProfile();
-                });
-            } else {
-                authLabel.innerHTML = 'Entrar';
-                authButton.title = 'Entrar ou criar conta';
-                authButton.onclick = () => {
-                    abrirModalPorId('modalAuth');
-                };
-            }
-        }
-
-        // --- Gerenciamento do Modal de Autenticação ---
-        const authModal = document.getElementById('modalAuth');
-        const authModalClose = document.getElementById('authModalClose');
-        const authTabs = document.querySelectorAll('#modalAuth .auth-tab');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const authError = document.getElementById('authError');
-
-        // Abrir modal de autenticação
-        document.getElementById('authButton').addEventListener('click', () => {
-            const user = getUser();
-            if (user) {
-                // Se já logado, o clique no avatar já abre perfil
-                return;
-            }
-            abrirModalPorId('modalAuth');
-        });
-
-        authModalClose.addEventListener('click', fecharTodosModais);
-
-        authTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                authTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                const target = tab.dataset.tab;
-                if (target === 'login') {
-                    loginForm.classList.remove('hidden');
-                    registerForm.classList.add('hidden');
-                } else {
-                    loginForm.classList.add('hidden');
-                    registerForm.classList.remove('hidden');
-                }
-                authError.textContent = '';
-            });
-        });
-
-        function showAuthError(msg) {
-            authError.textContent = msg;
-        }
-
-        // Login
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value.trim();
-            const password = document.getElementById('loginPassword').value.trim();
-
-            if (!email || !password) {
-                showAuthError('Preencha todos os campos.');
-                return;
-            }
-
-            const users = getUsers();
-            const found = users.find(u => u.email === email && u.password === password);
-            if (found) {
-                const { password: _, ...userData } = found;
-                setUser(userData);
-                fecharTodosModais();
-                alert(`Bem-vindo(a) de volta, ${found.displayName || found.nickname || found.email}!`);
-            } else {
-                const existing = users.find(u => u.email === email);
-                if (existing) {
-                    showAuthError('Senha incorreta. Tente novamente.');
-                } else {
-                    showAuthError('Usuário não encontrado. Crie uma conta primeiro.');
-                }
-            }
-        });
-
-        // Cadastro
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('registerName').value.trim();
-            const email = document.getElementById('registerEmail').value.trim();
-            const password = document.getElementById('registerPassword').value.trim();
-
-            if (!name || !email || !password) {
-                showAuthError('Preencha todos os campos.');
-                return;
-            }
-            if (password.length < 6) {
-                showAuthError('A senha deve ter pelo menos 6 caracteres.');
-                return;
-            }
-
-            const users = getUsers();
-            if (users.find(u => u.email === email)) {
-                showAuthError('Este e-mail já está cadastrado. Faça login.');
-                return;
-            }
-
-            const newUser = {
-                email,
-                password,
-                displayName: name,
-                nickname: '',
-                socialName: '',
-                gender: '',
-                genderSpecify: '',
-                avatar: null,
-                createdAt: new Date().toISOString(),
-            };
-            users.push(newUser);
-            saveUsers(users);
-            const { password: _, ...userData } = newUser;
-            setUser(userData);
-            fecharTodosModais();
-            alert(`Conta criada com sucesso! Bem-vindo(a), ${name}!`);
-        });
-
-        // Login social (simulado)
-        document.querySelectorAll('.social-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const provider = btn.dataset.social;
-                const fakeName = provider.charAt(0).toUpperCase() + provider.slice(1) + ' User';
-                const fakeEmail = `${provider.toLowerCase()}@exemplo.com`;
-                let users = getUsers();
-                let found = users.find(u => u.email === fakeEmail);
-                if (!found) {
-                    found = {
-                        email: fakeEmail,
-                        password: 'social',
-                        displayName: fakeName,
-                        nickname: '',
-                        socialName: '',
-                        gender: '',
-                        genderSpecify: '',
-                        avatar: null,
-                        createdAt: new Date().toISOString(),
-                    };
-                    users.push(found);
-                    saveUsers(users);
-                }
-                const { password: _, ...userData } = found;
-                setUser(userData);
-                fecharTodosModais();
-                alert(`Conectado com ${provider}!`);
-            });
-        });
-
-        // --- Gerenciamento do Perfil (novo layout) ---
-        const profileModal = document.getElementById('modalProfile');
-        const profileModalClose = document.getElementById('profileModalClose');
-        const profileAvatarInput = document.getElementById('profileAvatarInput');
-        const profileAvatarLarge = document.getElementById('profileAvatarLarge');
-
-        // Função para carregar dados do perfil
-        function loadProfile() {
-            const user = getUser();
-            if (!user) {
-                // Se não houver usuário, redirecionar para login
-                fecharTodosModais();
-                abrirModalPorId('modalAuth');
-                return;
-            }
-
-            // Atualizar cabeçalho
-            document.getElementById('profileDisplayNameLarge').textContent = user.displayName || user.nickname || 'Usuário';
-            document.getElementById('profileEmailLarge').textContent = user.email || 'e-mail não informado';
-            document.getElementById('profileVerifiedLarge').textContent = 'E-mail verificado';
-
-            // Avatar grande
-            const avatarPlaceholderLarge = document.getElementById('avatarPlaceholderLarge');
-            if (user.avatar) {
-                avatarPlaceholderLarge.innerHTML = `<img src="${user.avatar}" alt="Avatar" style="width:100%;height:100%;object-fit:cover;">`;
-            } else {
-                const initial = user.displayName ? user.displayName.charAt(0).toUpperCase() :
-                    user.nickname ? user.nickname.charAt(0).toUpperCase() :
-                        user.email ? user.email.charAt(0).toUpperCase() : 'U';
-                avatarPlaceholderLarge.textContent = initial;
-                avatarPlaceholderLarge.style.background = '#eee';
-                avatarPlaceholderLarge.style.display = 'flex';
-                avatarPlaceholderLarge.style.alignItems = 'center';
-                avatarPlaceholderLarge.style.justifyContent = 'center';
-                avatarPlaceholderLarge.style.width = '100%';
-                avatarPlaceholderLarge.style.height = '100%';
-                avatarPlaceholderLarge.style.fontSize = '2.5rem';
-                avatarPlaceholderLarge.style.color = 'var(--primary)';
-            }
-
-            // Preencher campos de edição
-            document.getElementById('editDisplayName').value = user.displayName || '';
-            document.getElementById('editEmail').value = user.email || '';
-        }
-
-        // Clique no avatar grande para trocar foto
-        profileAvatarLarge.addEventListener('click', () => {
-            profileAvatarInput.click();
-        });
-
-        // Upload e redimensionamento de avatar
-        profileAvatarInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const img = new Image();
-                img.onload = function() {
-                    // Redimensionar para 200x200 (canvas)
-                    const canvas = document.createElement('canvas');
-                    const size = 200;
-                    canvas.width = size;
-                    canvas.height = size;
-                    const ctx = canvas.getContext('2d');
-                    // Desenhar a imagem redimensionada e centralizada (corte quadrado)
-                    const aspect = img.width / img.height;
-                    let sx, sy, sw, sh;
-                    if (aspect > 1) {
-                        sw = img.height;
-                        sh = img.height;
-                        sx = (img.width - sw) / 2;
-                        sy = 0;
-                    } else {
-                        sw = img.width;
-                        sh = img.width;
-                        sx = 0;
-                        sy = (img.height - sh) / 2;
-                    }
-                    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, size, size);
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                    // Atualizar avatar no usuário
-                    const user = getUser();
-                    if (user) {
-                        user.avatar = dataUrl;
-                        setUser(user);
-                        // Atualizar na lista de usuários
-                        let users = getUsers();
-                        const idx = users.findIndex(u => u.email === user.email);
-                        if (idx !== -1) {
-                            users[idx].avatar = dataUrl;
-                            saveUsers(users);
-                        }
-                        // Atualizar visualização
-                        loadProfile();
-                        // Atualizar o avatar do header também
-                        updateUI();
-                        alert('Foto de perfil atualizada com sucesso!');
-                    }
-                };
-                img.src = event.target.result;
-            };
-            reader.readAsDataURL(file);
-        });
-
-        // Fechar modal
-        profileModalClose.addEventListener('click', fecharTodosModais);
-
-        // Alternar formulários de edição
-        document.querySelectorAll('.profile-menu-item[data-action]').forEach(item => {
-            item.addEventListener('click', () => {
-                const action = item.dataset.action;
-                // Esconder todos os formulários
-                document.querySelectorAll('.profile-edit-form').forEach(f => f.classList.remove('active'));
-
-                if (action === 'messages') {
-                    fecharTodosModais();
-                    abrirModalPorId('modalFeedback');
-                    renderFeedback();
-                } else if (action === 'preferences') {
-                    document.getElementById('editPreferencesForm').classList.add('active');
-                } else if (action === 'change-name') {
-                    document.getElementById('editNameForm').classList.add('active');
-                } else if (action === 'change-email') {
-                    document.getElementById('editEmailForm').classList.add('active');
-                } else if (action === 'change-password') {
-                    document.getElementById('editPasswordForm').classList.add('active');
-                } else if (action === 'logout') {
-                    if (confirm('Deseja sair da sua conta?')) {
-                        logout();
-                        alert('Você saiu da sua conta.');
-                        fecharTodosModais();
-                    }
-                } else if (action === 'delete-account') {
-                    if (confirm('ATENÇÃO: Esta ação é irreversível. Tem certeza que deseja excluir sua conta permanentemente?')) {
-                        const user = getUser();
-                        if (user) {
-                            let users = getUsers();
-                            const idx = users.findIndex(u => u.email === user.email);
-                            if (idx !== -1) {
-                                users.splice(idx, 1);
-                                saveUsers(users);
-                                logout();
-                                alert('Conta excluída permanentemente.');
-                                fecharTodosModais();
-                            }
-                        }
-                    }
-                }
-            });
-        });
-
-        // Cancelar edição
-        document.querySelectorAll('[data-cancel]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const formId = btn.dataset.cancel;
-                document.getElementById(formId).classList.remove('active');
-            });
-        });
-
-        // Salvar nome
-        document.getElementById('saveNameBtn').addEventListener('click', () => {
-            const user = getUser();
-            if (!user) return;
-            const newName = document.getElementById('editDisplayName').value.trim();
-            if (!newName) {
-                alert('O nome não pode estar vazio.');
-                return;
-            }
-            let users = getUsers();
-            const idx = users.findIndex(u => u.email === user.email);
-            if (idx === -1) return;
-            users[idx].displayName = newName;
-            saveUsers(users);
-            const { password: _, ...userData } = users[idx];
-            setUser(userData);
-            document.getElementById('editNameForm').classList.remove('active');
-            loadProfile();
-            alert('Nome atualizado com sucesso!');
-        });
-
-        // Salvar e-mail
-        document.getElementById('saveEmailBtn').addEventListener('click', () => {
-            const user = getUser();
-            if (!user) return;
-            const newEmail = document.getElementById('editEmail').value.trim();
-            if (!newEmail || !newEmail.includes('@')) {
-                alert('Digite um e-mail válido.');
-                return;
-            }
-            let users = getUsers();
-            const idx = users.findIndex(u => u.email === user.email);
-            if (idx === -1) return;
-            if (users.some(u => u.email === newEmail && u.email !== user.email)) {
-                alert('Este e-mail já está em uso.');
-                return;
-            }
-            users[idx].email = newEmail;
-            saveUsers(users);
-            const { password: _, ...userData } = users[idx];
-            setUser(userData);
-            document.getElementById('editEmailForm').classList.remove('active');
-            loadProfile();
-            alert('E-mail atualizado com sucesso!');
-        });
-
-        // Salvar senha
-        document.getElementById('savePasswordBtn').addEventListener('click', () => {
-            const user = getUser();
-            if (!user) return;
-            const current = document.getElementById('editCurrentPassword').value.trim();
-            const newPass = document.getElementById('editNewPassword').value.trim();
-            const confirmPass = document.getElementById('editConfirmPassword').value.trim();
-
-            let users = getUsers();
-            const idx = users.findIndex(u => u.email === user.email);
-            if (idx === -1) return;
-
-            if (users[idx].password !== current) {
-                alert('Senha atual incorreta.');
-                return;
-            }
-            if (newPass.length < 6) {
-                alert('A nova senha deve ter pelo menos 6 caracteres.');
-                return;
-            }
-            if (newPass !== confirmPass) {
-                alert('As senhas não coincidem.');
-                return;
-            }
-            users[idx].password = newPass;
-            saveUsers(users);
-            document.getElementById('editPasswordForm').classList.remove('active');
-            alert('Senha alterada com sucesso!');
-        });
-
-        // Salvar preferências
-        document.getElementById('savePreferencesBtn').addEventListener('click', () => {
-            const email = document.getElementById('prefEmailCheck').checked;
-            const push = document.getElementById('prefPushCheck').checked;
-            alert(`Preferências salvas: E-mail ${email ? 'ativado' : 'desativado'}, Push ${push ? 'ativado' : 'desativado'}`);
-            document.getElementById('editPreferencesForm').classList.remove('active');
-        });
-
-        // ============================================================
-        // SISTEMA DE FEEDBACK (com edição, exclusão, denúncia)
-        // ============================================================
-
-        const feedbackModal = document.getElementById('modalFeedback');
-        const feedbackModalClose = document.getElementById('feedbackModalClose');
-        const feedbackText = document.getElementById('feedbackText');
-        const sendFeedbackBtn = document.getElementById('sendFeedbackBtn');
-        const feedbackList = document.getElementById('feedbackList');
-
-        const FEEDBACK_KEY = 'site_feedback_messages';
-
-        function getFeedbackMessages() {
-            try {
-                return JSON.parse(localStorage.getItem(FEEDBACK_KEY) || '[]');
-            } catch { return []; }
-        }
-
-        function saveFeedbackMessages(messages) {
-            localStorage.setItem(FEEDBACK_KEY, JSON.stringify(messages));
-        }
-
-        function renderFeedback() {
-            const messages = getFeedbackMessages();
-            if (messages.length === 0) {
-                feedbackList.innerHTML = `<p style="color: #888; text-align:center; padding:1rem;">Nenhuma mensagem ainda. Seja o primeiro a enviar!</p>`;
-                return;
-            }
-            let html = '';
-            const user = getUser();
-            const currentUserEmail = user ? user.email : null;
-            const sorted = [...messages].reverse();
-            sorted.forEach((msg, index) => {
-                const realIndex = messages.length - 1 - index;
-                const date = new Date(msg.timestamp);
-                const dateStr = date.toLocaleDateString('pt-BR') + ' ' + date.toLocaleTimeString('pt-BR');
-                const isAuthor = currentUserEmail && msg.authorEmail === currentUserEmail;
-                const reported = msg.reported ? ' (Denunciada)' : '';
-                html += `
-                    <div class="feedback-item" data-index="${realIndex}">
-                        <div class="feedback-meta">
-                            <span>${msg.author || 'Anônimo'} ${reported}</span>
-                            <span>${dateStr}</span>
-                        </div>
-                        <div class="feedback-text" id="feedback-text-${realIndex}">${msg.text}</div>
-                        <div class="feedback-actions">
-                            ${isAuthor ? `<button class="edit-btn" data-index="${realIndex}">✏️ Editar</button>` : ''}
-                            ${isAuthor ? `<button class="delete-btn" data-index="${realIndex}">🗑️ Apagar</button>` : ''}
-                            <button class="report-btn" data-index="${realIndex}">🚨 Denunciar</button>
-                        </div>
-                        <div class="edit-feedback-area" id="edit-area-${realIndex}">
-                            <textarea class="edit-textarea">${msg.text}</textarea>
-                            <button class="btn-edit-save" data-index="${realIndex}">Salvar edição</button>
-                            <button class="btn-edit-cancel" data-index="${realIndex}">Cancelar</button>
-                        </div>
-                    </div>
-                `;
-            });
-            feedbackList.innerHTML = html;
-
-            // Event listeners para ações
-            feedbackList.querySelectorAll('.edit-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const idx = parseInt(this.dataset.index);
-                    const area = document.getElementById(`edit-area-${idx}`);
-                    area.classList.toggle('active');
-                });
-            });
-
-            feedbackList.querySelectorAll('.btn-edit-save').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const idx = parseInt(this.dataset.index);
-                    const newText = document.querySelector(`#edit-area-${idx} .edit-textarea`).value.trim();
-                    if (!newText) {
-                        alert('A mensagem não pode estar vazia.');
-                        return;
-                    }
-                    let msgs = getFeedbackMessages();
-                    if (msgs[idx]) {
-                        msgs[idx].text = newText;
-                        saveFeedbackMessages(msgs);
-                        renderFeedback();
-                        alert('Mensagem editada com sucesso.');
-                    }
-                });
-            });
-
-            feedbackList.querySelectorAll('.btn-edit-cancel').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const idx = parseInt(this.dataset.index);
-                    document.getElementById(`edit-area-${idx}`).classList.remove('active');
-                });
-            });
-
-            feedbackList.querySelectorAll('.delete-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const idx = parseInt(this.dataset.index);
-                    if (confirm('Tem certeza que deseja apagar esta mensagem?')) {
-                        let msgs = getFeedbackMessages();
-                        msgs.splice(idx, 1);
-                        saveFeedbackMessages(msgs);
-                        renderFeedback();
-                        alert('Mensagem apagada.');
-                    }
-                });
-            });
-
-            feedbackList.querySelectorAll('.report-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const idx = parseInt(this.dataset.index);
-                    if (confirm('Deseja denunciar esta mensagem? Ela será marcada para moderação.')) {
-                        let msgs = getFeedbackMessages();
-                        if (msgs[idx]) {
-                            msgs[idx].reported = true;
-                            saveFeedbackMessages(msgs);
-                            renderFeedback();
-                            alert('Mensagem denunciada. Obrigado por ajudar a manter a comunidade segura.');
-                        }
-                    }
-                });
-            });
-        }
-
-        // Enviar feedback
-        sendFeedbackBtn.addEventListener('click', () => {
-            const text = feedbackText.value.trim();
-            if (!text) {
-                alert('Por favor, escreva uma mensagem.');
-                return;
-            }
-            const user = getUser();
-            const author = user ? (user.displayName || user.nickname || user.email || 'Anônimo') : 'Anônimo';
-            const authorEmail = user ? user.email : null;
-            const messages = getFeedbackMessages();
-            messages.push({
-                text: text,
-                author: author,
-                authorEmail: authorEmail,
-                timestamp: Date.now(),
-                reported: false,
-            });
-            saveFeedbackMessages(messages);
-            feedbackText.value = '';
-            renderFeedback();
-            alert('Mensagem enviada com sucesso! Obrigado por contribuir.');
-        });
-
-        // Abrir modal de feedback
-        document.getElementById('btnFeedbackHeader').addEventListener('click', () => {
-            abrirModalPorId('modalFeedback');
-            renderFeedback();
-        });
-
-        feedbackModalClose.addEventListener('click', fecharTodosModais);
-
-        const feedbackObserver = new MutationObserver(() => {
-            if (feedbackModal.classList.contains('active')) {
-                renderFeedback();
-            }
-        });
-        feedbackObserver.observe(feedbackModal, { attributes: true, attributeFilter: ['class'] });
+        // Autenticação e Conversas usam a integração segura com Supabase adicionada ao final do arquivo.
 
         // ============================================================
         // PESQUISA FUNCIONAL
@@ -4060,21 +3460,348 @@
             });
         });
 
-        // ============================================================
-        // INICIALIZAÇÃO
-        // ============================================================
+        // Os componentes de conta e feedback são inicializados pela integração Supabase.
 
-        // Carregar perfil ao abrir modal
-        const profileObserver2 = new MutationObserver(() => {
-            if (profileModal.classList.contains('active')) {
-                loadProfile();
-            }
-        });
-        profileObserver2.observe(profileModal, { attributes: true, attributeFilter: ['class'] });
-
-        updateUI();
     });
 </script>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* Integração real com Supabase. Configure URL e chave pública antes de publicar. */
+(() => {
+  const SUPABASE_URL = 'https://rsckybcdylqcvfwsxynk.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_7np57VULftVaVSBy6cA-5w_P7jiEBU3';
+  const configured = !SUPABASE_URL.includes('SEU-PROJETO') && !SUPABASE_ANON_KEY.includes('SUA_CHAVE');
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (id) => document.getElementById(id);
+    const authError = $('authError');
+    const authLabel = $('authLabel');
+    const authButton = $('authButton');
+    const feedbackList = $('feedbackList');
+    let client = null;
+    let currentUser = null;
+    let currentProfile = null;
+    let processingSession = false;
+
+    const showError = (message) => { if (authError) authError.textContent = message; };
+    const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (ch) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[ch]));
+    const showModal = (id) => window.abrirModalPorId?.(id);
+    const APP_REDIRECT_URL = `${location.origin}/`;
+    const userName = () => currentProfile?.display_name || currentUser?.user_metadata?.display_name || currentUser?.user_metadata?.full_name || currentUser?.email || 'Usuário';
+
+    function updateHeader() {
+      if (!currentUser) {
+        authLabel.textContent = 'Entrar';
+        authButton.title = 'Entrar ou criar conta';
+        return;
+      }
+      const avatar = currentProfile?.avatar_url || currentUser.user_metadata?.avatar_url || currentUser.user_metadata?.picture;
+      const name = userName();
+      authLabel.innerHTML = '<span class="avatar" id="avatarTrigger"></span>';
+      const holder = $('avatarTrigger');
+      if (avatar) {
+        const img = document.createElement('img');
+        img.src = avatar;
+        img.alt = 'Foto do perfil';
+        holder.appendChild(img);
+      } else {
+        holder.textContent = name.charAt(0).toUpperCase();
+      }
+      authButton.title = `Olá, ${name}! Abrir minha conta`;
+    }
+
+    async function loadProfile(user) {
+      const { data, error } = await client.from('profiles').select('*').eq('id', user.id).maybeSingle();
+      if (error) throw error;
+      if (data) return data;
+      const initialName = user.user_metadata?.display_name || user.user_metadata?.full_name || '';
+      const { data: created, error: insertError } = await client.from('profiles').insert({ id: user.id, display_name: initialName }).select().single();
+      if (insertError) throw insertError;
+      return created;
+    }
+
+    async function renderProfile() {
+      if (!currentUser) return;
+      currentProfile = await loadProfile(currentUser);
+      $('profileDisplayNameLarge').textContent = userName();
+      $('profileEmailLarge').textContent = currentUser.email || 'E-mail não informado';
+      $('profileVerifiedLarge').textContent = currentUser.email_confirmed_at ? 'E-mail verificado' : 'Confirme seu e-mail';
+      const avatar = currentProfile.avatar_url || currentUser.user_metadata?.avatar_url || currentUser.user_metadata?.picture;
+      const placeholder = $('avatarPlaceholderLarge');
+      placeholder.replaceChildren();
+      if (avatar) {
+        const img = document.createElement('img');
+        img.src = avatar;
+        img.alt = 'Foto do perfil';
+        placeholder.appendChild(img);
+      } else {
+        placeholder.textContent = userName().charAt(0).toUpperCase();
+      }
+      $('editDisplayName').value = currentProfile.display_name || '';
+      $('editEmail').value = currentUser.email || '';
+      $('prefEmailCheck').checked = currentProfile.notify_email !== false;
+      $('prefPushCheck').checked = currentProfile.notify_push !== false;
+      updateHeader();
+    }
+
+    async function refreshSession(session) {
+      if (processingSession) return;
+      processingSession = true;
+      try {
+        currentUser = session?.user || null;
+        currentProfile = null;
+        if (currentUser) {
+          currentProfile = await loadProfile(currentUser);
+          if (!currentProfile.is_active) {
+            const reactivate = confirm('Esta conta está desativada. Deseja reativá-la agora?');
+            if (reactivate) {
+              const { error } = await client.from('profiles').update({ is_active: true }).eq('id', currentUser.id);
+              if (error) throw error;
+              currentProfile.is_active = true;
+            } else {
+              await client.auth.signOut();
+              currentUser = null;
+              currentProfile = null;
+            }
+          }
+        }
+        updateHeader();
+        if ($('modalProfile').classList.contains('active') && currentUser) await renderProfile();
+        if ($('modalFeedback').classList.contains('active')) await renderFeedback();
+      } catch (error) {
+        console.error('Falha ao carregar conta:', error);
+        showError('Não foi possível carregar sua conta. Confira a configuração do serviço.');
+      } finally {
+        processingSession = false;
+      }
+    }
+
+    async function renderFeedback() {
+      if (!configured || !client) {
+        feedbackList.innerHTML = '<p style="color:#888;text-align:center;padding:1rem">Configure a conexão segura do banco para carregar as mensagens.</p>';
+        return;
+      }
+      feedbackList.innerHTML = '<p style="color:#888;text-align:center;padding:1rem">Carregando mensagens…</p>';
+      const { data, error } = await client.from('feedback_messages')
+        .select('id,user_id,author_name,text,created_at,updated_at')
+        .order('created_at', { ascending: false });
+      if (error) {
+        console.error('Falha ao carregar conversas:', error);
+        feedbackList.innerHTML = '<p style="color:#888;text-align:center;padding:1rem">Não foi possível carregar as mensagens.</p>';
+        return;
+      }
+      if (!data?.length) {
+        feedbackList.innerHTML = '<p style="color:#888;text-align:center;padding:1rem">Nenhuma mensagem ainda. Seja o primeiro a enviar!</p>';
+        return;
+      }
+      feedbackList.innerHTML = data.map((msg) => {
+        const own = currentUser?.id === msg.user_id;
+        const date = new Date(msg.created_at);
+        const when = Number.isNaN(date.getTime()) ? '' : `${date.toLocaleDateString('pt-BR')} ${date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}`;
+        const edited = msg.updated_at && new Date(msg.updated_at) - date > 1000 ? ' · editada' : '';
+        const textHtml = escapeHtml(msg.text).replace(/\n/g, '<br>');
+        return `<div class="feedback-item" data-id="${escapeHtml(msg.id)}">
+          <div class="feedback-meta"><span>${escapeHtml(msg.author_name || 'Usuário')}</span><span>${escapeHtml(when + edited)}</span></div>
+          <div class="feedback-text" id="feedback-text-${escapeHtml(msg.id)}">${textHtml}</div>
+          <div class="feedback-actions">
+            ${own ? `<button class="edit-btn" data-id="${escapeHtml(msg.id)}">✏️ Editar</button><button class="delete-btn" data-id="${escapeHtml(msg.id)}">🗑️ Apagar</button>` : ''}
+            ${currentUser && !own ? `<button class="report-btn" data-id="${escapeHtml(msg.id)}">🚨 Denunciar</button>` : ''}
+          </div>
+          ${own ? `<div class="edit-feedback-area" id="edit-area-${escapeHtml(msg.id)}"><textarea class="edit-textarea">${escapeHtml(msg.text)}</textarea><button class="btn-edit-save" data-id="${escapeHtml(msg.id)}">Salvar edição</button><button class="btn-edit-cancel" data-id="${escapeHtml(msg.id)}">Cancelar</button></div>` : ''}
+        </div>`;
+      }).join('');
+
+      feedbackList.querySelectorAll('.edit-btn').forEach((button) => button.addEventListener('click', () => {
+        $(`edit-area-${button.dataset.id}`).classList.toggle('active');
+      }));
+      feedbackList.querySelectorAll('.btn-edit-cancel').forEach((button) => button.addEventListener('click', () => {
+        $(`edit-area-${button.dataset.id}`).classList.remove('active');
+      }));
+      feedbackList.querySelectorAll('.btn-edit-save').forEach((button) => button.addEventListener('click', async () => {
+        const id = button.dataset.id;
+        const text = $(`edit-area-${id}`).querySelector('textarea').value.trim();
+        if (!text) return alert('A mensagem não pode ficar vazia.');
+        const { error: updateError } = await client.from('feedback_messages').update({ text, updated_at: new Date().toISOString() }).eq('id', id);
+        if (updateError) return alert('Não foi possível editar. Atualize a página e tente novamente.');
+        await renderFeedback();
+      }));
+      feedbackList.querySelectorAll('.delete-btn').forEach((button) => button.addEventListener('click', async () => {
+        if (!confirm('Apagar esta mensagem permanentemente?')) return;
+        const { error: deleteError } = await client.from('feedback_messages').delete().eq('id', button.dataset.id);
+        if (deleteError) return alert('Não foi possível apagar esta mensagem.');
+        await renderFeedback();
+      }));
+      feedbackList.querySelectorAll('.report-btn').forEach((button) => button.addEventListener('click', async () => {
+        if (!confirm('Deseja denunciar esta mensagem para análise?')) return;
+        const { error: reportError } = await client.from('feedback_reports').insert({ feedback_id: button.dataset.id, reporter_user_id: currentUser.id });
+        if (reportError?.code === '23505') return alert('Você já denunciou esta mensagem.');
+        if (reportError) return alert('Não foi possível enviar a denúncia.');
+        button.textContent = 'Denunciada';
+        button.disabled = true;
+      }));
+    }
+
+    if (typeof window.supabase === 'undefined') {
+      showError('A biblioteca de conexão não carregou. Verifique sua internet.');
+      return;
+    }
+    if (configured) client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    if (!configured) {
+      authButton.onclick = () => showModal('modalAuth');
+      $('btnFeedbackHeader').addEventListener('click', async () => { showModal('modalFeedback'); await renderFeedback(); });
+      $('sendFeedbackBtn').disabled = true;
+      showError('A conexão do serviço ainda precisa ser configurada.');
+      window.__renderFeedback = renderFeedback;
+      return;
+    }
+
+    authButton.onclick = () => currentUser ? (showModal('modalProfile'), renderProfile().catch(console.error)) : showModal('modalAuth');
+    $('authModalClose').addEventListener('click', () => window.fecharTodosModais?.());
+    $('profileModalClose').addEventListener('click', () => window.fecharTodosModais?.());
+    $('feedbackModalClose').addEventListener('click', () => window.fecharTodosModais?.());
+
+    document.querySelectorAll('#modalAuth .auth-tab').forEach((tab) => tab.addEventListener('click', () => {
+      document.querySelectorAll('#modalAuth .auth-tab').forEach((item) => item.classList.remove('active'));
+      tab.classList.add('active');
+      const registering = tab.dataset.tab === 'register';
+      $('loginForm').classList.toggle('hidden', registering);
+      $('registerForm').classList.toggle('hidden', !registering);
+      showError('');
+    }));
+
+    $('loginForm').addEventListener('submit', async (event) => {
+      event.preventDefault(); showError('');
+      const email = $('loginEmail').value.trim();
+      const password = $('loginPassword').value;
+      const { error } = await client.auth.signInWithPassword({ email, password });
+      if (error) showError('Não foi possível entrar. Confira o e-mail e a senha.');
+      else window.fecharTodosModais?.();
+    });
+
+    $('registerForm').addEventListener('submit', async (event) => {
+      event.preventDefault(); showError('');
+      const displayName = $('registerName').value.trim();
+      const email = $('registerEmail').value.trim();
+      const password = $('registerPassword').value;
+      if (password.length < 8) return showError('Use uma senha com pelo menos 8 caracteres.');
+      const { data, error } = await client.auth.signUp({ email, password, options: { data: { display_name: displayName }, emailRedirectTo: APP_REDIRECT_URL } });
+      if (error) return showError(error.message.includes('already registered') ? 'Este e-mail já tem cadastro. Entre na conta.' : 'Não foi possível criar a conta. Confira os dados e tente novamente.');
+      if (!data.session) showError('Conta criada. Confirme o endereço pelo link enviado ao seu e-mail para entrar.');
+      else window.fecharTodosModais?.();
+    });
+
+    document.querySelectorAll('.social-btn').forEach((button) => button.addEventListener('click', async () => {
+      showError('');
+      const provider = button.dataset.social;
+      const { error } = await client.auth.signInWithOAuth({ provider, options: { redirectTo: APP_REDIRECT_URL, queryParams: provider === 'google' ? { prompt: 'select_account' } : undefined } });
+      if (error) showError('Não foi possível conectar. Verifique se este provedor está habilitado.');
+    }));
+
+    $('profileAvatarLarge').addEventListener('click', () => $('profileAvatarInput').click());
+    $('profileAvatarInput').addEventListener('change', async (event) => {
+      const file = event.target.files?.[0];
+      if (!file || !currentUser) return;
+      if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size > 5 * 1024 * 1024) return alert('Escolha uma imagem JPG, PNG ou WebP de até 5 MB.');
+      try {
+        const image = new Image();
+        const dataUrl = await new Promise((resolve, reject) => {
+          const reader = new FileReader(); reader.onerror = reject; reader.onload = () => { image.onload = () => { const canvas = document.createElement('canvas'); canvas.width = 400; canvas.height = 400; const side = Math.min(image.width, image.height); canvas.getContext('2d').drawImage(image, (image.width - side) / 2, (image.height - side) / 2, side, side, 0, 0, 400, 400); resolve(canvas.toDataURL('image/jpeg', 0.84)); }; image.onerror = reject; image.src = reader.result; }; reader.readAsDataURL(file);
+        });
+        const blob = await (await fetch(dataUrl)).blob();
+        const path = `${currentUser.id}/avatar.jpg`;
+        const { error: uploadError } = await client.storage.from('avatars').upload(path, blob, { upsert: true, contentType: 'image/jpeg' });
+        if (uploadError) throw uploadError;
+        const { data: urlData } = client.storage.from('avatars').getPublicUrl(path);
+        const avatarUrl = `${urlData.publicUrl}?v=${Date.now()}`;
+        const { error: profileError } = await client.from('profiles').update({ avatar_url: avatarUrl, updated_at: new Date().toISOString() }).eq('id', currentUser.id);
+        if (profileError) throw profileError;
+        await renderProfile();
+        alert('Foto de perfil atualizada. Ela ficará disponível nos seus dispositivos.');
+      } catch (error) { console.error(error); alert('Não foi possível salvar a foto. Confira as permissões de armazenamento.'); }
+      finally { event.target.value = ''; }
+    });
+
+    document.querySelectorAll('.profile-menu-item[data-action]').forEach((item) => item.addEventListener('click', async () => {
+      const action = item.dataset.action;
+      document.querySelectorAll('.profile-edit-form').forEach((form) => form.classList.remove('active'));
+      if (action === 'messages') { window.fecharTodosModais?.(); showModal('modalFeedback'); await renderFeedback(); }
+      else if (action === 'preferences') $('editPreferencesForm').classList.add('active');
+      else if (action === 'change-name') $('editNameForm').classList.add('active');
+      else if (action === 'change-email') $('editEmailForm').classList.add('active');
+      else if (action === 'change-password') $('editPasswordForm').classList.add('active');
+      else if (action === 'logout') { if (confirm('Deseja sair da sua conta neste dispositivo?')) { await client.auth.signOut(); window.fecharTodosModais?.(); } }
+      else if (action === 'deactivate-account') {
+        if (!confirm('Desativar sua conta? Seus dados serão preservados e você poderá reativá-la ao entrar novamente.')) return;
+        const { error } = await client.from('profiles').update({ is_active: false, updated_at: new Date().toISOString() }).eq('id', currentUser.id);
+        if (error) return alert('Não foi possível desativar a conta.');
+        await client.auth.signOut(); window.fecharTodosModais?.(); alert('Conta desativada.');
+      } else if (action === 'delete-account') {
+        if (!confirm('Excluir sua conta e os dados associados permanentemente? Esta ação não pode ser desfeita.')) return;
+        const { error } = await client.functions.invoke('delete-my-account', { body: {} });
+        if (error) return alert('Não foi possível concluir a exclusão. Confira se a função segura do servidor foi implantada.');
+        await client.auth.signOut(); window.fecharTodosModais?.(); alert('Sua conta e os dados associados foram excluídos.');
+      }
+    }));
+
+    document.querySelectorAll('[data-cancel]').forEach((button) => button.addEventListener('click', () => $(button.dataset.cancel).classList.remove('active')));
+
+    $('saveNameBtn').addEventListener('click', async () => {
+      const display_name = $('editDisplayName').value.trim();
+      if (!display_name) return alert('O nome não pode ficar vazio.');
+      const { error } = await client.from('profiles').update({ display_name, updated_at: new Date().toISOString() }).eq('id', currentUser.id);
+      if (error) return alert('Não foi possível atualizar o nome.');
+      await client.auth.updateUser({ data: { display_name } });
+      $('editNameForm').classList.remove('active'); await renderProfile(); alert('Nome atualizado em todos os dispositivos.');
+    });
+    $('saveEmailBtn').addEventListener('click', async () => {
+      const email = $('editEmail').value.trim();
+      if (!email || !email.includes('@')) return alert('Digite um e-mail válido.');
+      const { error } = await client.auth.updateUser({ email });
+      if (error) return alert('Não foi possível atualizar o e-mail.');
+      $('editEmailForm').classList.remove('active'); alert('Enviamos uma confirmação para o novo e-mail. A alteração vale após a confirmação.');
+    });
+    $('savePasswordBtn').addEventListener('click', async () => {
+      const newPass = $('editNewPassword').value;
+      if (newPass.length < 8) return alert('Use uma senha com pelo menos 8 caracteres.');
+      if (newPass !== $('editConfirmPassword').value) return alert('As senhas não coincidem.');
+      const { error } = await client.auth.updateUser({ password: newPass });
+      if (error) return alert('Não foi possível alterar a senha.');
+      $('editCurrentPassword').value = ''; $('editNewPassword').value = ''; $('editConfirmPassword').value = '';
+      $('editPasswordForm').classList.remove('active'); alert('Senha alterada com segurança.');
+    });
+    $('savePreferencesBtn').addEventListener('click', async () => {
+      const { error } = await client.from('profiles').update({ notify_email: $('prefEmailCheck').checked, notify_push: $('prefPushCheck').checked, updated_at: new Date().toISOString() }).eq('id', currentUser.id);
+      if (error) return alert('Não foi possível salvar suas preferências.');
+      $('editPreferencesForm').classList.remove('active'); alert('Preferências sincronizadas com sua conta.');
+    });
+
+    $('sendFeedbackBtn').addEventListener('click', async () => {
+      const text = $('feedbackText').value.trim();
+      if (!text) return alert('Escreva sua mensagem antes de enviar.');
+      if (!currentUser) { alert('Entre na sua conta para enviar uma mensagem.'); showModal('modalAuth'); return; }
+      const { error } = await client.from('feedback_messages').insert({ user_id: currentUser.id, author_name: userName(), text });
+      if (error) return alert('Não foi possível enviar a mensagem. Tente novamente.');
+      $('feedbackText').value = ''; await renderFeedback(); alert('Mensagem enviada.');
+    });
+    $('btnFeedbackHeader').addEventListener('click', async () => { showModal('modalFeedback'); await renderFeedback(); });
+
+    const feedbackModal = $('modalFeedback');
+    new MutationObserver(() => { if (feedbackModal.classList.contains('active')) renderFeedback(); })
+      .observe(feedbackModal, { attributes: true, attributeFilter: ['class'] });
+    const profileModal = $('modalProfile');
+    new MutationObserver(() => { if (profileModal.classList.contains('active') && currentUser) renderProfile().catch(console.error); })
+      .observe(profileModal, { attributes: true, attributeFilter: ['class'] });
+
+    client.auth.onAuthStateChange((_event, session) => { setTimeout(() => refreshSession(session), 0); });
+    client.auth.getSession().then(({ data }) => refreshSession(data.session));
+    window.__renderFeedback = renderFeedback;
+  });
+})();
+</script>
 </body>
 </html>
