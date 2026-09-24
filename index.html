@@ -3116,6 +3116,7 @@
             <input type="email" placeholder="E-mail" id="loginEmail" required>
             <input type="password" placeholder="Senha" id="loginPassword" required>
             <button type="submit" class="btn-auth-submit">Entrar</button>
+            <button type="button" class="forgot-password-link" id="resendConfirmationBtn">Reenviar confirmação do e-mail</button>
             <button type="button" class="forgot-password-link" id="forgotPasswordBtn">Esqueci minha senha</button>
             <div class="auth-divider">ou continue com</div>
             <div class="social-login">
@@ -3516,6 +3517,7 @@
     const explainAuthError = (error, fallback) => {
       const raw = String(error?.message || '').trim();
       const message = raw.toLowerCase();
+      if (/email not confirmed|email_not_confirmed/i.test(message)) return 'Seu e-mail ainda não foi confirmado. Use “Reenviar confirmação do e-mail” e abra o link mais recente.';
       if (/already registered|already exists|user already/i.test(message)) return 'Este e-mail já tem uma conta. Entre usando o método com que ela foi criada.';
       if (/rate limit|too many requests|email.*limit/i.test(message)) return 'Muitas tentativas em pouco tempo. Aguarde antes de tentar de novo.';
       if (/password|weak password/i.test(message)) return 'A senha não atende aos requisitos. Use pelo menos 8 caracteres.';
@@ -3714,6 +3716,13 @@
     $('forgotPasswordBtn').addEventListener('click', () => {
       $('resetEmail').value = $('loginEmail').value.trim();
       setAuthView('reset');
+    });
+    $('resendConfirmationBtn').addEventListener('click', async () => {
+      const email = $('loginEmail').value.trim();
+      if (!email) return showError('Digite seu e-mail no campo acima primeiro.');
+      const { error } = await client.auth.resend({ type: 'signup', email, options: { emailRedirectTo: APP_REDIRECT_URL } });
+      if (error) { console.error('Supabase confirmation resend failed:', error); return showError(explainAuthError(error, 'Não foi possível reenviar a confirmação.')); }
+      showError('Se a conta estiver pendente, enviaremos um novo link. Use o e-mail mais recente e confira o spam.');
     });
     $('backToLoginFromReset').addEventListener('click', () => setAuthView('login'));
     $('backToLoginFromRecovery').addEventListener('click', () => setAuthView('login'));
