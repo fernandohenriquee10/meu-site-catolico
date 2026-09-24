@@ -3486,6 +3486,16 @@
     let processingSession = false;
 
     const showError = (message) => { if (authError) authError.textContent = message; };
+    const explainAuthError = (error, fallback) => {
+      const raw = String(error?.message || '').trim();
+      const message = raw.toLowerCase();
+      if (/already registered|already exists|user already/i.test(message)) return 'Este e-mail já tem uma conta. Entre usando o método com que ela foi criada.';
+      if (/rate limit|too many requests|email.*limit/i.test(message)) return 'Muitas tentativas em pouco tempo. Aguarde antes de tentar de novo.';
+      if (/password|weak password/i.test(message)) return 'A senha não atende aos requisitos. Use pelo menos 8 caracteres.';
+      if (/redirect|callback/i.test(message)) return 'O endereço de retorno não foi aceito. Confira a URL do site nas configurações de autenticação.';
+      if (/email|mail/i.test(message)) return `Problema com o e-mail: ${raw}`;
+      return raw ? `${fallback} Detalhe: ${raw}` : fallback;
+    };
     const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (ch) => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     }[ch]));
@@ -3679,7 +3689,7 @@
       const email = $('loginEmail').value.trim();
       const password = $('loginPassword').value;
       const { error } = await client.auth.signInWithPassword({ email, password });
-      if (error) showError('Não foi possível entrar. Confira o e-mail e a senha.');
+      if (error) { console.error('Supabase sign-in failed:', error); showError(explainAuthError(error, 'Não foi possível entrar.')); }
       else window.fecharTodosModais?.();
     });
 
@@ -3690,7 +3700,7 @@
       const password = $('registerPassword').value;
       if (password.length < 8) return showError('Use uma senha com pelo menos 8 caracteres.');
       const { data, error } = await client.auth.signUp({ email, password, options: { data: { display_name: displayName }, emailRedirectTo: APP_REDIRECT_URL } });
-      if (error) return showError(error.message.includes('already registered') ? 'Este e-mail já tem cadastro. Entre na conta.' : 'Não foi possível criar a conta. Confira os dados e tente novamente.');
+      if (error) { console.error('Supabase sign-up failed:', error); return showError(explainAuthError(error, 'Não foi possível criar a conta.')); }
       if (!data.session) showError('Conta criada. Confirme o endereço pelo link enviado ao seu e-mail para entrar.');
       else window.fecharTodosModais?.();
     });
@@ -3699,7 +3709,7 @@
       showError('');
       const provider = button.dataset.social;
       const { error } = await client.auth.signInWithOAuth({ provider, options: { redirectTo: APP_REDIRECT_URL, queryParams: provider === 'google' ? { prompt: 'select_account' } : undefined } });
-      if (error) showError('Não foi possível conectar. Verifique se este provedor está habilitado.');
+      if (error) { console.error(`${provider} OAuth failed:`, error); showError(explainAuthError(error, `Não foi possível conectar com ${provider}.`)); }
     }));
 
     $('profileAvatarLarge').addEventListener('click', () => $('profileAvatarInput').click());
