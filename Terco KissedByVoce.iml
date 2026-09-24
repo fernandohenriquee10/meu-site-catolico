@@ -3116,7 +3116,7 @@
             <input type="email" placeholder="E-mail" id="loginEmail" required>
             <input type="password" placeholder="Senha" id="loginPassword" required>
             <button type="submit" class="btn-auth-submit">Entrar</button>
-            <button type="button" class="forgot-password-link" id="resendConfirmationBtn">Reenviar confirmação do e-mail</button>
+            <button type="button" class="forgot-password-link" id="resendConfirmationBtn" style="display:none">Reenviar confirmação do e-mail</button>
             <button type="button" class="forgot-password-link" id="forgotPasswordBtn">Esqueci minha senha</button>
             <div class="auth-divider">ou continue com</div>
             <div class="social-login">
@@ -3514,10 +3514,12 @@
     let processingSession = false;
 
     const showError = (message) => { if (authError) authError.textContent = message; };
+    const setResendConfirmationVisible = (visible) => { $('resendConfirmationBtn').style.display = visible ? 'inline-block' : 'none'; };
     const explainAuthError = (error, fallback) => {
       const raw = String(error?.message || '').trim();
       const message = raw.toLowerCase();
       if (/email not confirmed|email_not_confirmed/i.test(message)) return 'Seu e-mail ainda não foi confirmado. Use “Reenviar confirmação do e-mail” e abra o link mais recente.';
+      if (/email already confirmed|already confirmed/i.test(message)) return 'Este e-mail já está confirmado. Entre normalmente com sua conta.';
       if (/already registered|already exists|user already/i.test(message)) return 'Este e-mail já tem uma conta. Entre usando o método com que ela foi criada.';
       if (/rate limit|too many requests|email.*limit/i.test(message)) return 'Muitas tentativas em pouco tempo. Aguarde antes de tentar de novo.';
       if (/password|weak password/i.test(message)) return 'A senha não atende aos requisitos. Use pelo menos 8 caracteres.';
@@ -3749,11 +3751,16 @@
 
     $('loginForm').addEventListener('submit', async (event) => {
       event.preventDefault(); showError('');
+      setResendConfirmationVisible(false);
       const email = $('loginEmail').value.trim();
       const password = $('loginPassword').value;
       const { error } = await client.auth.signInWithPassword({ email, password });
-      if (error) { console.error('Supabase sign-in failed:', error); showError(explainAuthError(error, 'Não foi possível entrar.')); }
-      else window.fecharTodosModais?.();
+      if (error) {
+        console.error('Supabase sign-in failed:', error);
+        const unconfirmed = /email not confirmed|email_not_confirmed/i.test(`${error.message || ''} ${error.code || ''}`);
+        setResendConfirmationVisible(unconfirmed);
+        showError(explainAuthError(error, 'Não foi possível entrar.'));
+      } else window.fecharTodosModais?.();
     });
 
     $('registerForm').addEventListener('submit', async (event) => {
@@ -3764,8 +3771,10 @@
       if (password.length < 8) return showError('Use uma senha com pelo menos 8 caracteres.');
       const { data, error } = await client.auth.signUp({ email, password, options: { data: { display_name: displayName }, emailRedirectTo: APP_REDIRECT_URL } });
       if (error) { console.error('Supabase sign-up failed:', error); return showError(explainAuthError(error, 'Não foi possível criar a conta.')); }
-      if (!data.session) showError('Conta criada. Confirme o endereço pelo link enviado ao seu e-mail para entrar.');
-      else window.fecharTodosModais?.();
+      if (!data.session) {
+        setResendConfirmationVisible(data.user?.identities?.length !== 0);
+        showError('Conta criada. Confirme o e-mail; o link retorna à página inicial do site.');
+      } else window.fecharTodosModais?.();
     });
 
     document.querySelectorAll('.social-btn').forEach((button) => button.addEventListener('click', async () => {
